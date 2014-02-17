@@ -15,34 +15,35 @@
     
     <body>
         
-        <!-- 历史隐患查询view -->
-        <div id="historyRiskSearchView" data-role="view" data-transition="fade">
+        <!-- 历史隐患查询 -->
+        <div id="historyRiskSearchView" style="background:#fff" data-role="page" data-transition="slide" data-add-back-btn="true" data-back-btn-text="返回">
             
-            <header data-role="footer" >
-                <div data-role="navbar">
-                    <span data-align="left" data-role="backbutton">返回</span>
-                    <span data-role="view-title">企业查询</span>
-                </div>
-            </header>
+            <div data-role="header">
+                <h1>企业查询</h1> 
+            </div>
             
-            <div data-role="content" style="background:#fff">
+            <div data-role="content">
                 
                 <!-- 区域选择 -->
                 <div style="margin-top:5%">
-                    <div style="width:98%;text-align:center">区域选择</div>
-                    <div style="width:98%;border:1px solid #ccc;border-radius:4px;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
-                        <div style="display:inline"><a data-role="button" id="area_city" onclick="areaSelect('全市', 'area_city')" style="width:23%;text-align:center" >全市</a></div>
-                        <div style="display:inline"><a data-role="button" id="area_district" onclick="areaSelect('各区', 'area_district')" style="width:23%;text-align:center">各区</a></div>
-                        <div style="display:inline"><a data-role="button" id="area_department" onclick="areaSelect('重点部门', 'area_department')" style="width:23%;text-align:center">重点部门</a></div>
+                    <div style="width:100%;text-align:center">区域选择</div>
+                    <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                        <div data-role="navbar">  
+                            <ul>  
+                                <li><a id="area_city" onclick="areaSelect('全市', 'area_city')" href="">全市</a></li>  
+                                <li><a id="area_district" onclick="areaSelect('各区', 'area_district')" href="">各区</a></li>  
+                                <li><a id="area_department" onclick="areaSelect('重点部门', 'area_department')" href="">重点部门</a></li>  
+                            </ul>  
+                        </div>
                     </div>
                 </div>
                 
                 <!-- 年份选择 -->
                 <div style="margin-top:5%">
-                    <div style="width:98%;text-align:center">年份选择</div>
-                    <div style="width:98%;border:1px solid #ccc;border-radius:4px;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                    <div style="width:100%;text-align:center">年份选择</div>
+                    <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
                         <div>
-                            <select style="width:97%;text-align:center;color:black;border:1px solid #ccc" onchange="yearSelect()">
+                            <select style="width:97%;text-align:center;" onchange="yearSelect()">
                                 <option value="2014">2014</option>
                                 <option value="2013">2013</option>
                                 <option value="2012">2012</option>
@@ -57,21 +58,33 @@
                 
                 <!-- 季度选择 -->
                 <div style="margin-top:5%">
-                    <div style="width:98%;text-align:center">季度选择</div>
-                    <div style="width:98%;border:1px solid #ccc;border-radius:4px;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
-                        <div style="display:inline"><a data-role="button" id="season1" onclick="seasonSelect('一季度', 'season1')" style="width:23%;text-align:center">一季度</a></div>
-                        <div style="display:inline"><a data-role="button" id="season2" onclick="seasonSelect('二季度', 'season2')" style="width:23%;text-align:center">二季度</a></div>
-                        <div style="display:inline"><a data-role="button" id="season3" onclick="seasonSelect('三季度', 'season3')" style="width:23%;text-align:center">三季度</a></div>
+                    <div style="width:100%;text-align:center">季度选择</div>
+                    <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                        <div data-role="navbar">  
+                            <ul>  
+                                <li><a id="season1" onclick="seasonSelect('一季度', 'season1')" href="">一季度</a></li>  
+                                <li><a id="season2" onclick="seasonSelect('二季度', 'season2')" href="">二季度</a></li>  
+                                <li><a id="season3" onclick="seasonSelect('三季度', 'season3')" href="">三季度</a></li>  
+                            </ul>  
+                        </div>
                         
-                        <div style="display:inline"><a data-role="button" id="season4" onclick="seasonSelect('四季度', 'season4')" style="width:23%;text-align:center">四季度</a></div>
-                        <div style="display:inline"><a data-role="button" id="seasonHalf1" onclick="seasonSelect('上半年', 'seasonHalf1')" style="width:23%;text-align:center">上半年</a></div>
-                        <div style="display:inline"><a data-role="button" id="seasonHalf2" onclick="seasonSelect('下半年', 'seasonHalf2')" style="width:23%;text-align:center">下半年</a></div>
- 
-                        <div style="display:inline;text-align:left;"><a data-role="button" id="seasonFull"  onclick="seasonSelect('全年', 'seasonFull')" style="width:23%;text-align:center">全年</a></div>
+                        <div data-role="navbar">  
+                            <ul>  
+                                <li><a id="season4" onclick="seasonSelect('四季度', 'season4')" href="">四季度</a></li>  
+                                <li><a id="seasonHalf1" onclick="seasonSelect('上半年', 'seasonHalf1')" href="">上半年</a></li>  
+                                <li><a id="seasonHalf2" onclick="seasonSelect('下半年', 'seasonHalf2')" href="">下半年</a></li>  
+                            </ul>  
+                        </div>
+                        
+                        <div data-role="navbar">  
+                            <ul>  
+                                <li><a id="seasonFull"  onclick="seasonSelect('全年', 'seasonFull')" href="">全年</a></li>  
+                            </ul>  
+                        </div>
                     </div>
                 </div>
+                
             </div>
-            
         </div>
         
     </body>

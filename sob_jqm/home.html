@@ -1,3 +1,9 @@
+<!-- 
+    页面：主菜单页面
+    作者：邓世瑛、梁伟超
+    日期：2014.02.17
+    版本：1.1
+ -->
 <!DOCTYPE html>
 
 <html>
@@ -5,28 +11,19 @@
         <title></title>
         <meta charset="utf-8" />
     </head>
+    
     <body>
-        <div id="homeView" data-role="page">
-            <div data-role="header" >
-                <div data-role="navbar">
-                    <a data-role="button" onclick="goback()" data-align="left" style="line-height:3em;height:3em;padding:0em 0 0 0;border: 0px solid;border-radius:6px" >
-                        <img type="image" style="width:3em" src="./styles/home/images/defaultUser_icon.png"  />
-                    </a>
-                    <a data-align="right"  data-role="button" style="line-height:3em;height:3em;padding:0em 0 0 0;border: 0px solid;border-radius:6px" onclick="selectCtr('#foundAlbum')">
-                        <img type="image" style="width:3em" src="./styles/home/images/bubble_index.png"  />
-                    </a>
-                    <a data-align="right"  data-role="button" style="line-height:3em;height:3em;padding:0em 0 0 0;border: 0px solid;border-radius:6px" onclick="selectCtr('#foundAlbum')">
-                        <img type="image" style="width:3em" src="./styles/home/images/setting_index.png"  />
-                    </a>
-                    <a data-align="right"  data-role="button" style="line-height:3em;height:3em;padding:0em 0 0 0;border: 0px solid;border-radius:6px" onclick="selectCtr('#foundAlbum')">
-                        <img type="image" style="width:3em" src="./styles/home/images/search_index.png"  />
-                    </a>
-                </div>
+        <div id="homeView" data-role="page" style="background:url(styles/home/images/main_bg.png); background-size: 100% 100%;background-repeat: no-repeat;">
+            <div data-role="header" data-position="fixed">
+                <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em" src="./styles/home/images/defaultUser_icon.png"  />
+                <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right;padding-right:.5em" src="./styles/home/images/bubble_index.png"  />
+                <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right" src="./styles/home/images/setting_index.png"  />
+                <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right;" src="./styles/home/images/search_index.png"  />
             </div>
             
-            <div data-role="content" style="background:url(styles/home/images/main_bg.png); background-size: 100% 100%;background-repeat: no-repeat;">
+            <div data-role="content">
                 <div class="menuRow">
-                    <div class="menuItem" onclick="openPage('./fourPercentages/fourPercentages.html')">
+                    <div class="menuItem" onclick="openPage('./fourPercentages/fourPercentages.html')"><!-- historyRiskSearch-->
                         <div><img type="image" class="menuImg" src="./fourPercentages/images/epSearch_icon.png" /></div>
                         <div style="color:#fff">四个百分率</div>
                     </div>
@@ -49,13 +46,15 @@
             </div>
             
             <!--尾部-->
-            <div data-role="footer">
-                <div id="growtabstrip">
-                    <a data-icon="home" >首页 </a>
-                    <a data-icon="jianch-e" >检查录入 </a>
-                    <a data-icon="tongjiqy-e" >企业统计 </a>
-                    <a data-icon="arrow-e" >最新资讯</a>
-                </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">  
+                    <ul>  
+                        <li><a href="" class="ui-btn-active" data-icon="home" data-iconpos="left">首页</a></li>  
+                        <li><a href="" data-icon="search" data-iconpos="left">检查录入</a></li>  
+                        <li><a href="" data-icon="plus" data-iconpos="left">企业统计</a></li>  
+                        <li><a href="" data-icon="info" data-iconpos="left">最新资讯</a></li>  
+                    </ul>  
+                </div>  
             </div>
         </div>
         

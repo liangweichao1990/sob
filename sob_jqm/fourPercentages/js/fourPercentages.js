@@ -8,5 +8,7 @@ function seasonSearch()
 // 打开历史隐患查询页面
 function openHistoryRiskSearchPage()
 {
-    app.navigate("./fourPercentages/historyRiskSearch.html");
+    alert("test");
+    jQuery.mobile.changePage("./fourPercentages/historyRiskSearch.html");
 }
+
