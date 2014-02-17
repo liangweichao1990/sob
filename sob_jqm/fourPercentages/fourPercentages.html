@@ -1,0 +1,66 @@
+<!-- 
+    页面：四个百分率主页面
+    作者：梁伟超
+    日期：2014-02-17
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        
+        <!-- 主页view -->
+        <div id="fourPercentagesView" data-role="view" data-transition="fade">
+            
+            <header data-role="footer" >
+                <div data-role="navbar">
+                    <span data-align="left" data-role="backbutton">返回</span>
+                    <span data-role="view-title">四个百分率查询</span>
+                </div>
+            </header>
+            
+            <div data-role="content" style="background:#fff">
+                
+                <!-- 季度查询 -->
+                <div style="margin-top:5%">
+                    <div style="width:98%;text-align:center">2014年第一季度</div>
+                    <div style="width:98%;border:1px solid #ccc;border-radius:4px;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                        <div style="display:inline"><a data-role="button" data-click="seasonSearch" style="width:23%;text-align:center">全市</a></div>
+                        <div style="display:inline"><a data-role="button" data-click="seasonSearch" style="width:23%;text-align:center">各区</a></div>
+                        <div style="display:inline"><a data-role="button" data-click="seasonSearch" style="width:23%;text-align:center">重点部门</a></div>
+                    </div>
+                </div>
+                
+                <!-- 历史查询 -->
+                <div style="margin-top:5%">
+                    <div style="width:98%;text-align:center">历史查询</div>
+                    <div style="width:98%;border:1px solid #ccc;border-radius:4px;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                        <div><a data-role="button" data-click="openHistoryRiskSearchPage" style="width:89%;text-align:center">历史企业隐患查询</a></div>
+                    </div>
+                </div>
+                
+                <!-- 备注信息 -->
+                <div style="margin-top:10%;margin-left:2%;color:gray">
+                    <div>备注：四个百分率是指--</div>
+                    <div>
+                        <ol>
+                            <li>1.监管企业本季度的上报率。</li>
+                            <li>2.对上季度"黑名单"企业查处(检查)率。</li>
+                            <li>3.对上季度"零隐患"企业的检查率。</li>
+                            <li>4.对上季度其它企业(指除"黑名单"和"零隐患"企业)的抽查率。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </body>
+    
+</html>
