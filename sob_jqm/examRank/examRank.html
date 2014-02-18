@@ -4,24 +4,31 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <link href="../kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
-        <script src="../cordova.js"></script>
-        <script src="../kendo/js/jquery.min.js"></script>
-        <script src="../kendo/js/kendo.mobile.min.js"></script>
     </head>
     <body>
-        <div id="examRankView" data-role="view">
-            <header data-role="footer" >
-                <div data-role="navbar">
-                    <span data-role="view-title">考核排行</span>
-                    
+
+        <!-- 搜索page -->
+        <div data-role="page" id="pageone"  data-add-back-btn="true" data-back-btn-text="返回" style="background:#CCCCCC;">
+            <!-- 头文件 -->
+            <div data-role="header" data-theme="b" >
+                <h1>绩效排名</h1>
+            </div>
+            <!-- 内容 -->
+            <div data-role="content" data-theme="b" >
+                <div style="margin:0 auto;text-align:center;font-size:.9em;">
+                    <br size="20"/>
+                    <div style="margin-top:10px;">2013年第四季度</div>
+                    <div style="margin:0 auto;text-align:center;border:solid 0px gray;">
+                        <a href="examRankList.html"  data-transition="none" data-role="button" data-mini="true" data-inline="true" style="margin-top:10px;">全市各区（功能区）绩效考核排行榜</a>
+                        <a href="examRankList.html" data-transition="none" data-role="button" data-mini="true" data-inline="true" style="margin-top:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重点行业部门绩效考核排行榜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        <a href="examRankList.html" data-transition="none" data-role="button" data-mini="true" data-inline="true" style="margin-top:10px;margin-bottom:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其它行业部门绩效考核排行榜&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </div>
+                    <div style="margin-top:10px;">历史查询</div>
+                    <div style="margin:0 auto;text-align:center;border:solid 0px gray;">
+                        <a href="examRank_search.html" data-transition="none" data-role="button" data-mini="true" data-inline="true" style="margin-top:10px;margin-bottom:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历史绩效考核排行榜查询&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    </div>
                 </div>
-            </header>
-            
-            <div data-role="content" style="background:#fff">
-                考核排行
             </div>
         </div>
-        
     </body>
 </html>

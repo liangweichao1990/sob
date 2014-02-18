@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div data-role="page" id="pageone" style="background:#CCCCCC;">
+            <!-- 头文件 -->
+            <div data-role="header" data-theme="b" >
+                <a data-role="button" data-icon="arrow-l" data-rel="back" style="float:right">返回</a>
+                <h1>历史查询</h1>
+                <a data-role="button" onclick="historyRiskSearch()" data-icon="search" style="float:right">查询</a>
+            </div>
+            
+            <div data-role="content" data-theme="b">
+                
+                <!-- 区域选择 -->
+                <div style="margin-top:5%">
+                    <div style="width:100%;text-align:center">区域选择</div>
+                    <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                        <div data-role="navbar">  
+                            <ul>  
+                                <li><a id="area_city" onclick="areaSelect('全市', 'area_city')">全市各区</a></li>  
+                                <li><a id="area_district" onclick="areaSelect('各区', 'area_district')">重点部门</a></li>  
+                                <li><a id="area_department" onclick="areaSelect('重点部门', 'area_department')">其他部门</a></li>  
+                            </ul>  
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 年份选择 -->
+                <div style="margin-top:5%">
+                    <div style="width:100%;text-align:center">年份选择</div>
+                    <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
+                        <div>
+                            <select style="width:97%;text-align:center;" id="historyRisk_year" onchange="yearSelect()">
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                                <option value="2010">2010</option>
+                                <option value="2009">2009</option>
+                                <option value="2008">2008</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 季度选择 -->
+                <div style="margin-top:5%">
+                    <div style="width:100%;text-align:center">季度选择</div>
+                    <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
+                        <div data-role="navbar">  
+                            <ul>  
+                                <li><a id="season1" onclick="seasonSelect('一季度', 'season1')">一季度</a></li>  
+                                <li><a id="season2" onclick="seasonSelect('二季度', 'season2')">二季度</a></li>  
+                                <li><a id="season3" onclick="seasonSelect('三季度', 'season3')">三季度</a></li>  
+                                
+                                <li><a id="season4" onclick="seasonSelect('四季度', 'season4')">四季度</a></li>  
+                                <li><a id="seasonHalf1" onclick="seasonSelect('上半年', 'seasonHalf1')">上半年</a></li>  
+                                <li><a id="seasonHalf2" onclick="seasonSelect('下半年', 'seasonHalf2')">下半年</a></li>
+                                
+                                <li><a id="seasonFull"  onclick="seasonSelect('全年', 'seasonFull')">全年</a></li>  
+                                
+                            </ul>  
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>
