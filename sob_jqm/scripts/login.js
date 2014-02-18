@@ -1,4 +1,5 @@
 //var app = new kendo.mobile.Application();
+$.mobile.selectmenu.prototype.options.nativeMenu = false;
 function loginonMouseOver()
 {
     $("#btn_login").css('background', "url(./styles/home/images/loginbtn_click.png)");

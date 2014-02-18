@@ -30,5 +30,5 @@ function seasonSelect(type, id)
 // 开始搜索
 function historyRiskSearch()
 {
-    $.mobile.changePage("./historyRiskSearchDetail.html",{changeHash: "false",transition:"slide"});
+    $.mobile.changePage("./historyRiskSearchDetail.html",{changeHash: false,transition:"slide"});
 }

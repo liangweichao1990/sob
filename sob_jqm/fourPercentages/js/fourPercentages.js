@@ -14,7 +14,7 @@ function seasonSearch(type)
 // 打开历史隐患查询页面
 function openHistoryRiskSearchPage()
 {
-    $.mobile.changePage("./historyRiskSearch.html",{changeHash: "false",transition:"slide"});
+    $.mobile.changePage("./historyRiskSearch.html",{changeHash: false, transition:"slide"});
 }
     
 

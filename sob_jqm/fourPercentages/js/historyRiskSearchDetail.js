@@ -4,7 +4,7 @@
     日期：2014-02-17
     版本：1.0
 *******************/
-$.mobile.selectmenu.prototype.options.nativeMenu = false;
+
 
 
 
