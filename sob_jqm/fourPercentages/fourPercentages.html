@@ -11,7 +11,6 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <script src="../fourPercentages/js/fourPercentages.js" type="text/javascript"></script>
     </head>
     
     <body>
@@ -31,9 +30,9 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul>  
-                                <li><a onclick="seasonSearch()" href="#">全市</a></li>  
-                                <li><a onclick="seasonSearch()" href="#">各区</a></li>  
-                                <li><a onclick="seasonSearch()" href="#">重点部门</a></li>  
+                                <li><a href="javascript:seasonSearch('全市')">全市</a></li>
+                                <li><a href="javascript:seasonSearch('各区')">各区</a></li>
+                                <li><a href="javascript:seasonSearch('重点部门')">重点部门</a></li>
                             </ul>  
                         </div>
                     </div>
@@ -43,7 +42,7 @@
                 <div style="margin-top:5%">
                     <div style="width:100%;text-align:center">历史查询</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
-                        <div><a data-role="button" onclick="openHistoryRiskSearchPage()" href="#" style="text-align:center">历史企业隐患查询</a></div>
+                        <div><a data-role="button" href="javascript:openHistoryRiskSearchPage()" style="text-align:center">历史企业隐患查询</a></div>
                     </div>
                 </div>
                 
@@ -52,10 +51,10 @@
                     <div>备注：四个百分率是指--</div>
                     <div>
                         <ol style="line-height:1.7em">
-                            <li>1.监管企业本季度的上报率。</li>
-                            <li>2.对上季度"黑名单"企业查处(检查)率。</li>
-                            <li>3.对上季度"零隐患"企业的检查率。</li>
-                            <li>4.对上季度其它企业(指除"黑名单"和"零隐患"企业)的抽查率。</li>
+                            <li>监管企业本季度的上报率。</li>
+                            <li>对上季度"黑名单"企业查处(检查)率。</li>
+                            <li>对上季度"零隐患"企业的检查率。</li>
+                            <li>对上季度其它企业(指除"黑名单"和"零隐患"企业)的抽查率。</li>
                         </ol>
                     </div>
                 </div>

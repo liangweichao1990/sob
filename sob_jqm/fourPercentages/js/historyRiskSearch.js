@@ -1,26 +1,32 @@
+/*******************
+    页面：历史隐患查询JS
+    作者：梁伟超
+    日期：2014-02-17
+    版本：1.0
+*******************/
 
-var area = ""
-var year = "";
-var season = "";
+var historyRisk_area = "";
+var historyRisk_year = "";
+var historyRisk_season = "";
 
 // 区域选择
 function areaSelect(type, id)
 {
-    area = type;
-    //document.getElementById(id).disabled = "disabled";
-    $("#" + id).button( "disabled" );
+    historyRisk_area = type;
+    
+    //document.getElementById(id).readonly = "true";
+    $("#" + id).addClass("ui-btn-active");
     //alert($("#" + id).attr("disabled"));
 }
 
 // 年份选择
 function yearSelect()
 {
-    alert("年份选择");
+    historyRisk_year = $("#historyRisk_year").val();
 }
 
 // 季度选择
 function seasonSelect(type, id)
 {
-    season = type;
-    alert(type);
+    historyRisk_season = type;
 }

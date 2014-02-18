@@ -13,7 +13,7 @@
     </head>
     
     <body>
-        <div id="homeView" data-role="page" style="background:url(styles/home/images/main_bg.png); background-size: 100% 100%;background-repeat: no-repeat;">
+        <div id="homeView" data-role="page" data-transition="none">
             <div data-role="header" data-position="fixed">
                 <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em" src="./styles/home/images/defaultUser_icon.png"  />
                 <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right;padding-right:.5em" src="./styles/home/images/bubble_index.png"  />
@@ -25,22 +25,22 @@
                 <div class="menuRow">
                     <div class="menuItem" onclick="openPage('./fourPercentages/fourPercentages.html')"><!-- historyRiskSearch-->
                         <div><img type="image" class="menuImg" src="./fourPercentages/images/epSearch_icon.png" /></div>
-                        <div style="color:#fff">四个百分率</div>
+                        <div>四个百分率</div>
                     </div>
                     
                     <div class="menuItem" onclick="openPage('./checkReport/checkReport.html')">
                         <div><img type="image" class="menuImg" src="./checkReport/images/security_icon.png"  /></div>
-                        <div style="color:#fff">检查上报</div>
+                        <div>检查上报</div>
                     </div>
                     
                     <div class="menuItem" onclick="openPage('./examRank/examRank.html')">
                         <div><img type="image" class="menuImg" src="./examRank/images/examRank_icon.png"  /></div>
-                        <div style="color:#fff">考核排名</div>
+                        <div>考核排名</div>
                     </div>
                     
                     <div class="menuItem" onclick="openPage('./news/news.html')">
                         <div><img type="image" class="menuImg" src="./news/images/news_icon.png"  /></div>
-                        <div style="color:#fff">最新资讯</div>
+                        <div>最新资讯</div>
                     </div>
                 </div>
             </div>
