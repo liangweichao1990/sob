@@ -5,6 +5,11 @@
     版本：1.0
 *******************/
 
+$("#historyRiskSearchDetail_city").val(historyRisk_area);
+$("#historyRiskSearchDetail_year").val(historyRisk_year);
+$("#historyRiskSearchDetail_season").val(historyRisk_season);
+
+
 
 
 

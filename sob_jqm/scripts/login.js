@@ -1,5 +1,6 @@
 //var app = new kendo.mobile.Application();
 $.mobile.selectmenu.prototype.options.nativeMenu = false;
+
 function loginonMouseOver()
 {
     $("#btn_login").css('background', "url(./styles/home/images/loginbtn_click.png)");
@@ -23,7 +24,7 @@ function exit()
 /*登录*/
 function login() 
 {
-    jQuery.mobile.changePage("home.html",{changeHash: "false",transition:"fade"});
+    jQuery.mobile.changePage("home.html",{changeHash: true,transition:"fade"});
     //app.navigate("home.html");
     /*var a = $("#userName").val();
     var b = $("#passWord").val();
