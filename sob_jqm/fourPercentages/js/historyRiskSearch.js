@@ -13,10 +13,6 @@ var historyRisk_season = "";
 function areaSelect(type, id)
 {
     historyRisk_area = type;
-    
-    //document.getElementById(id).readonly = "true";
-    $("#" + id).addClass("ui-btn-active");
-    //alert($("#" + id).attr("disabled"));
 }
 
 // 年份选择
@@ -29,4 +25,10 @@ function yearSelect()
 function seasonSelect(type, id)
 {
     historyRisk_season = type;
+}
+
+// 开始搜索
+function historyRiskSearch()
+{
+    $.mobile.changePage("./historyRiskSearchDetail.html",{changeHash: "false",transition:"slide"});
 }

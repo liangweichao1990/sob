@@ -22,7 +22,7 @@ function exit()
 /*登录*/
 function login() 
 {
-    jQuery.mobile.changePage("home.html");
+    jQuery.mobile.changePage("home.html",{changeHash: "false",transition:"fade"});
     //app.navigate("home.html");
     /*var a = $("#userName").val();
     var b = $("#passWord").val();
