@@ -27,7 +27,7 @@ function historyRiskSearch()
     historyRisk_year = $("#historyRisk_year").val();
     if(historyRisk_area != "" && historyRisk_season != "")
     {
-        $.mobile.changePage("./historyRiskSearchDetail.html",{changeHash: true,transition:"slide"});
+        $.mobile.changePage("./historyRiskSearchDetail.html",{changeHash: true,transition:"slide",data:{ha:historyRisk_area,hy:historyRisk_year,hs:historyRisk_season}});
     }
     else if(historyRisk_area == "")
     {
