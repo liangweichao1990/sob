@@ -3,6 +3,8 @@
 <html>
     <head>
         <title></title>
+        
+        
     </head>
     <body>
         <!-- 搜索page -->
@@ -10,32 +12,53 @@
             <!-- 头文件 -->
             <div data-role="header" data-theme="b" >
                 <h1>绩效排名</h1>
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <select data-corners="false">
+                                <option>全市</option>
+                                <option>各区</option>
+                                <option>重点部门</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select data-corners="false">
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                                <option value="2010">2010</option>
+                                <option value="2009">2009</option>
+                                <option value="2008">2008</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select data-corners="false">
+                                <option>一季度</option>
+                                <option>二季度</option>
+                                <option>三季度</option>
+                                <option>四季度</option>
+                                <option>上半年</option>
+                                <option>下半年</option>
+                                <option>全年</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div data-role="content">
-                <div style="width:100%;border-bottom:1px solid red;">
-                    <fieldset data-role="controlgroup" data-type="horizontal" style="width:100%;margin:0 0;" data-mini="true" data-inline="true">
-                        <select name="type" id="type">
-                            <option value="mon" >全市</option>
-                            <option value="tue">重点</option>
-                            <option value="wed">其他</option>
-                        </select>
-                        <select name="year" id="year">
-                            <option value="2014">2014年</option>
-                            <option value="2013">2013年</option>
-                            <option value="2012">2012年</option>
-                            <option value="2011">2011年</option>
-                            <option value="2010">2010年</option>
-                        </select>
-                        <select name="jd" id="jd">
-                            <option value="08">第一季度</option>
-                            <option value="09">第二季度</option>
-                            <option value="10">第三季度</option>
-                            <option value="11">第四季度</option>
-                            <option value="12">上半年</option>
-                            <option value="13">下半年</option>
-                            <option value="14">全年</option>
-                        </select>
-                    </fieldset>
+                <div data-role="navbar" style="margin-top:1%;margin:0 auto;text-align:center;width:100%;">
+                    <ul style="background:#E5AE16;">
+                        <li style="border:solid 1px gray;margin:0 auto;text-align:center;">
+                            单位
+                        </li>
+                        <li style="border:solid 1px gray;margin:0 auto;text-align:center;">
+                            得分
+                        </li>
+                        <li style="border:solid 1px gray;margin:0 auto;text-align:center;">
+                            排名
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
