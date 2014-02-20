@@ -22,38 +22,38 @@ $(document).delegate("#historyRiskSearchDetailView", "pageinit", function() {
             
             getById("historyRiskSearchDetail_st_title").innerHTML = d.ha + d.hy + d.hs;
             
-            $("#historyRiskSearchDetailView").trigger('create');
+            //$("#historyRiskSearchDetailView").trigger('create'); 
             
-            var plot2 = $.jqplot('barChart', [
-        [[2,1], [4,2], [6,3], [3,4]], 
-        [[5,1], [1,2], [3,3], [4,4]], 
-        [[4,1], [7,2], [1,3], [2,4]]], {
-        seriesDefaults: {
-            renderer:$.jqplot.BarRenderer,
-            // Show point labels to the right ('e'ast) of each bar.
-            // edgeTolerance of -15 allows labels flow outside the grid
-            // up to 15 pixels.  If they flow out more than that, they 
-            // will be hidden.
-            pointLabels: { show: true, location: 'e', edgeTolerance: -15 },
-            // Rotate the bar shadow as if bar is lit from top right.
-            shadowAngle: 135,
-            // Here's where we tell the chart it is oriented horizontally.
-            rendererOptions: {
-                barDirection: 'horizontal'
-            }
-        },
-        axes: {
-            yaxis: {
-                renderer: $.jqplot.CategoryAxisRenderer
-            }
+            /*$.ajax({
+        type: "Post",
+        data:{methodName:"3"},
+        dataType:"html",
+        url: "http://119.146.221.69/yixin/Api/test.do",
+    }).done(function (data) {
+        alert(data);
+    }).fail(function () {
+        navigator.notification.alert("亲，您注册失败，请检查网络是否开启等故障！", function() {}, "赞提示：", "明白");
+        return false;
+    });*/
+            var s1 = [9726, 2588, 2725, 4184];
+            var s2 = [5933, 49, 221, 915];
+            var ticks = ['上报率', '黑名单查处', '零隐患检查', '其他抽查'];
+            $.jqplot('barChart', [s1, s2],
+                {title:'四个百分率统计图表',
+                   seriesDefaults: {renderer:$.jqplot.BarRenderer,pointLabels: {show:true}},
+                   series:[{label:'企业总数'},{label:'上报查处数'}],
+                   legend: {show:true, location:'n', placement:'inside'},
+                   axes: {xaxis: {renderer: $.jqplot.CategoryAxisRenderer,ticks: ticks}
+                }
+            });
         }
-    });
-            
-        }
-            
-    
     });
 });
+
+function viewChartDetail()
+{
+    alert("test");
+}
 
 
 
