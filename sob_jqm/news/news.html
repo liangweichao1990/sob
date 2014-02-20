@@ -5,70 +5,58 @@
         <title></title>
         <meta charset="utf-8" />
     </head>
-    <body onload="$.mobile.loadPage( './news/news.html', { showLoadMsg: false } );">
+    <body>
 
-        <div id="news_View" data-role="page" data-transition="slide" data-title="最新资讯">
-            
-            <div data-role="header" data-theme="b">
-                <a href="#homeView" data-rel="back" data-icon="arrow-l">返回</a>
-                <h1>最新资讯</h1>
-                <a href="#news_seekPopup" data-rel="popup" data-icon="search">搜索</a>
-                 <div data-role="navbar">
-                  <ul>
-                    <li><a href="#" class="ui-btn-active">最新资讯</a></li>
-                    <li><a href="#" >案件要闻</a></li>
-                    <li><a href="#" >通知通告</a></li>
-                  </ul>
-                </div>
-            </div>
-            
+        <div id="news_View" data-role="page" data-title="最新资讯">
+
+            <script>
+                createNewsNavbar("#news_View", "../news/newsNavbar.html", 0);
+                createNewsContent("#news_View", "../news/newsPopup.html");
+                $(document).on("pageinit", "#news_View", initPage2);     
+                function initPage2(event) {
+                    //news_listview.selectmenu("refresh",false);
+                    //$.getScript("../news/js/news.js");
+                     /*if($('#news_detail').size()===0)
+                    $.mobile.loadPage("./news/newsDetail.html", {showLoadMsg:false});
+                    $(document).off('pageinit', '#news_View', initPage2);*/
+                };
+                $(function(){
+                   var data= [ 
+                        {news_title:"为呃我呃我",news_time:"2014-02-17",news_content:"韦大卫"},
+                        {news_title:"邹树春的标题",news_time:"2014-02-17",news_content:"为额范围分为"},
+                        {news_title:"范文芳莪无法飞吻",news_time:"2014-02-17",news_content:"法威风威风"},
+                        {news_title:"违法单位为对方访问",news_time:"2014-02-17",news_content:"额外的违法单位"},
+                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
+                        {news_title:"ewfwefewfewfwe",news_time:"2014-02-17",news_content:"wefewfwef"}
+                      ];
+                   var news_listview=$('#news_listview');
+                    for(var i=1;i<data.length;i++){
+                        var newslist_themeli=$("#newslist_themeli").clone();
+                        for(var key in data[i]){
+                            $("[dbField='"+key+"']",newslist_themeli).html(data[i][key]);
+                        }
+                        news_listview.append(newslist_themeli);
+                    }
+                    //news_listview.selectmenu("refresh",false);
+                });
+            </script>
+            <!--头部导航-->
+
+            <!-- 最新资讯列表 -->
             <div data-role="content" data-theme="w">
-
-                <ul data-role="listview" data-icon="false">
-                    <li data-position="inline" style="border-bottom: 1px solid silver;">
-                        <a href="#" onclick="openNewsDetailPage('#news_detail');"><img src="images/news.png" style="width:70px;height:80px;">
-                        <h2>为呃我呃我</h2>
-                        <p>摘要：韦大卫</p>
-                        </a>
-                    </li>
-                    <li data-position="inline" style="border-bottom: 1px solid silver;">
-                        <a href="#" onclick="openNewsDetailPage('#news_detail');"><img src="images/hx.jpg" style="width:70px;height:80px;">
-                        <h2>邹树春的标题</h2>
-                        <p>为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</p>
+                <ul data-role="listview" id="news_listview" data-icon="arrow-r" style="border-top:1px solid silver;">
+                    <li id="newslist_themeli" data-position="inline" style="border-bottom: 1px solid silver;padding:0.5% 0 0.5% 0;">
+                        <a href="#" onclick="openNewsDetailPage();">
+                            <img src="images/news.png">
+                            <h2 dbField="news_title">为呃我呃我</h2>
+                            <p>摘要：<span dbField="news_content">韦大卫</span></p>
+                            <p dbField="news_time" class="ui-li-aside">2014-02-17</p>
                         </a>
                     </li>
                 </ul>
             </div>
-            
-            <div data-role="popup" id="news_seekPopup" data-overlay-theme="b" data-dismissible="false" data-position-to="window">
-                <div data-role="header" data-theme="b" class="ui-corner-top">
-					<h1>搜索窗口</h1>
-				</div>
-                <a data-role="button" href="#" data-rel="back" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-                  <form method="post" action="#">
-                      <label for="news_seek" class="ui-hidden-accessible">输入搜索条件</label>
-                      <input type="text" name="news_seek" id="news_seek" placeholder="输入搜索条件">
-                  </form>
-				<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">搜索</a>    
-				<a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">取消</a> 
-            </div>
-            
-        </div>
-
-        <div data-role="page" id="news_detail" data-title="最新资讯详细信息">
-
-          <div data-role="header" data-theme="b">
-            <a href="#homeView" data-rel="back" data-icon="arrow-l">返回</a>
-            <h1>最新资讯详细信息</h1>
-          </div>
-
-          <div data-role="content">
-            <img src="images/hx.jpg" style="width:70px;height:80px;">
-            <h2>邹树春的标题</h2>
-            <p>为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</p>
-          </div>
 
         </div>
-        
+
     </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+
+        <div id="newsInform_View" data-role="page" data-title="通知通告">
+
+            <script>
+                createNewsNavbar("#newsInform_View", "../news/newsNavbar.html",2);
+                createNewsContent("#newsInform_View", "../news/newsPopup.html");
+            </script>
+            
+            <!--头部导航-->
+            
+            <!-- 最新资讯列表 -->
+            <div data-role="content" data-theme="w">
+                <ul data-role="listview" data-icon="arrow-r" style="border-top:1px solid silver;">
+                    <li data-position="inline" style="border-bottom: 1px solid silver;padding:0.5% 0 0.5% 0;">
+                        <a href="#" onclick="openNewsDetailPage();">
+                            <img src="images/news.png">
+                            <h3>邹树春的标题</h3>
+                            <p>为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</p>
+                            <p class="ui-li-aside">2014-02-17</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </body>
+</html>

@@ -38,7 +38,8 @@ $(document).delegate("#historyRiskSearchDetailView", "pageinit", function() {
             var s1 = [9726, 2588, 2725, 4184];
             var s2 = [5933, 49, 221, 915];
             var ticks = ['上报率', '黑名单查处', '零隐患检查', '其他抽查'];
-            $.jqplot('barChart', [s1, s2],
+            
+            $.jqplot('historyRiskSearchDetailBarChart', [s1, s2],
                 {title:'四个百分率统计图表',
                    seriesDefaults: {renderer:$.jqplot.BarRenderer,pointLabels: {show:true}},
                    series:[{label:'企业总数'},{label:'上报查处数'}],
@@ -46,13 +47,14 @@ $(document).delegate("#historyRiskSearchDetailView", "pageinit", function() {
                    axes: {xaxis: {renderer: $.jqplot.CategoryAxisRenderer,ticks: ticks}
                 }
             });
+            
         }
     });
 });
 
 function viewChartDetail()
 {
-    alert("test");
+     $.mobile.changePage("./historyRiskSearchChartDetail.html",{transition:"slide"});
 }
 
 
