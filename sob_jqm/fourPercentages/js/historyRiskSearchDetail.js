@@ -24,17 +24,6 @@ $(document).delegate("#historyRiskSearchDetailView", "pageinit", function() {
             
             //$("#historyRiskSearchDetailView").trigger('create'); 
             
-            /*$.ajax({
-        type: "Post",
-        data:{methodName:"3"},
-        dataType:"html",
-        url: "http://119.146.221.69/yixin/Api/test.do",
-    }).done(function (data) {
-        alert(data);
-    }).fail(function () {
-        navigator.notification.alert("亲，您注册失败，请检查网络是否开启等故障！", function() {}, "赞提示：", "明白");
-        return false;
-    });*/
             var s1 = [9726, 2588, 2725, 4184];
             var s2 = [5933, 49, 221, 915];
             var ticks = ['上报率', '黑名单查处', '零隐患检查', '其他抽查'];
@@ -56,6 +45,7 @@ function viewChartDetail()
 {
      $.mobile.changePage("./historyRiskSearchChartDetail.html",{transition:"slide"});
 }
+
 
 
 
