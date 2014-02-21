@@ -35,33 +35,73 @@ $(document).delegate("#cr_overall", "pageinit", function() {
     
     $(document).bind("pagechange", function(e, data){
         
-        var data = [
-            ['上季度黑名单企业465家', 12],['上季度上报无隐患企业123家', 9], ['其它企业12319999999家，已抽查121家', 14]
+        var data3 = [
+            	{name : '上季度黑名单企业465家',value : 12,color:'#9d4a4a'},
+            	{name : '上季度上报无隐患企业123家',value : 9,color:'#5d7f97'},
+            	{name : '其它企业12319999999家',value : 4,color:'#97b3bc'}
         ];
-        
-        var plot1 = $.jqplot('barChart',[data], {
-            seriesColors: [ "#4bb2c5", "#c5b47f", "#EAA228", "#579575", "#839557", "#958c12",      
-            "#953579", "#4b5de4", "#d8b83f", "#ff5800", "#0085cc"],                    //颜色设置
-            grid:{  
-                    background: "transparent",
-                    borderWidth: 0,
-                    shadow: false
-            },
-            seriesDefaults: {
-                    renderer:$.jqplot.PieRenderer,
-                    shadow: false,
-                    rendererOptions: {
-                          showDataLabels:true,
-                          //dataLabels:'value'        显示值
-                    }
-            }, 
-            legend: { show:true,location:'s'}
+    	        	
+        new iChart.Pie2D({
+        	render : 'canvasDiv',
+        	data: data3,
+        	title : '',
+            border:0,
+            width : 300,
+        	height : 300,
+            offsety : -45,
+            offsetx : -10,
+            bound_event:null,
+            default_mouseover_css:false,
+            turn_off_touchmove:true,
+            background_color:null,
+        	legend : {
+        		enable : true,
+                background_color:null,
+                valign : 'bottom',
+                align :  'center',
+                border : 1,
+                offsety : 10
+        	},
+    		sub_option : {
+                    mini_label_threshold_angle : 360,  //低于40度显示在外面
+                    mini_label:{                       //迷你label配置项，设置其中内容字体大小，颜色
+						fontsize:20,
+						fontweight:300,
+						color : '#ffffff'
+					},
+					label : {
+							background_color:null,
+							sign:false,//设置禁用label的小图标
+							padding:'0 4',
+							border:{
+								enable:false,
+								color:'#666666'
+							},
+							fontsize:20,
+							fontweight:300,
+							color : '#4572a7'
+				    },
+					border : {
+							width : 2,
+							color : '#ffffff'
+					},
+        			listeners:{
+        				parseText:function(d, t){
+        					return d.get('value') + "%";        //自定义label文本
+        				}
+        			} 
+		   }
+ 
+        }).draw();
+            
         });
-        
-        
-    });
     
 });
+
+
+
+
+
 
 
  

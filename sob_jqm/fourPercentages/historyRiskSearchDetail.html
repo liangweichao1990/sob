@@ -16,10 +16,10 @@
     <body> 
         
         <!-- 历史隐患查询详情页面 -->
-        <div id="historyRiskSearchDetailView" data-dom-cache='true' data-theme="b" data-role="page" data-transition="slide" data-rockncoder-jspage="manageBarChart">
+        <div id="historyRiskSearchDetailView" data-dom-cache='true' data-theme="b" data-role="page" data-transition="slide">
             
-            <header data-role="header" data-theme="b" data-position="fixed">
-                <a data-role="button" data-icon="arrow-l" data-rel="back" style="float:right">返回</a>
+            <header data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
                 <h1>四个百分率</h1> 
                 <div data-role="navbar">  
                     <ul>  
@@ -54,15 +54,23 @@
                         </li>  
                     </ul>
                 </div>
+                <div data-role="tabs">
+                    <ul>
+                        <li><a href="#tab-1" data-role="button">Tab 1</a></li>
+                        <li><a href="#tab-2" data-role="button">Tab 2</a></li>
+                    </ul>
+                </div>
             </header>
             
             <div data-role="content">
                 
-                <div id="historyRiskSearchDetail_title" style="text-align:center">
-                    <div style="color:red" id="historyRiskSearchDetail_st_title">全市2014年第1季度</div>
-                </div>
-                
-                <div id="historyRiskSearchDetailBarChart" style="height:100%;width:100%;" onclick="viewChartDetail()"></div>
+                    <div id="historyRiskSearchDetail_title" style="text-align:center">
+                        <div style="color:red" id="historyRiskSearchDetail_st_title">全市2014年第1季度</div>
+                    </div>
+                    <center>
+                        <div id="historyRiskSearchDetailBarChart" onclick="viewChartDetail()"></div>
+                    </center>
+
                 
             </div>
             

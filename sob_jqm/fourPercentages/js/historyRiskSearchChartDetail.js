@@ -9,20 +9,39 @@ $(document).delegate("#historyRiskSearchChartDetailView", "pageinit", function()
     $(document).bind("pagechange", function(e, data){
         if(typeof data.toPage != "string")
         {
-            //var d = data.options.data;
+            var d = data.options.data;
             
-            var s1 = [9726, 2588, 2725, 4184];
-            var s2 = [5933, 49, 221, 915];
-            var ticks = ['上报率', '黑名单查处', '零隐患检查', '其他抽查'];
-            
-            $.jqplot('historyRiskSearchDetailBarChart2', [s1, s2],
-                {title:'四个百分率统计图表',
-                   seriesDefaults: {renderer:$.jqplot.BarRenderer,pointLabels: {show:true}},
-                   series:[{label:'企业总数'},{label:'上报查处数'}],
-                   legend: {show:true, location:'n', placement:'inside'},
-                   axes: {xaxis: {renderer: $.jqplot.CategoryAxisRenderer,ticks: ticks}
-                }
-            });
+            var data2 = [
+				        	{name : '上报率',value : [8000, 2588, 2725, 4184],color:'#1385a5'},
+				        	{name : '黑名单查处',value : [5933, 49, 221, 915],color:'#c56966'}
+				      ];
+		        	
+					new iChart.ColumnMulti2D({
+						render : 'historyRiskSearchDetailBarChart2',
+						data: data2,
+                        labels:["上报率","黑名单查处","零隐患检查","其他抽查"],
+						title : '四个百分率统计图表', 
+						showpercent:false,
+						decimalsnum:0,
+						width : 320,
+						height : 400,
+                        border:0,
+                        background_color: null,
+						coordinate:{
+							background_color:'#fefefe',
+							scale:[{
+								 position:'left',	
+								 start_scale:0,
+								 end_scale:10000,
+								 scale_space:1000,
+								 listeners:{
+									parseText:function(t,x,y){
+										return {text:t}
+									}
+								}
+							}]
+						}
+					}).draw();
         }
     });
 });

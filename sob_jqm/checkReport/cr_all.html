@@ -1,14 +1,16 @@
  <!-- 所有 -->
 <div id="cr_all" data-role="page" data-transition="slide" >
     
+    <!--用脚本加载header-->
     <script>
         createHeader("cr_all");
     </script>
     
-    <style type="text/css">  
+    <style type="text/css">
           #customers  
           {   
               border-collapse:collapse;
+              width:100%;
           }  
           
           #customers td, #customers th   
@@ -34,7 +36,7 @@
 
     
     <div data-role="content">
-        
+
        <table id="customers">  
             <tr>  
             <th>企业名称</th>  
@@ -53,9 +55,7 @@
             <td>已检查</td>  
             <td><a data-role="button" onclick="" href="#" data-mini="true">录入</a></td>  
             </tr>
-            <tr>  
- 
-  
+            <tr>
         </table>  
 
         
