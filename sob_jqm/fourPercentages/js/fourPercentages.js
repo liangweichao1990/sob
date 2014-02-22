@@ -16,6 +16,7 @@ function openHistoryRiskSearchPage()
 {
     $.mobile.changePage("./historyRiskSearch.html",{changeHash: true, transition:"slide"});
 }
+
     
 
 
