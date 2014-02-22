@@ -13,7 +13,7 @@
         });
        $(document).off('pageinit', '#news_View', initPage2);
  };*/
-//加载新闻资讯搜navbar
+//加载新闻资讯搜navbar page('#pageid'),url('xxxxx.html'),active('选中导航下标[0]|[1]|[...]')
 function createNewsNavbar(page,url,active){
 	if (url) {
 		var footerHtml = '';

@@ -8,11 +8,12 @@
     <body>
 
         <div id="news_View" data-role="page" data-title="最新资讯">
-
             <script>
                 createNewsNavbar("#news_View", "../news/newsNavbar.html", 0);
                 createNewsContent("#news_View", "../news/newsPopup.html");
-                $(document).on("pageinit", "#news_View", initPage2);     
+                createPagingFooterFooter("#news_View",{page_cur:1,page_dis:5,page_count:10});
+                //$(document).on("pageinit", "#news_View", initPage2);
+                //pagingFooterInit("{page_cur:1,page_dis:1,page_count:10}");
                 function initPage2(event) {
                     //news_listview.selectmenu("refresh",false);
                     //$.getScript("../news/js/news.js");
@@ -31,7 +32,7 @@
                       ];
                    var news_listview=$('#news_listview');
                     for(var i=1;i<data.length;i++){
-                        var newslist_themeli=$("#newslist_themeli").clone();
+                        var newslist_themeli=$(news_listview).children("li:first").clone();
                         for(var key in data[i]){
                             $("[dbField='"+key+"']",newslist_themeli).html(data[i][key]);
                         }
@@ -40,12 +41,13 @@
                     //news_listview.selectmenu("refresh",false);
                 });
             </script>
-            <!--头部导航-->
+            <!--头部导航预留-->
 
             <!-- 最新资讯列表 -->
             <div data-role="content" data-theme="w">
+
                 <ul data-role="listview" id="news_listview" data-icon="arrow-r" style="border-top:1px solid silver;">
-                    <li id="newslist_themeli" data-position="inline" style="border-bottom: 1px solid silver;padding:0.5% 0 0.5% 0;">
+                    <li data-position="inline" style="border-bottom: 1px solid silver;padding:0.5% 0 0.5% 0;">
                         <a href="#" onclick="openNewsDetailPage();">
                             <img src="images/news.png">
                             <h2 dbField="news_title">为呃我呃我</h2>
@@ -54,6 +56,7 @@
                         </a>
                     </li>
                 </ul>
+                
             </div>
 
         </div>
