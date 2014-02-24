@@ -1,0 +1,44 @@
+<!-- 所有 -->
+<div id="cr_checkup" data-role="page" data-transition="slide" >
+    <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+        <a href="#cr_all" data-rel="back" data-role="button">返回</a>
+        <h1>安全检查上报</h1>
+        <a href="#" data-role="button" onclick="">提交</a>
+    </div>
+ 
+    <div data-role="content">
+        
+        <label for="company">企业名称:</label>
+        <input type="text" name="company" id="company">
+
+        <label for="name">检查人员:</label>
+        <input type="text" name="name" id="name">
+        
+        <label for="time">检查时间:</label>
+        <input type="text" name="time" id="time">
+        
+        
+        <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend>是否行政处罚：</legend>
+            <label for="yes">是</label>
+            <input type="radio" name="punish" id="yes" value="yes" checked>
+            <label for="no">否</label>
+            <input type="radio" name="punish" id="no" value="no">
+        </fieldset>
+        
+        
+        <fieldset data-role="controlgroup" data-type="horizontal">
+            <legend>是否存在隐患：</legend>
+            <label for="yes">是</label>
+            <input type="radio" name="trouble" id="yes" value="yes" checked>
+            <label for="no">否</label>
+            <input type="radio" name="trouble" id="no" value="no">
+        </fieldset>
+        
+        
+        <label for="remark">隐患等情况:</label>
+        <input type="text" name="time" id="time">
+        
+    </div>
+    
+</div>
