@@ -1,19 +1,27 @@
+<!-- 
+    页面：考核排行-历史查询主页面
+    作者：梁伟超
+    日期：2014-02-24
+    版本：1.0
+-->
 <!DOCTYPE html>
 
 <html>
     <head>
+        <meta charset="utf-8" />
         <title></title>
     </head>
     <body>
-        <div data-role="page" id="pageone" style="background:#CCCCCC;">
+        <div data-role="page" data-theme="a" id="examRankSearchPage" data-tap-toggle="false">
+            
             <!-- 头文件 -->
-            <div data-role="header"  data-theme="a" >
+            <div data-role="header" data-position="fixed">
                 <a data-role="button" data-icon="arrow-l" data-rel="back" style="float:right">返回</a>
                 <h1>历史查询</h1>
-                <a data-role="button" onclick="historyRiskSearch()" data-icon="search" style="float:right">查询</a>
+                <a data-role="button" onclick="examRankSearch()" data-icon="search" style="float:right">查询</a>
             </div>
             
-            <div data-role="content"  data-theme="a">
+            <div data-role="content">
                 
                 <!-- 区域选择 -->
                 <div style="margin-top:5%">
@@ -21,9 +29,9 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul>  
-                                <li><a id="area_city" onclick="areaSelect('全市', 'area_city')">全市各区</a></li>  
-                                <li><a id="area_district" onclick="areaSelect('各区', 'area_district')">重点部门</a></li>  
-                                <li><a id="area_department" onclick="areaSelect('重点部门', 'area_department')">其他部门</a></li>  
+                                <li><a id="examRankSearchArea_city" onclick="changeExamRankSearchArea('全市各区', 'examRankSearchArea_city')">全市各区</a></li>  
+                                <li><a id="examRankSearchArea_department" onclick="changeExamRankSearchArea('重点部门', 'examRankSearchArea_department')">重点部门</a></li>  
+                                <li><a id="examRankSearchArea_other" onclick="changeExamRankSearchArea('其它部门', 'examRankSearchArea_other')">其它部门</a></li>  
                             </ul>  
                         </div>
                     </div>
@@ -34,7 +42,7 @@
                     <div style="width:100%;text-align:center">年份选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
                         <div>
-                            <select style="width:97%;text-align:center;" id="historyRisk_year" onchange="yearSelect()">
+                            <select style="width:97%;text-align:center;" id="examRankSearchYear" onchange="changeExamRankSearchYear()">
                                 <option value="2014">2014</option>
                                 <option value="2013">2013</option>
                                 <option value="2012">2012</option>
@@ -42,6 +50,10 @@
                                 <option value="2010">2010</option>
                                 <option value="2009">2009</option>
                                 <option value="2008">2008</option>
+                                <option value="2007">2007</option>
+                                <option value="2006">2006</option>
+                                <option value="2005">2005</option>
+                                <option value="2004">2004</option>
                             </select>
                         </div>
                     </div>
@@ -53,22 +65,63 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul>  
-                                <li><a id="season1" onclick="seasonSelect('一季度', 'season1')">一季度</a></li>  
-                                <li><a id="season2" onclick="seasonSelect('二季度', 'season2')">二季度</a></li>  
-                                <li><a id="season3" onclick="seasonSelect('三季度', 'season3')">三季度</a></li>  
-                                
-                                <li><a id="season4" onclick="seasonSelect('四季度', 'season4')">四季度</a></li>  
-                                <li><a id="seasonHalf1" onclick="seasonSelect('上半年', 'seasonHalf1')">上半年</a></li>  
-                                <li><a id="seasonHalf2" onclick="seasonSelect('下半年', 'seasonHalf2')">下半年</a></li>
-                                
-                                <li><a id="seasonFull"  onclick="seasonSelect('全年', 'seasonFull')">全年</a></li>  
-                                
+                                <li><a id="examRankSearchSeason1" onclick="changeExamRankSearchSeason('一季度', 'examRankSearchSeason1')">一季度</a></li>  
+                                <li><a id="examRankSearchSeason2" onclick="changeExamRankSearchSeason('二季度', 'examRankSearchSeason2')">二季度</a></li>  
+                                <li><a id="examRankSearchSeason3" onclick="changeExamRankSearchSeason('三季度', 'examRankSearchSeason3')">三季度</a></li>  
+                                <li><a id="examRankSearchSeason4" onclick="changeExamRankSearchSeason('四季度', 'examRankSearchSeason4')">四季度</a></li>  
+                                <li><a id="examRankSearchSeasonHalf1" onclick="changeExamRankSearchSeason('上半年', 'examRankSearchSeasonHalf1')">上半年</a></li>  
+                                <li><a id="examRankSearchSeasonHalf2" onclick="changeExamRankSearchSeason('下半年', 'examRankSearchSeasonHalf2')">下半年</a></li>
+                                <li><a id="examRankSearchSeasonFullYear"  onclick="changeExamRankSearchSeason('全年', 'examRankSearchSeasonFullYear')">全年</a></li>  
                             </ul>  
                         </div>
                     </div>
                 </div>
                 
             </div>
+            
+            <script>
+                
+                // 改变区域选择
+                function changeExamRankSearchArea(type, id)
+                {
+                    examRank_area = type;
+                }
+                
+                // 改变年份选择
+                function changeExamRankSearchYear()
+                {
+                    examRank_year = $("#examRankSearchYear").val();
+                }
+                
+                // 改变季度选择
+                function changeExamRankSearchSeason(type, id)
+                {
+                    examRank_season = type;
+                }
+                
+                // 考核排行搜索
+                function examRankSearch()
+                {
+                    if(examRank_area != "" && examRank_year != "" && examRank_season != "")
+                    {
+                        $.mobile.changePage("./examRankList.html",{changeHash: true,transition:"slide"});
+                    }
+                    else if(examRank_area == "")
+                    {
+                        $().toastmessage('showToast', {text:'请选择区域!',sticky:false,position:'middle-center',type:'error',closeText:'',close:function(){}});
+                        // success notice warning error
+                    }
+                    else if(examRank_year == "")
+                    {
+                        $().toastmessage('showToast', {text:'请选择年份!',sticky:false,position:'middle-center',type:'error',closeText:'',close:function(){}});
+                    }
+                    else if(examRank_season == "")
+                    {
+                        $().toastmessage('showToast', {text:'请选择季度!',sticky:false,position:'middle-center',type:'error',closeText:'',close:function(){}});
+                    }
+                }
+                
+            </script>
         </div>
     </body>
 </html>

@@ -1,34 +1,61 @@
+<!-- 
+    页面：考核排行主页面
+    作者：梁伟超
+    日期：2014-02-24
+    版本：1.0
+-->
 <!DOCTYPE html>
 
 <html>
     <head>
-        <title></title>
         <meta charset="utf-8" />
+        <title></title>
     </head>
     <body>
 
         <!-- 搜索page -->
-        <div data-role="page" id="pageone"  data-add-back-btn="true" data-back-btn-text="返回" style="background:#CCCCCC;">
+        <div data-role="page" data-theme="a" id="examRankIndexPage" data-tap-toggle="false">
+            
             <!-- 头文件 -->
-            <div data-role="header"  data-theme="a" >
+            <div data-role="header" data-theme="a" data-position="fixed">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
                 <h1>绩效排名</h1>
             </div>
+            
             <!-- 内容 -->
-            <div data-role="content"  data-theme="a" >
+            <div data-role="content">
                 <div style="margin:0 auto;text-align:center;font-size:.9em;">
-                    <br size="20"/>
-                    <div style="margin-top:10px;">2013年第四季度</div>
-                    <div style="margin:0 auto;text-align:center;border:solid 0px gray;">
-                        <a href="examRankList.html"  data-transition="slide" data-role="button" style="margin-top:10px;">全市各区（功能区）绩效考核排行榜</a>
-                        <a href="examRankList.html" data-transition="slide" data-role="button" style="margin-top:10px;">重点行业部门绩效考核排行榜</a>
-                        <a href="examRankList.html" data-transition="slide" data-role="button" style="margin-top:10px;margin-bottom:10px;">其它行业部门绩效考核排行榜</a>
+                    
+                    <div style="margin-top:2em;" id="examRankIndexSearchTitle">这里是查旬标题</div>
+                    
+                    <div style="margin:0 auto;text-align:center;">
+                        <a href="javascript:openExamRankPage('examRankList.html', '全市各区')"  data-transition="slide" data-role="button" style="margin-top:10px;">全市各区（功能区）绩效考核排行榜</a>
+                        <a href="javascript:openExamRankPage('examRankList.html', '重点部门')" data-transition="slide" data-role="button" style="margin-top:10px;">重点行业部门绩效考核排行榜</a>
+                        <a href="javascript:openExamRankPage('examRankList.html', '其它部门')" data-transition="slide" data-role="button" style="margin-top:10px;margin-bottom:10px;">其它行业部门绩效考核排行榜</a>
                     </div>
-                    <div style="margin-top:10px;">历史查询</div>
+                    
+                    <div style="margin-top:3em;">历史查询</div>
+                    
                     <div style="margin:0 auto;text-align:center;border:solid 0px gray;">
                         <a href="examRank_search.html" data-transition="slide" data-role="button" style="margin-top:10px;margin-bottom:10px;">历史绩效考核排行榜查询</a>
                     </div>
                 </div>
             </div>
+            
+            <script>
+                var examRank_area = "全市各区";
+                var examRank_year = currentYear;
+                var examRank_season = currentSeason;
+                
+                $("#examRankIndexSearchTitle").html(examRank_year + "年" + examRank_season);
+                
+                function openExamRankPage(url, area)
+                {
+                    examRank_area = area;
+                    jQuery.mobile.changePage(url,{changeHash: true,transition:"slide"});
+                }
+            </script>
         </div>
+        
     </body>
 </html>
