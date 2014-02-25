@@ -1,0 +1,7 @@
+
+.fourPercentagesTd_gray {background:#ddd;}
+.fourPercentagesTd_lightgray {background:#eee;}
+.fourPercentagesTd_white {background:#fff;}
+.fourPercentagesTd_red {background:pink;}
+
+.fourPercentagesTd_gray, .fourPercentagesTd_lightgray, .fourPercentagesTd_white, .fourPercentagesTd_red{width:33%;float:left;font-size:.9em;text-align:center;padding-top:.8em;padding-bottom:.8em}

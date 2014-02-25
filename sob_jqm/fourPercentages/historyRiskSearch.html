@@ -16,9 +16,9 @@
     <body> 
         
         <!-- 历史隐患查询 -->
-        <div id="historyRiskSearchView" data-dom-cache='true'  data-theme="a" data-role="page" data-transition="slide">
+        <div id="historyRiskSearchView" data-theme="a" data-role="page" data-transition="slide">
             
-            <div data-role="header"  data-theme="a">
+            <div data-role="header" data-theme="a">
                 <a data-role="button" data-icon="arrow-l" data-rel="back" style="float:right">返回</a>
                 <h1>企业查询</h1> 
                 <a data-role="button" onclick="historyRiskSearch()" data-icon="search" style="float:right">查询</a>
@@ -32,9 +32,9 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul>  
-                                <li><a id="area_city" onclick="areaSelect('全市', 'area_city')">全市</a></li>  
-                                <li><a id="area_district" onclick="areaSelect('各区', 'area_district')">各区</a></li>  
-                                <li><a id="area_department" onclick="areaSelect('重点部门', 'area_department')">重点部门</a></li>  
+                                <li><a id="historyRiskArea_city" onclick="changeHistoryRiskSearchArea('全市', 'historyRiskArea_city')">全市</a></li>  
+                                <li><a id="historyRiskArea_district" onclick="changeHistoryRiskSearchArea('各区', 'historyRiskArea_district')">各区</a></li>  
+                                <li><a id="historyRiskArea_department" onclick="changeHistoryRiskSearchArea('重点部门', 'historyRiskArea_department')">重点部门</a></li>  
                             </ul>  
                         </div>
                     </div>
@@ -45,14 +45,7 @@
                     <div style="width:100%;text-align:center">年份选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
                         <div>
-                            <select style="width:97%;text-align:center;" id="historyRisk_year">
-                                <option value="2014年">2014年</option>
-                                <option value="2013年">2013年</option>
-                                <option value="2012年">2012年</option>
-                                <option value="2011年">2011年</option>
-                                <option value="2010年">2010年</option>
-                                <option value="2009年">2009年</option>
-                                <option value="2008年">2008年</option>
+                            <select style="width:97%;text-align:center;" id="historyRisk_year" onchange="changeHistoryRiskSearchYear()">
                             </select>
                         </div>
                     </div>
@@ -64,22 +57,77 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul>  
-                                <li><a id="season1" onclick="seasonSelect('一季度', 'season1')">一季度</a></li>  
-                                <li><a id="season2" onclick="seasonSelect('二季度', 'season2')">二季度</a></li>  
-                                <li><a id="season3" onclick="seasonSelect('三季度', 'season3')">三季度</a></li>  
-                                
-                                <li><a id="season4" onclick="seasonSelect('四季度', 'season4')">四季度</a></li>  
-                                <li><a id="seasonHalf1" onclick="seasonSelect('上半年', 'seasonHalf1')">上半年</a></li>  
-                                <li><a id="seasonHalf2" onclick="seasonSelect('下半年', 'seasonHalf2')">下半年</a></li>
-                                
-                                <li><a id="seasonFull"  onclick="seasonSelect('全年', 'seasonFull')">全年</a></li>  
-                                
+                                <li><a id="historyRiskSeason1" onclick="changeHistoryRiskSearchSeason('一季度', 'historyRiskSeason1')">一季度</a></li>  
+                                <li><a id="historyRiskSeason2" onclick="changeHistoryRiskSearchSeason('二季度', 'historyRiskSeason2')">二季度</a></li>  
+                                <li><a id="historyRiskSeason3" onclick="changeHistoryRiskSearchSeason('三季度', 'historyRiskSeason3')">三季度</a></li>  
+                                <li><a id="historyRiskSeason4" onclick="changeHistoryRiskSearchSeason('四季度', 'historyRiskSeason4')">四季度</a></li>  
+                                <li><a id="historyRiskSeasonHalf1" onclick="changeHistoryRiskSearchSeason('上半年', 'historyRiskSeasonHalf1')">上半年</a></li>  
+                                <li><a id="historyRiskSeasonHalf2" onclick="changeHistoryRiskSearchSeason('下半年', 'historyRiskSeasonHalf2')">下半年</a></li>
+                                <li><a id="historyRiskSeasonFull"  onclick="changeHistoryRiskSearchSeason('全年', 'historyRiskSeasonFull')">全年</a></li>  
                             </ul>  
                         </div>
                     </div>
                 </div>
                 
             </div>
+            
+            <script>
+                
+                // 把年份值添加到年份下拉框中
+                for(var i = 1970; i <= currentYear; i++)
+                {
+                    if(i == currentYear)    // 如果是当前年份，则把它选中
+                    {
+                        $("<option selected='selected' value='" + i + "'>" + i + "</option>").prependTo($("#historyRisk_year"));
+                    }
+                    else
+                    {
+                        $("<option value='" + i + "'>" + i + "</option>").prependTo($("#historyRisk_year"));
+                    }
+                }
+                
+                $("#historyRisk_year").val(fourPercentages_year);    // 绑定用户当前选中的年份值
+
+                // 区域选择
+                function changeHistoryRiskSearchArea(tarea, id)
+                {
+                    fourPercentages_area = tarea;
+                }
+                
+                // 年份选择
+                function changeHistoryRiskSearchYear()
+                {
+                    fourPercentages_year = $("#historyRisk_year").val();
+                }
+
+                // 季度选择
+                function changeHistoryRiskSearchSeason(tseason, id)
+                {
+                    fourPercentages_season = tseason;
+                }
+
+                // 开始搜索
+                function historyRiskSearch()
+                {
+                    if(fourPercentages_area != "" && fourPercentages_season != "" && fourPercentages_year != "")
+                    {
+                        $.mobile.changePage("./historyRiskSearchDetail.html",{changeHash: true,transition:"slide"});
+                    }
+                    else if(fourPercentages_area == "")
+                    {
+                        $().toastmessage('showToast', {text:'请选择区域!',sticky:false,position:'middle-center',type:'error',closeText:'',close:function(){}});
+                        // success notice warning error
+                    }
+                    else if(fourPercentages_year == "")
+                    {
+                        $().toastmessage('showToast', {text:'请选择年份!',sticky:false,position:'middle-center',type:'error',closeText:'',close:function(){}});
+                    }
+                    else if(fourPercentages_season == "")
+                    {
+                        $().toastmessage('showToast', {text:'请选择季度!',sticky:false,position:'middle-center',type:'error',closeText:'',close:function(){}});
+                    }
+                }
+            </script>
         </div>
         
     </body>

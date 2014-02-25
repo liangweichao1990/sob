@@ -16,41 +16,59 @@
     <body> 
         
         <!-- 历史隐患查询图表详情页面 -->
-        <div id="historyRiskSearchChartDetailView" data-dom-cache='true'  data-theme="a" data-role="page" data-transition="slide" data-add-back-btn="true" data-back-btn-text="返回">
+        <div id="historyRiskSearchChartDetailView" data-theme="a" data-role="page" data-transition="slide">
             
             <header data-role="header"  data-theme="a" data-position="fixed" >
                 <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
                 <h1>四个百分率</h1> 
             </header>
             
-            <div data-role="content">
-                <div id="historyRiskSearchDetailBarChart2"></div>
+            <div data-role="none">
+                
+                <center>
+                    <div id="historyRiskSearchDetailBarChart2" style="width:100%;margin:0 auto;"></div>
+                </center>
+                
             </div>
             
             <script>
-                 var data2 = [
-				        	{name : '上报率',value : [8000, 2588, 2725, 4184],color:'#1385a5'},
-				        	{name : '黑名单查处',value : [5933, 49, 221, 915],color:'#c56966'}
+                
+                // 图表数据
+                var data2 = [
+				        	{name : '企业总数',value : [9726, 2588, 2725, 4184],color:'#1385a5'},
+				        	{name : '上报数',value : [5933, 49, 221, 915],color:'#c56966'}
 				      ];
 		        	
 					new iChart.ColumnMulti2D({
+                        align:'center',
 						render : 'historyRiskSearchDetailBarChart2',
 						data: data2,
-                        labels:["上报率","黑名单查处","零隐患检查","其他抽查"],
+                        labels:["上报率","黑名单查处","零隐患检查","其他抽查"], 
 						title : '四个百分率统计图表', 
 						showpercent:false,
 						decimalsnum:0,
-						width : 320,
-						height : 400,
+						width : deviceWidth,
+						height : deviceHeight/1.1,
                         border:0,
                         background_color: null,
+                        legend:{
+							enable:true,
+                            align:'center',
+                            valign:'top',
+							background_color : '#fff',
+							border : {
+								enable : true
+							}
+						},
 						coordinate:{
 							background_color:'#fefefe',
 							scale:[{
-								 position:'left',	
+                                 scale_enable: false,
+                                 scale_share: 0,
+								 position:'left',
 								 start_scale:0,
-								 end_scale:10000,
-								 scale_space:1000,
+								 end_scale:0,
+								 scale_space:0,
 								 listeners:{
 									parseText:function(t,x,y){
 										return {text:t}
@@ -59,10 +77,10 @@
 							}]
 						}
 					}).draw();
+                
             </script>
             
         </div>
-        
         
     </body>
     

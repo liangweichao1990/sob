@@ -4,6 +4,9 @@ var currentMonth = currentDate.getMonth() + 1;      // 当前月份
 var currentSeason = "";                             // 当前季度
 var currentHalfYear = "";                           // 当前半年 (下半年、下半年)
 
+var deviceWidth = $(window).width();
+var deviceHeight = $(window).height();
+
 // 取当前的季度和半年值
 switch(currentMonth)
 {

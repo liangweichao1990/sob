@@ -5,5 +5,3 @@
 .examRankListTd_red {background:pink;}
 
 .examRankListTd_gray, .examRankListTd_lightgray, .examRankListTd_white, .examRankListTd_red{width:33%;float:left;font-size:.9em;text-align:center;padding-top:.8em;padding-bottom:.8em}
-
-.overflow_ellipsis {overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
