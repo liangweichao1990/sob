@@ -31,7 +31,7 @@
                     <div style="width:100%;text-align:center">区域选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
-                            <ul>  
+                            <ul id="historyRiskAreaBtnList">  
                                 <li><a id="historyRiskArea_city" onclick="changeHistoryRiskSearchArea('全市', 'historyRiskArea_city')">全市</a></li>  
                                 <li><a id="historyRiskArea_district" onclick="changeHistoryRiskSearchArea('各区', 'historyRiskArea_district')">各区</a></li>  
                                 <li><a id="historyRiskArea_department" onclick="changeHistoryRiskSearchArea('重点部门', 'historyRiskArea_department')">重点部门</a></li>  
@@ -56,7 +56,7 @@
                     <div style="width:100%;text-align:center">季度选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
-                            <ul>  
+                            <ul id="historyRiskSeasonBtnList">  
                                 <li><a id="historyRiskSeason1" onclick="changeHistoryRiskSearchSeason('一季度', 'historyRiskSeason1')">一季度</a></li>  
                                 <li><a id="historyRiskSeason2" onclick="changeHistoryRiskSearchSeason('二季度', 'historyRiskSeason2')">二季度</a></li>  
                                 <li><a id="historyRiskSeason3" onclick="changeHistoryRiskSearchSeason('三季度', 'historyRiskSeason3')">三季度</a></li>  
@@ -72,6 +72,20 @@
             </div>
             
             <script>
+                
+                $("#historyRiskAreaBtnList li a").each(function(){
+                    if($(this).text() == fourPercentages_area)
+                    {
+                        $(this).addClass("ui-btn-active");
+                    }
+                });
+                
+                $("#historyRiskSeasonBtnList li a").each(function(){
+                    if($(this).text() == fourPercentages_season)
+                    {
+                        $(this).addClass("ui-btn-active");
+                    }
+                });
                 
                 // 把年份值添加到年份下拉框中
                 for(var i = 1970; i <= currentYear; i++)

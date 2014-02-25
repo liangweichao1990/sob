@@ -31,7 +31,7 @@
                     <div style="width:100%;text-align:center">区域选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
-                            <ul>  
+                            <ul id="examRankSearchAreaBtnList">
                                 <li><a id="examRankSearchArea_city" onclick="changeExamRankSearchArea('全市各区', 'examRankSearchArea_city')">全市各区</a></li>  
                                 <li><a id="examRankSearchArea_department" onclick="changeExamRankSearchArea('重点部门', 'examRankSearchArea_department')">重点部门</a></li>  
                                 <li><a id="examRankSearchArea_other" onclick="changeExamRankSearchArea('其它部门', 'examRankSearchArea_other')">其它部门</a></li>  
@@ -56,7 +56,7 @@
                     <div style="width:100%;text-align:center">季度选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
-                            <ul>  
+                            <ul id="examRankSearchSeasonBtnList">  
                                 <li><a id="examRankSearchSeason1" onclick="changeExamRankSearchSeason('一季度', 'examRankSearchSeason1')">一季度</a></li>  
                                 <li><a id="examRankSearchSeason2" onclick="changeExamRankSearchSeason('二季度', 'examRankSearchSeason2')">二季度</a></li>  
                                 <li><a id="examRankSearchSeason3" onclick="changeExamRankSearchSeason('三季度', 'examRankSearchSeason3')">三季度</a></li>  
@@ -72,7 +72,20 @@
             </div>
             
             <script>
-                //$("#examRankSearchArea_city").click();
+                
+                $("#examRankSearchAreaBtnList li a").each(function(){
+                    if($(this).text() == examRank_area)
+                    {
+                        $(this).addClass("ui-btn-active");
+                    }
+                });
+                
+                $("#examRankSearchSeasonBtnList li a").each(function(){
+                    if($(this).text() == examRank_season)
+                    {
+                        $(this).addClass("ui-btn-active");
+                    }
+                });
                 
                 // 把年份值添加到年份下拉框中
                 for(var i = 1970; i <= currentYear; i++)
