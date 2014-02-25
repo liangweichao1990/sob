@@ -7,11 +7,14 @@
 <!DOCTYPE html>
 
 <html>
+    
     <head>
         <meta charset="utf-8" />
         <title></title>
     </head>
+    
     <body>
+        <!-- 历史查询主页面 -->
         <div data-role="page" data-theme="a" id="examRankSearchPage" data-tap-toggle="false">
             
             <!-- 头文件 -->
@@ -43,17 +46,6 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
                         <div>
                             <select style="width:97%;text-align:center;" id="examRankSearchYear" onchange="changeExamRankSearchYear()">
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                                <option value="2006">2006</option>
-                                <option value="2005">2005</option>
-                                <option value="2004">2004</option>
                             </select>
                         </div>
                     </div>
@@ -80,8 +72,22 @@
             </div>
             
             <script>
-                
                 $("#examRankSearchArea_city").click();
+                
+                // 把年份值添加到年份下拉框中
+                for(var i = 1970; i <= currentYear; i++)
+                {
+                    if(i == currentYear)    // 如果是当前年份，则把它选中
+                    {
+                        $("<option selected='selected' value='" + i + "'>" + i + "</option>").prependTo($("#examRankSearchYear"));
+                    }
+                    else
+                    {
+                        $("<option value='" + i + "'>" + i + "</option>").prependTo($("#examRankSearchYear"));
+                    }
+                }
+                
+                $("#examRankSearchYear").val(examRank_year);    // 绑定用户当前选中的年份值
                 
                 // 改变区域选择
                 function changeExamRankSearchArea(type, id)

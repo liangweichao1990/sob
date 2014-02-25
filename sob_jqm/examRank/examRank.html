@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <!-- 搜索page -->
+        <!-- 考核排行主页面page -->
         <div data-role="page" data-theme="a" id="examRankIndexPage" data-tap-toggle="false">
             
             <!-- 头文件 -->
@@ -43,12 +43,14 @@
             </div>
             
             <script>
-                var examRank_area = "全市各区";
-                var examRank_year = currentYear;
-                var examRank_season = currentSeason;
+                var examRank_area = "全市各区";        // 考核排行区域全局变量
+                var examRank_year = currentYear;      // 考核排行年份全局变量
+                var examRank_season = currentSeason;  // 考核排行季度全局变量
                 
+                // 设置查询按钮上边的标题(年份+季度)
                 $("#examRankIndexSearchTitle").html(examRank_year + "年" + examRank_season);
                 
+                // 打开按不同区域搜索的页面
                 function openExamRankPage(url, area)
                 {
                     examRank_area = area;
