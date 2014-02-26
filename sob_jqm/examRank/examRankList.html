@@ -26,24 +26,23 @@
                     <ul>
                         <li>
                             <select id="examRankList_area_select" data-corners="false" onchange="changeExamRankListArea()">
-                                <option value="全市各区">全市各区</option>
-                                <option value="重点部门">重点部门</option>
-                                <option value="其它部门">其它部门</option>
+                                <option value="0">全市各区</option>
+                                <option value="1">重点部门</option>
+                                <option value="2">其它部门</option>
                             </select>
                         </li>
                         <li>
-                            <select id="examRankList_year_select" data-corners="false" onchange="changeExamRankListYear()">
-                            </select>
+                            <select id="examRankList_year_select" data-corners="false" onchange="changeExamRankListYear()"></select>
                         </li>
                         <li>
                             <select id="examRankList_season_select" data-corners="false" onchange="changeExamRankListSeason()">
-                                <option value="一季度">一季度</option>
-                                <option value="二季度">二季度</option>
-                                <option value="三季度">三季度</option>
-                                <option value="四季度">四季度</option>
-                                <option value="上半年">上半年</option>
-                                <option value="下半年">下半年</option>
-                                <option value="全年">全年</option>
+                                <option value="1">一季度</option>
+                                <option value="2">二季度</option>
+                                <option value="3">三季度</option>
+                                <option value="4">四季度</option>
+                                <option value="5">上半年</option>
+                                <option value="6">下半年</option>
+                                <option value="7">全年</option>
                             </select>
                         </li>
                     </ul>
@@ -51,157 +50,11 @@
             </div>
             
             <div data-role="none">
-                
                 <!-- 竖屏数据 -->
-                <div id="examRankListPortData" style="display:block">
-                    <div style="width:100%;">
-                        <div class="examRankListTd_gray" style="width:34%">单位</div>
-                        <div class="examRankListTd_gray">得分</div>
-                        <div class="examRankListTd_gray">排名</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_white" style="width:34%">万山区</div>
-                        <div class="examRankListTd_white">100</div>
-                        <div class="examRankListTd_white">1</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_lightgray" style="width:34%">横琴新区</div>
-                        <div class="examRankListTd_lightgray">100</div>
-                        <div class="examRankListTd_lightgray">2</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_white" style="width:34%">保税区</div>
-                        <div class="examRankListTd_white">100</div>
-                        <div class="examRankListTd_white">3</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_lightgray" style="width:34%">高新区</div>
-                        <div class="examRankListTd_lightgray">99.2</div>
-                        <div class="examRankListTd_lightgray">4</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_white" style="width:34%">斗门区</div>
-                        <div class="examRankListTd_white">99.2</div>
-                        <div class="examRankListTd_white">5</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_lightgray" style="width:34%">金湾区</div>
-                        <div class="examRankListTd_lightgray">98.2</div>
-                        <div class="examRankListTd_lightgray">6</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_red" style="width:34%">香洲区</div>
-                        <div class="examRankListTd_red">97.2</div>
-                        <div class="examRankListTd_red">7</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_red" style="width:34%">高栏港区</div>
-                        <div class="examRankListTd_red">96.2</div>
-                        <div class="examRankListTd_red">8</div>
-                    </div>
-                    
-                </div>
+                <div id="examRankListPortData" style="display:block"></div>
                 
                 <!-- 横屏数据 -->
-                <div id="examRankListLandData" style="display:none">
-                    <div style="width:100%;">
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">单位</div>
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:15%;">上报率得分</div>
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:20%;">黑名单查处得分</div>
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:20%;">零隐患检查得分</div>
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:15%;">其它抽查得分</div>
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">总分</div>
-                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">排名</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%;">万山区</div>
-                        <div class="examRankListTd_white" style="width:15%">100</div>
-                        <div class="examRankListTd_white" style="width:20%">100</div>
-                        <div class="examRankListTd_white" style="width:20%">100</div>
-                        <div class="examRankListTd_white" style="width:15%">100</div>
-                        <div class="examRankListTd_white" style="width:10%">100</div>
-                        <div class="examRankListTd_white" style="width:10%">1</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_lightgray overflow_ellipsis" style="width:10%;">横琴新区</div>
-                        <div class="examRankListTd_lightgray" style="width:15%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:20%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:20%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:15%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:10%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:10%">2</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%;">保税区</div>
-                        <div class="examRankListTd_white" style="width:15%">100</div>
-                        <div class="examRankListTd_white" style="width:20%">100</div>
-                        <div class="examRankListTd_white" style="width:20%">100</div>
-                        <div class="examRankListTd_white" style="width:15%">100</div>
-                        <div class="examRankListTd_white" style="width:10%">100</div>
-                        <div class="examRankListTd_white" style="width:10%">3</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_lightgray overflow_ellipsis" style="width:10%;">高新区</div>
-                        <div class="examRankListTd_lightgray" style="width:15%">99.2</div>
-                        <div class="examRankListTd_lightgray" style="width:20%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:20%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:15%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:10%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:10%">4</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%;">斗门区</div>
-                        <div class="examRankListTd_white" style="width:15%">99.2</div>
-                        <div class="examRankListTd_white" style="width:20%">100</div>
-                        <div class="examRankListTd_white" style="width:20%">100</div>
-                        <div class="examRankListTd_white" style="width:15%">100</div>
-                        <div class="examRankListTd_white" style="width:10%">100</div>
-                        <div class="examRankListTd_white" style="width:10%">5</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_lightgray overflow_ellipsis" style="width:10%;">金湾区</div>
-                        <div class="examRankListTd_lightgray" style="width:15%">98.2</div>
-                        <div class="examRankListTd_lightgray" style="width:20%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:20%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:15%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:10%">100</div>
-                        <div class="examRankListTd_lightgray" style="width:10%">6</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_red overflow_ellipsis" style="width:10%;">香洲区</div>
-                        <div class="examRankListTd_red" style="width:15%">97.2</div>
-                        <div class="examRankListTd_red" style="width:20%">100</div>
-                        <div class="examRankListTd_red" style="width:20%">100</div>
-                        <div class="examRankListTd_red" style="width:15%">100</div>
-                        <div class="examRankListTd_red" style="width:10%">100</div>
-                        <div class="examRankListTd_red" style="width:10%">7</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="examRankListTd_red overflow_ellipsis" style="width:10%;">高栏港区</div>
-                        <div class="examRankListTd_red" style="width:15%">96.2</div>
-                        <div class="examRankListTd_red" style="width:20%">100</div>
-                        <div class="examRankListTd_red" style="width:20%">100</div>
-                        <div class="examRankListTd_red" style="width:15%">100</div>
-                        <div class="examRankListTd_red" style="width:10%">100</div>
-                        <div class="examRankListTd_red" style="width:10%">8</div> 
-                    </div>
-                </div>
+                <div id="examRankListLandData" style="display:none"></div>
             </div>
             
             <script>
@@ -223,22 +76,142 @@
                 $("#examRankList_year_select").val(examRank_year);    // 设置上一页传过来的年份查询值
                 $("#examRankList_season_select").val(examRank_season);// 设置上一页传过来的季度查询值
                 
+                function getExamRankListData()
+                {
+                    $("#examRankListLandData, #examRankListPortData").empty();
+                        
+                    //访问后台动态加载数据
+                    $.ajax({
+                            type: "Post",
+                            data:{type:"all",mobileRqs:"jqm",area:examRank_area,season:examRank_season,year:examRank_year},
+                            dataType:"json",
+                            url:"http://192.168.0.119:8080/SOB/examrank/ExamRank/queryExamList_jqm.do"
+                     }).done(function (data) {
+                    
+                        if(data[1].length > 0)    // 如果查询到数据
+                        {
+                            // 横屏数据列表标题
+                            var tAppendLandDataTitle = 
+                                '<div style="width:100%;">' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">单位</div>' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:15%;">上报率得分</div>' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:20%;">黑名单查处得分</div>' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:20%;">零隐患检查得分</div>' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:15%;">其它抽查得分</div>' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">总分</div>' +
+                                    '<div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">排名</div>' +
+                                '</div>';
+                            
+                            // 竖屏数据列表标题
+                            var tAppendPortDataTitle =
+                                '<div style="width:100%;">' +
+                                    '<div class="examRankListTd_gray" style="width:34%">单位</div>' +
+                                    '<div class="examRankListTd_gray">得分</div>' +
+                                    '<div class="examRankListTd_gray">排名</div>' +
+                                '</div>';
+                            
+                            $("#examRankListLandData").append(tAppendLandDataTitle);
+                            $("#examRankListPortData").append(tAppendPortDataTitle);
+                            
+                            $(data[1]).each(function(i, e){
+                                var tDep = e[0];        // 单位
+                                var tPort = e[1];       // 上报率得分
+                                var tBlack = e[2];      // 黑名单查处得分
+                                var tNoRisk = e[3];     // 零隐患检查得分
+                                var tOther = e[4];      // 其它抽查得分
+                                var tTotal = e[5];      // 总分
+                                var tRank = e[6];       // 排名
+                                
+                                // 添加横屏数据
+                                var tAppendLandData = "";
+                        
+                                if(i % 2 == 0)
+                                {
+                                    tAppendLandData = '<div style="width:100%;">' +
+                                            '<div class="examRankListTd_white overflow_ellipsis" style="width:10%;">' + tDep + '</div>' +
+                                            '<div class="examRankListTd_white" style="width:15%">' + tPort + '</div>' +
+                                            '<div class="examRankListTd_white" style="width:20%">' + tBlack + '</div>' +
+                                            '<div class="examRankListTd_white" style="width:20%">' + tNoRisk + '</div>' +
+                                            '<div class="examRankListTd_white" style="width:15%">' + tOther + '</div>' +
+                                            '<div class="examRankListTd_white" style="width:10%">' + tTotal + '</div>' +
+                                            '<div class="examRankListTd_white" style="width:10%">' + tRank + '</div>' +
+                                        '</div>';
+                                }
+                                else
+                                {
+                                    tAppendLandData = '<div style="width:100%;">' +
+                                            '<div class="examRankListTd_lightgray overflow_ellipsis" style="width:10%;">' + tDep + '</div>' +
+                                            '<div class="examRankListTd_lightgray" style="width:15%">' + tPort + '</div>' +
+                                            '<div class="examRankListTd_lightgray" style="width:20%">' + tBlack + '</div>' +
+                                            '<div class="examRankListTd_lightgray" style="width:20%">' + tNoRisk + '</div>' +
+                                            '<div class="examRankListTd_lightgray" style="width:15%">' + tOther + '</div>' +
+                                            '<div class="examRankListTd_lightgray" style="width:10%">' + tTotal + '</div>' +
+                                            '<div class="examRankListTd_lightgray" style="width:10%">' + tRank + '</div>' +
+                                        '</div>';
+                                }
+                                    
+                                $("#examRankListLandData").append(tAppendLandData);
+                                
+                                // 添加竖屏数据
+                                var tAppendPortData = "";
+                                
+                                if(i % 2 == 0)
+                                {
+                                   tAppendPortData = '<div style="width:100%;">' +
+                                        '<div class="examRankListTd_white overflow_ellipsis" style="width:34%">' + tDep + '</div>' +
+                                        '<div class="examRankListTd_white">' + tTotal + '</div>' +
+                                        '<div class="examRankListTd_white">' + tRank + '</div>' +
+                                    '</div>';
+                                }
+                                else
+                                {
+                                    tAppendPortData = '<div style="width:100%;">' +
+                                        '<div class="examRankListTd_lightgray overflow_ellipsis" style="width:34%">' + tDep + '</div>' +
+                                        '<div class="examRankListTd_lightgray">' + tTotal + '</div>' +
+                                        '<div class="examRankListTd_lightgray">' + tRank + '</div>' +
+                                    '</div>';
+                                }
+                                    
+                                $("#examRankListPortData").append(tAppendPortData);
+                                
+                                // 把最后两名的列表背景设置为红色
+                                if((i == data[1].length - 1) || (i == data[1].length - 2))
+                                {
+                                    $("#examRankListLandData div:nth-child(" + (i + 2) + ") div, #examRankListPortData div:nth-child(" + (i + 2) + ") div").removeClass("examRankListTd_white").removeClass("examRankListTd_lightgray").addClass("examRankListTd_red");
+                                }
+                            });
+                        }
+                        else    // 查询数据为空则显示提示为空页面
+                        {
+                            $("#examRankListLandData, #examRankListPortData").html("<div style='text-align:center;margin-top:5%'>暂无数据!</div>");
+                        }
+                    }).fail(function () {
+                        $("#examRankListLandData, #examRankListPortData").html("<div style='text-align:center;margin-top:5%'>网络故障,加载失败!</div>");
+                        return false;
+                    });
+                }
+                
+                getExamRankListData();    // 初始化时显示查询数据
+                
                 // 改变区域选择
                 function changeExamRankListArea()
                 {
                     examRank_area = $("#examRankList_area_select").val();
+                    getExamRankListData();
                 }
                 
                 // 改变年份选择
                 function changeExamRankListYear()
                 {
                     examRank_year = $("#examRankList_year_select").val();
+                    getExamRankListData();
                 }
                 
                 // 改变季度选择
                 function changeExamRankListSeason()
                 {
                     examRank_season = $("#examRankList_season_select").val();
+                    getExamRankListData();
                 }
                 
                 // 判断当前的屏幕状态

@@ -32,9 +32,9 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul id="historyRiskAreaBtnList">  
-                                <li><a id="historyRiskArea_city" onclick="changeHistoryRiskSearchArea('全市', 'historyRiskArea_city')">全市</a></li>  
-                                <li><a id="historyRiskArea_district" onclick="changeHistoryRiskSearchArea('各区', 'historyRiskArea_district')">各区</a></li>  
-                                <li><a id="historyRiskArea_department" onclick="changeHistoryRiskSearchArea('重点部门', 'historyRiskArea_department')">重点部门</a></li>  
+                                <li><a id="historyRiskArea_city" onclick="changeHistoryRiskSearchArea('qs', 'historyRiskArea_city')">全市</a></li>  
+                                <li><a id="historyRiskArea_district" onclick="changeHistoryRiskSearchArea('gq', 'historyRiskArea_district')">各区</a></li>  
+                                <li><a id="historyRiskArea_department" onclick="changeHistoryRiskSearchArea('zdbm', 'historyRiskArea_department')">重点部门</a></li>  
                             </ul>  
                         </div>
                     </div>
@@ -45,8 +45,7 @@
                     <div style="width:100%;text-align:center">年份选择</div>
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
                         <div>
-                            <select style="width:97%;text-align:center;" id="historyRisk_year" onchange="changeHistoryRiskSearchYear()">
-                            </select>
+                            <select style="width:97%;text-align:center;" id="historyRisk_year" onchange="changeHistoryRiskSearchYear()"></select>
                         </div>
                     </div>
                 </div>
@@ -57,13 +56,13 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul id="historyRiskSeasonBtnList">  
-                                <li><a id="historyRiskSeason1" onclick="changeHistoryRiskSearchSeason('一季度', 'historyRiskSeason1')">一季度</a></li>  
-                                <li><a id="historyRiskSeason2" onclick="changeHistoryRiskSearchSeason('二季度', 'historyRiskSeason2')">二季度</a></li>  
-                                <li><a id="historyRiskSeason3" onclick="changeHistoryRiskSearchSeason('三季度', 'historyRiskSeason3')">三季度</a></li>  
-                                <li><a id="historyRiskSeason4" onclick="changeHistoryRiskSearchSeason('四季度', 'historyRiskSeason4')">四季度</a></li>  
-                                <li><a id="historyRiskSeasonHalf1" onclick="changeHistoryRiskSearchSeason('上半年', 'historyRiskSeasonHalf1')">上半年</a></li>  
-                                <li><a id="historyRiskSeasonHalf2" onclick="changeHistoryRiskSearchSeason('下半年', 'historyRiskSeasonHalf2')">下半年</a></li>
-                                <li><a id="historyRiskSeasonFull"  onclick="changeHistoryRiskSearchSeason('全年', 'historyRiskSeasonFull')">全年</a></li>  
+                                <li><a id="historyRiskSeason1" onclick="changeHistoryRiskSearchSeason('1', 'historyRiskSeason1')">一季度</a></li>  
+                                <li><a id="historyRiskSeason2" onclick="changeHistoryRiskSearchSeason('2', 'historyRiskSeason2')">二季度</a></li>  
+                                <li><a id="historyRiskSeason3" onclick="changeHistoryRiskSearchSeason('3', 'historyRiskSeason3')">三季度</a></li>  
+                                <li><a id="historyRiskSeason4" onclick="changeHistoryRiskSearchSeason('4', 'historyRiskSeason4')">四季度</a></li>  
+                                <li><a id="historyRiskSeasonHalf1" onclick="changeHistoryRiskSearchSeason('5', 'historyRiskSeasonHalf1')">上半年</a></li>  
+                                <li><a id="historyRiskSeasonHalf2" onclick="changeHistoryRiskSearchSeason('6', 'historyRiskSeasonHalf2')">下半年</a></li>
+                                <li><a id="historyRiskSeasonFull"  onclick="changeHistoryRiskSearchSeason('7', 'historyRiskSeasonFull')">全年</a></li>  
                             </ul>  
                         </div>
                     </div>
@@ -73,6 +72,7 @@
             
             <script>
                 
+                // 绑定用户点击的区域和季度按钮
                 $("#historyRiskAreaBtnList li a").each(function(){
                     if($(this).text() == fourPercentages_area)
                     {

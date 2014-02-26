@@ -29,9 +29,9 @@
                     <div style="margin-top:2em;" id="examRankIndexSearchTitle">这里是查旬标题</div>
                     
                     <div style="margin:0 auto;text-align:center;">
-                        <a href="javascript:openExamRankPage('examRankList.html', '全市各区')"  data-transition="slide" data-role="button" style="margin-top:10px;">全市各区（功能区）绩效考核排行榜</a>
-                        <a href="javascript:openExamRankPage('examRankList.html', '重点部门')" data-transition="slide" data-role="button" style="margin-top:10px;">重点行业部门绩效考核排行榜</a>
-                        <a href="javascript:openExamRankPage('examRankList.html', '其它部门')" data-transition="slide" data-role="button" style="margin-top:10px;margin-bottom:10px;">其它行业部门绩效考核排行榜</a>
+                        <a href="javascript:openExamRankPage('examRankList.html', '0')"  data-transition="slide" data-role="button" style="margin-top:10px;">全市各区（功能区）绩效考核排行榜</a>
+                        <a href="javascript:openExamRankPage('examRankList.html', '1')" data-transition="slide" data-role="button" style="margin-top:10px;">重点行业部门绩效考核排行榜</a>
+                        <a href="javascript:openExamRankPage('examRankList.html', '2')" data-transition="slide" data-role="button" style="margin-top:10px;margin-bottom:10px;">其它行业部门绩效考核排行榜</a>
                     </div>
                     
                     <div style="margin-top:3em;">历史查询</div>
@@ -43,12 +43,34 @@
             </div>
             
             <script>
-                var examRank_area = "全市各区";        // 考核排行区域全局变量
+                var examRank_area = "0";              // 考核排行区域全局变量
                 var examRank_year = currentYear;      // 考核排行年份全局变量
                 var examRank_season = currentSeason;  // 考核排行季度全局变量
                 
                 // 设置查询按钮上边的标题(年份+季度)
-                $("#examRankIndexSearchTitle").html(examRank_year + "年" + examRank_season);
+                var tempExamRankSeason = "";
+                if(examRank_season <= 4)
+                {
+                    tempExamRankSeason = "第" + examRank_season + "季度";
+                }
+                else if(examRank_season == 5)
+                {
+                    tempExamRankSeason = "上半年";
+                }
+                else if(examRank_season == 6)
+                {
+                    tempExamRankSeason = "下半年";
+                }
+                else if(examRank_season == 7)
+                {
+                    tempExamRankSeason = "全年";
+                }
+                else 
+                {
+                    tempExamRankSeason = "未知季度";
+                }
+                
+                $("#examRankIndexSearchTitle").html(examRank_year + "年" + tempExamRankSeason);
                 
                 // 打开按不同区域搜索的页面
                 function openExamRankPage(url, area)

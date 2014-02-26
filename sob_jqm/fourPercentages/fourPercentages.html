@@ -31,9 +31,9 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul>  
-                                <li><a id="fourPercentagesArea_city" href="javascript:fourPercentagesAreaSearch('全市')">全市</a></li>
-                                <li><a id="fourPercentagesArea_district" href="javascript:fourPercentagesAreaSearch('各区')">各区</a></li>
-                                <li><a id="fourPercentagesArea_department" href="javascript:fourPercentagesAreaSearch('重点部门')">重点部门</a></li>
+                                <li><a id="fourPercentagesArea_city" href="javascript:fourPercentagesAreaSearch('qs')">全市</a></li>
+                                <li><a id="fourPercentagesArea_district" href="javascript:fourPercentagesAreaSearch('gq')">各区</a></li>
+                                <li><a id="fourPercentagesArea_department" href="javascript:fourPercentagesAreaSearch('zdbm')">重点部门</a></li>
                             </ul>  
                         </div>
                     </div>
@@ -64,12 +64,35 @@
             
             <script>
                 
-                var fourPercentages_area = "全市";        // 四个百分率全局区域变量
-                var fourPercentages_year = currentYear;        // 四个百分率全局年份变量
-                var fourPercentages_season = currentSeason;      // 四个百分率全局季度变量
+                var fourPercentages_area = "qs";                // 四个百分率全局区域变量
+                var fourPercentages_year = currentYear;         // 四个百分率全局年份变量
+                var fourPercentages_season = currentSeason;     // 四个百分率全局季度变量
                 
                 // 设置查询按钮上边的标题(年份+季度)
-                $("#fourPercentagesSearchTitle").html(fourPercentages_year + "年" + fourPercentages_season);
+                var tempFourPercentagesSeason = "";
+                
+                if(fourPercentages_season <= 4)
+                {
+                    tempFourPercentagesSeason = "第" + fourPercentages_season + "季度";
+                }
+                else if(fourPercentages_season == 5)
+                {
+                    tempFourPercentagesSeason = "上半年";
+                }
+                else if(fourPercentages_season == 6)
+                {
+                    tempFourPercentagesSeason = "下半年";
+                }
+                else if(fourPercentages_season == 7)
+                {
+                    tempFourPercentagesSeason = "全年";
+                }
+                else 
+                {
+                    tempFourPercentagesSeason = "未知季度";
+                }
+                
+                $("#fourPercentagesSearchTitle").html(fourPercentages_year + "年" + tempFourPercentagesSeason);
                 
                 // 区域查询
                 function fourPercentagesAreaSearch(area)

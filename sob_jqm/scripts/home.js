@@ -13,26 +13,26 @@ switch(currentMonth)
     case 1:
     case 2:
     case 3:
-        currentSeason = "一季度";
-        currentHalfYear = "上半年";
+        currentSeason = "1";
+        currentHalfYear = "5";
         break;
     case 4:
     case 5:
     case 6:
-        currentSeason = "二季度";
-        currentHalfYear = "上半年";
+        currentSeason = "2";
+        currentHalfYear = "5";
         break;
     case 7:
     case 8:
     case 9:
-        currentSeason = "三季度";
-        currentHalfYear = "下半年";
+        currentSeason = "3";
+        currentHalfYear = "6";
         break;
     case 10:
     case 11:
     case 12:
-        currentSeason = "四季度";
-        currentHalfYear = "下半年";
+        currentSeason = "4";
+        currentHalfYear = "6";
         break;
 }
 

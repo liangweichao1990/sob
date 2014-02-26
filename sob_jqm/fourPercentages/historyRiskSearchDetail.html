@@ -25,24 +25,23 @@
                     <ul>  
                         <li>
                             <select data-corners="false" id="historyRiskSearchDetail_area" onchange="changeHistoryRiskSearchDetailArea()">
-                                <option value="全市">全市</option>
-                                <option value="各区">各区</option>
-                                <option value="重点部门">重点部门</option>
+                                <option value="qs">全市</option>
+                                <option value="gq">各区</option>
+                                <option value="zdbm">重点部门</option>
                             </select>
                         </li>  
                         <li>
-                            <select data-corners="false" id="historyRiskSearchDetail_year" onchange="changeHistoryRiskSearchDetailYear()">
-                            </select>
+                            <select data-corners="false" id="historyRiskSearchDetail_year" onchange="changeHistoryRiskSearchDetailYear()"></select>
                         </li>  
                         <li>
                             <select data-corners="false" id="historyRiskSearchDetail_season" onchange="changeHistoryRiskSearchDetailSeason()">
-                                <option value="一季度">一季度</option>
-                                <option value="二季度">二季度</option>
-                                <option value="三季度">三季度</option>
-                                <option value="四季度">四季度</option>
-                                <option value="上半年">上半年</option>
-                                <option value="下半年">下半年</option>
-                                <option value="全年">全年</option>
+                                <option value="1">一季度</option>
+                                <option value="2">二季度</option>
+                                <option value="3">三季度</option>
+                                <option value="4">四季度</option>
+                                <option value="5">上半年</option>
+                                <option value="6">下半年</option>
+                                <option value="7">全年</option>
                             </select>
                         </li>  
                     </ul>
@@ -127,7 +126,7 @@
                     $("#historyRiskSearchDistrictBtnListDiv").hide();
                     $("#historyRiskSearchDepartmentBtnListDiv").hide();
                 }
-                if(fourPercentages_area == "各区")
+                else if(fourPercentages_area == "各区")
                 {
                     $("#historyRiskSearchDistrictBtnListDiv").show();
                     $("#historyRiskSearchDepartmentBtnListDiv").hide();
@@ -140,26 +139,29 @@
                     $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
                 }
                 
+                var historyRiskDepAreaUUID = "";
+                
                 // 改变部门选择
-                function changeHistoryRiskSearchDepartment(department)
+                function changeHistoryRiskSearchDepartment(department, uuid)
                 {
+                    historyRiskDepAreaUUID = uuid;
                     var tc = "";
                     if(department == "住建")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="changeHistoryRiskSearchDepartment_jy" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'教育\')">教育</a></li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\')">住建</a></li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_ws" onclick="changeHistoryRiskSearchDepartment(\'卫生\')">卫生</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_gk" onclick="changeHistoryRiskSearchDepartment(\'港口\')">港口</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_yl" onclick="changeHistoryRiskSearchDepartment(\'园林\')">园林</a> </li></ul></div>';
+                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="changeHistoryRiskSearchDepartment_jy" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'教育\', \'20110617035111034585\')">教育</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\', \'20110617094847011000\')">住建</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_ws" onclick="changeHistoryRiskSearchDepartment(\'卫生\', \'20110617095242063991\')">卫生</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_gk" onclick="changeHistoryRiskSearchDepartment(\'港口\', \'20110617100027086827\')">港口</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_yl" onclick="changeHistoryRiskSearchDepartment(\'园林\', \'20110617095456003608\')">园林</a> </li></ul></div>';
                         
                     }
                     else if(department == "教育")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'消防\')">消防</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment(\'安监\')">安监</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment(\'交通\')">交通</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment(\'教育\')">教育</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\')">住建</a> </li></ul></div>';
+                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'消防\', \'20110617033432025784\')">消防</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment(\'安监\', \'20110617095527007844\')">安监</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment(\'交通\', \'20110617095113019302\')">交通</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment(\'教育\', \'20110617035111034585\')">教育</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\', \'20110617094847011000\')">住建</a> </li></ul></div>';
                         
                     } 
                         
@@ -181,25 +183,26 @@
                 }
                         
                 // 改变区选择
-                function changeHistoryRiskSearchDistrict(district)
+                function changeHistoryRiskSearchDistrict(district, uuid)
                 {
+                    historyRiskDepAreaUUID = uuid;
                     var tc = "";
                     if(district == "保税")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_hq" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'横琴\')">横琴</a></li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\')">保税</a></li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_ws" onclick="changeHistoryRiskSearchDistrict(\'万山\')">万山</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_gx" onclick="changeHistoryRiskSearchDistrict(\'高新\')">高新</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_gl" onclick="changeHistoryRiskSearchDistrict(\'高栏\')">高栏</a> </li></ul></div>';
+                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_hq" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'横琴\', \'20110618110044034424\')">横琴</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\', \'20110618110244004188\')">保税</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_ws" onclick="changeHistoryRiskSearchDistrict(\'万山\',\'20110618110200043394\')">万山</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_gx" onclick="changeHistoryRiskSearchDistrict(\'高新\',\'20110618110008045632\')">高新</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_gl" onclick="changeHistoryRiskSearchDistrict(\'高栏\',\'20110618110125003109\')">高栏</a> </li></ul></div>';
                         
                     }
                     else if(district == "横琴")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_xz" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'香洲\')">香洲</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict(\'斗门\')">斗门</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict(\'金湾\')">金湾</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict(\'横琴\')">横琴</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\')">保税</a> </li></ul></div>';
+                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_xz" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'香洲\',\'20110617043042091731\')">香洲</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict(\'斗门\',\'20110618105828062662\')">斗门</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict(\'金湾\',\'20110618105913076778\')">金湾</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict(\'横琴\',\'20110618110044034424\')">横琴</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\',\'20110618110244004188\')">保税</a> </li></ul></div>';
                         
                     } 
                         
@@ -236,6 +239,44 @@
                 $("#historyRiskSearchDetail_area").val(fourPercentages_area);    // 设置上一页传过来的区域查询值
                 $("#historyRiskSearchDetail_year").val(fourPercentages_year);    // 设置上一页传过来的年份查询值
                 $("#historyRiskSearchDetail_season").val(fourPercentages_season);// 设置上一页传过来的季度查询值
+                        
+                function getHistoryRiskSearchData()
+                {
+                   
+                    //访问后台动态加载数据
+                    $.ajax({
+                            type: "Post",
+                            data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, year:fourPercentages_year},
+                            dataType:"json",
+                            url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList.do"
+                     }).done(function (data) {
+                    
+                        if(data[1].length > 0)    // 如果查询到数据
+                        {
+                            
+                            $(data[1]).each(function(i, e){
+                                var tDep = e[0];        // 单位
+                                var tPort = e[1];       // 上报率得分
+                                var tBlack = e[2];      // 黑名单查处得分
+                                var tNoRisk = e[3];     // 零隐患检查得分
+                                var tOther = e[4];      // 其它抽查得分
+                                var tTotal = e[5];      // 总分
+                                var tRank = e[6];       // 排名
+                                
+                                
+                            });
+                        }
+                        else    // 查询数据为空则显示提示为空页面
+                        {
+                            //$("#examRankListLandData, #examRankListPortData").html("<div style='text-align:center;margin-top:5%'>暂无数据!</div>");
+                        }
+                    }).fail(function () {
+                        //$("#examRankListLandData, #examRankListPortData").html("<div style='text-align:center;margin-top:5%'>网络故障,加载失败!</div>");
+                        return false;
+                    });
+                }
+                
+                getHistoryRiskSearchData();
                 
                 // 改变区域选择
                 function changeHistoryRiskSearchDetailArea()
@@ -270,6 +311,7 @@
                         labels:["上报率","黑名单查处","零隐患检查","其他抽查"],
 						title : '四个百分率统计图表', 
 						showpercent:false,
+                        turn_off_touchmove:true,
 						decimalsnum:0,
 						width : deviceWidth,
 						height : deviceHeight / 1.3,
