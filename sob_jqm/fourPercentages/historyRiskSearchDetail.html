@@ -50,11 +50,11 @@
                 <div id="historyRiskSearchDepartmentBtnListDiv">
                     <div data-role="navbar" id="historyRiskSearchDepartmentBtnList">  
                         <ul>  
-                            <li><a id="changeHistoryRiskSearchDepartment_xf" onclick="changeHistoryRiskSearchDepartment('消防')">消防</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment('安监')">安监</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment('交通')">交通</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('教育')">教育</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('住建')">住建</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_xf" onclick="changeHistoryRiskSearchDepartment('消防', '20110617033432025784')">消防</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment('安监', '20110617095527007844')">安监</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment('交通', '20110617095113019302')">交通</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('教育', '20110617035111034585')">教育</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('住建', '20110617094847011000')">住建</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -62,11 +62,11 @@
                 <div id="historyRiskSearchDistrictBtnListDiv">
                     <div data-role="navbar" id="historyRiskSearchDistrictBtnList">  
                         <ul>  
-                            <li><a id="changeHistoryRiskSearchDistrict_xz" onclick="changeHistoryRiskSearchDistrict('香洲')">香洲</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict('斗门')">斗门</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict('金湾')">金湾</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('横琴')">横琴</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('保税')">保税</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_xz" onclick="changeHistoryRiskSearchDistrict('香洲', '20110617043042091731')">香洲</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict('斗门', '20110618105828062662')">斗门</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict('金湾', '20110618105913076778')">金湾</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('横琴', '20110618110044034424')">横琴</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('保税', '20110618110244004188')">保税</a> </li>
                         </ul>
                     </div>
                 </div>
@@ -121,25 +121,24 @@
             
             <script>
                 
-                if(fourPercentages_area == "全市")
+                // 根据用户的查询条件显示或隐藏tab列表
+                if(fourPercentages_area == "qs")
                 {
                     $("#historyRiskSearchDistrictBtnListDiv").hide();
                     $("#historyRiskSearchDepartmentBtnListDiv").hide();
                 }
-                else if(fourPercentages_area == "各区")
+                else if(fourPercentages_area == "gq")
                 {
                     $("#historyRiskSearchDistrictBtnListDiv").show();
                     $("#historyRiskSearchDepartmentBtnListDiv").hide();
                     $("#changeHistoryRiskSearchDistrict_xz").addClass("ui-btn-active");
                 }
-                else if(fourPercentages_area == "重点部门")
+                else if(fourPercentages_area == "zdbm")
                 {
                     $("#historyRiskSearchDistrictBtnListDiv").hide();
                     $("#historyRiskSearchDepartmentBtnListDiv").show();
                     $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
                 }
-                
-                var historyRiskDepAreaUUID = "";
                 
                 // 改变部门选择
                 function changeHistoryRiskSearchDepartment(department, uuid)
@@ -179,6 +178,8 @@
                             $("#changeHistoryRiskSearchDepartment_jy").addClass("ui-btn-active");
                         }
                     }
+                    
+                    getHistoryRiskSearchData();
                     
                 }
                         
@@ -220,6 +221,8 @@
                             $("#changeHistoryRiskSearchDistrict_hq").addClass("ui-btn-active");
                         }
                     }
+                        
+                    getHistoryRiskSearchData();
                     
                 }
                 
@@ -240,13 +243,14 @@
                 $("#historyRiskSearchDetail_year").val(fourPercentages_year);    // 设置上一页传过来的年份查询值
                 $("#historyRiskSearchDetail_season").val(fourPercentages_season);// 设置上一页传过来的季度查询值
                         
+                // 根据用户的查询条件获取数据
                 function getHistoryRiskSearchData()
                 {
                    
                     //访问后台动态加载数据
                     $.ajax({
                             type: "Post",
-                            data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, year:fourPercentages_year},
+                            data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, year:fourPercentages_year, uuid:historyRiskDepAreaUUID},
                             dataType:"json",
                             url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList.do"
                      }).done(function (data) {
@@ -254,7 +258,7 @@
                         if(data[1].length > 0)    // 如果查询到数据
                         {
                             
-                            $(data[1]).each(function(i, e){
+                            /*$(data[1]).each(function(i, e){
                                 var tDep = e[0];        // 单位
                                 var tPort = e[1];       // 上报率得分
                                 var tBlack = e[2];      // 黑名单查处得分
@@ -264,7 +268,7 @@
                                 var tRank = e[6];       // 排名
                                 
                                 
-                            });
+                            });*/
                         }
                         else    // 查询数据为空则显示提示为空页面
                         {
@@ -276,27 +280,78 @@
                     });
                 }
                 
-                getHistoryRiskSearchData();
+                getHistoryRiskSearchData();    // 进入页面时初始化获取查询数据
                 
                 // 改变区域选择
                 function changeHistoryRiskSearchDetailArea()
                 {
                     fourPercentages_area = $("#historyRiskSearchDetail_area").val();
+                    changeHistoryRiskSearchDetailTitle();
+                    getHistoryRiskSearchData();
                 }
                 
                 // 改变年份选择
                 function changeHistoryRiskSearchDetailYear()
                 {
                     fourPercentages_year = $("#historyRiskSearchDetail_year").val();
+                    changeHistoryRiskSearchDetailTitle();
+                    getHistoryRiskSearchData();
                 }
                 
                 // 改变季度选择
                 function changeHistoryRiskSearchDetailSeason()
                 {
                     fourPercentages_season = $("#historyRiskSearchDetail_season").val();
+                    changeHistoryRiskSearchDetailTitle();
+                    getHistoryRiskSearchData();
                 }
                 
-                $("#historyRiskSearchDetail_st_title").html(fourPercentages_area + fourPercentages_year + "年" + fourPercentages_season);
+                // 改变标题内容
+                function changeHistoryRiskSearchDetailTitle()
+                {
+                    // 设置查询按钮上边的标题(区域+季度)
+                    var tempHistoryRiskSearchDetailArea = "";
+                    
+                    if(fourPercentages_area == "qs")
+                    {
+                        tempHistoryRiskSearchDetailArea = "全市";
+                    }
+                    else if(fourPercentages_area == "gq")
+                    {
+                        tempHistoryRiskSearchDetailArea = "各区";
+                    }
+                    else if(fourPercentages_area == "zdbm")
+                    {
+                        tempHistoryRiskSearchDetailArea = "重点部门";
+                    }
+                    
+                    var tempHistoryRiskSearchDetailSeason = "";
+                    
+                    if(fourPercentages_season <= 4)
+                    {
+                        tempHistoryRiskSearchDetailSeason = "第" + fourPercentages_season + "季度";
+                    }
+                    else if(fourPercentages_season == 5)
+                    {
+                        tempHistoryRiskSearchDetailSeason = "上半年";
+                    }
+                    else if(fourPercentages_season == 6)
+                    {
+                        tempHistoryRiskSearchDetailSeason = "下半年";
+                    }
+                    else if(fourPercentages_season == 7)
+                    {
+                        tempHistoryRiskSearchDetailSeason = "全年";
+                    }
+                    else 
+                    {
+                        tempHistoryRiskSearchDetailSeason = "未知季度";
+                    }
+                    
+                    $("#historyRiskSearchDetail_st_title").html(tempHistoryRiskSearchDetailArea + fourPercentages_year + "年" + tempHistoryRiskSearchDetailSeason);
+                }
+                
+                changeHistoryRiskSearchDetailTitle();    // 进入页面时初始化获取标题内容
                 
                 // 图表数据
                 var data = [
