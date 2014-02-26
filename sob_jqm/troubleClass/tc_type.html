@@ -1,0 +1,93 @@
+ <!-- 隐患类别 -->
+<div id="tc_type" data-role="page" data-transition="slide" >
+    
+    <script>
+          $("#tc_type").prepend(cr_urlLoadContent("../troubleClass/tc_header.html"));
+        
+        //访问后台动态加载数据
+        $.ajax({
+                type: "Post",
+                data:{type:"tj",area:"yhlb",mobileRqs:"jqm"},
+                dataType:"json",
+                url:"http://192.168.0.119:8080/SOB/danger/HiddenDanger/queryHiddenDangerList_jqm.do"
+         }).done(function (data) {
+             
+            var piecolor = eval('[["#4bb2c5"],["#c5b47f"], ["#EAA228"], ["#579575"], ["#839557"], ["#958c12"],["#953579"], ["#4b5de4"], ["#d8b83f"], ["#ff5800"], ["#0085cc"]]');
+            
+            var tempStrs = "[";
+            
+            $.each(data[0],function(cr_index,cr_b){
+    
+                tempStrs += "{name:'" + data[0][cr_index][0] + "',value:" + data[0][cr_index][1] + ",color:'" + piecolor[cr_index] + "'},";
+            })
+            
+            tempStrs += "]";
+            
+            var pie_data = eval(tempStrs);
+        	        	
+            new iChart.Pie2D({
+            	render : 'tc_type_canvasDiv',
+            	data: pie_data,
+            	title : '',
+                border:0,
+                width : $(window).width(),
+            	height : $(window).height(),
+                bound_event:null,
+                default_mouseover_css:false,
+                turn_off_touchmove:true,
+                background_color:null,
+            	legend : {
+            		enable : true,
+                    background_color:null,
+                    valign : 'bottom',
+                    align :  'center',
+                    border : 1
+            	},
+        		sub_option : {
+                        mini_label_threshold_angle : 30,  //低于40度显示在外面
+                        mini_label:{                       //迷你label配置项，设置其中内容字体大小，颜色
+    						fontsize:20,
+    						fontweight:300,
+    						color : '#ffffff'
+    					},
+    					label : {
+    							background_color:null,
+    							sign:false,//设置禁用label的小图标
+    							padding:'0 4',
+    							border:{
+    								enable:false,
+    								color:'#666666'
+    							},
+    							fontsize:20,
+    							fontweight:300,
+    							color : '#4572a7'
+    				    },
+    					border : {
+    							width : 2,
+    							color : '#ffffff'
+    					},
+            			listeners:{
+            				parseText:function(d, t){
+            					return d.get('value') + "家";        //自定义label文本
+            				}
+            			}
+    		   }
+     
+            }).draw();
+  
+            return false;
+            
+        }).fail(function () {
+            navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+            return false;
+        });
+    </script>
+
+    <div data-role="none">
+        <center>
+            <div id='tc_type_canvasDiv'></div>
+        </center>
+    </div>
+    
+</div>
+ 

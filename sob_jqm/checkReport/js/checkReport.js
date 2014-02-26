@@ -28,12 +28,6 @@ var cr_urlLoadContent = function(url) {
 	return cr_content;
 };
 
-//加载头部菜单栏
-function createHeader(pageid){
-    //alert($.mobile.activePage.attr( "id" ));        当前活动pageid
-    $("#" + pageid).prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
-}
-
 
 
 

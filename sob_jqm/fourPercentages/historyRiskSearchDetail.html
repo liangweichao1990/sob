@@ -48,18 +48,29 @@
                     </ul>
                 </div>
                 
-                <div id="historyRiskSearchDistrictBtnListDiv">
-                    <div data-role="navbar" id="historyRiskSearchDistrictBtnList">  
+                <div id="historyRiskSearchDepartmentBtnListDiv">
+                    <div data-role="navbar" id="historyRiskSearchDepartmentBtnList">  
                         <ul>  
-                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('消防')">消防</a> </li>
-                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('安监')">安监</a> </li>
-                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('交通')">交通</a> </li>
-                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('教育')">教育</a> </li>
-                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('住建')">住建</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_xf" onclick="changeHistoryRiskSearchDepartment('消防')">消防</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment('安监')">安监</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment('交通')">交通</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('教育')">教育</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('住建')">住建</a> </li>
                         </ul>
                     </div>
                 </div>
                 
+                <div id="historyRiskSearchDistrictBtnListDiv">
+                    <div data-role="navbar" id="historyRiskSearchDistrictBtnList">  
+                        <ul>  
+                            <li><a id="changeHistoryRiskSearchDistrict_xz" onclick="changeHistoryRiskSearchDistrict('香洲')">香洲</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict('斗门')">斗门</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict('金湾')">金湾</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('横琴')">横琴</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('保税')">保税</a> </li>
+                        </ul>
+                    </div>
+                </div>
                 
             </header>
             
@@ -111,30 +122,102 @@
             
             <script>
                 
-                
-                function changeHistoryRiskSearchDistrict(district)
+                if(fourPercentages_area == "全市")
                 {
-                    if(district == "住建")
+                    $("#historyRiskSearchDistrictBtnListDiv").hide();
+                    $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                }
+                if(fourPercentages_area == "各区")
+                {
+                    $("#historyRiskSearchDistrictBtnListDiv").show();
+                    $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                    $("#changeHistoryRiskSearchDistrict_xz").addClass("ui-btn-active");
+                }
+                else if(fourPercentages_area == "重点部门")
+                {
+                    $("#historyRiskSearchDistrictBtnListDiv").hide();
+                    $("#historyRiskSearchDepartmentBtnListDiv").show();
+                    $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
+                }
+                
+                // 改变部门选择
+                function changeHistoryRiskSearchDepartment(department)
+                {
+                    var tc = "";
+                    if(department == "住建")
                     {
-                        var tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'教育\')">教育</a></li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'住建\')">住建</a></li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'卫生\')">卫生</a> </li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'港口\')">港口</a> </li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'园林\')">园林</a> </li></ul></div>';
-                        $("#historyRiskSearchDistrictBtnListDiv").empty();
-                        $("#historyRiskSearchDistrictBtnListDiv").append(tc);
+                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="changeHistoryRiskSearchDepartment_jy" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'教育\')">教育</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\')">住建</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_ws" onclick="changeHistoryRiskSearchDepartment(\'卫生\')">卫生</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_gk" onclick="changeHistoryRiskSearchDepartment(\'港口\')">港口</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_yl" onclick="changeHistoryRiskSearchDepartment(\'园林\')">园林</a> </li></ul></div>';
+                        
                     }
-                    else if(district == "教育")
+                    else if(department == "教育")
                     {
-                        var tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'消防\')">消防</a> </li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'安监\')">安监</a> </li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'交通\')">交通</a> </li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'教育\')">教育</a> </li>' +
-                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'住建\')">住建</a> </li></ul></div>';
-                        $("#historyRiskSearchDistrictBtnListDiv").empty();
-                       $("#historyRiskSearchDistrictBtnListDiv").append(tc);
+                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'消防\')">消防</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment(\'安监\')">安监</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment(\'交通\')">交通</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment(\'教育\')">教育</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\')">住建</a> </li></ul></div>';
+                        
                     } 
                         
+                    if(tc != "")
+                    {
+                        $("#historyRiskSearchDepartmentBtnListDiv").empty();
+                        $("#historyRiskSearchDepartmentBtnListDiv").append(tc);
+                        $("#historyRiskSearchDepartmentBtnListDiv div").navbar();
+                        if(department == "住建")
+                        {
+                            $("#changeHistoryRiskSearchDepartment_zj").addClass("ui-btn-active");
+                        }
+                        else if(department == "教育")
+                        {
+                            $("#changeHistoryRiskSearchDepartment_jy").addClass("ui-btn-active");
+                        }
+                    }
+                    
+                }
+                        
+                // 改变区选择
+                function changeHistoryRiskSearchDistrict(district)
+                {
+                    var tc = "";
+                    if(district == "保税")
+                    {
+                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_hq" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'横琴\')">横琴</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\')">保税</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_ws" onclick="changeHistoryRiskSearchDistrict(\'万山\')">万山</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_gx" onclick="changeHistoryRiskSearchDistrict(\'高新\')">高新</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_gl" onclick="changeHistoryRiskSearchDistrict(\'高栏\')">高栏</a> </li></ul></div>';
+                        
+                    }
+                    else if(district == "横琴")
+                    {
+                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_xz" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'香洲\')">香洲</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict(\'斗门\')">斗门</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict(\'金湾\')">金湾</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict(\'横琴\')">横琴</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\')">保税</a> </li></ul></div>';
+                        
+                    } 
+                        
+                    if(tc != "")
+                    {
+                        $("#historyRiskSearchDistrictBtnListDiv").empty();
+                        $("#historyRiskSearchDistrictBtnListDiv").append(tc);
+                        $("#historyRiskSearchDistrictBtnListDiv div").navbar();
+                        if(district == "保税")
+                        {
+                            $("#changeHistoryRiskSearchDistrict_bs").addClass("ui-btn-active");
+                        }
+                        else if(district == "横琴")
+                        {
+                            $("#changeHistoryRiskSearchDistrict_hq").addClass("ui-btn-active");
+                        }
+                    }
+                    
                 }
                 
                 // 把年份值添加到年份下拉框中

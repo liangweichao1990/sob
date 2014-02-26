@@ -2,7 +2,9 @@
 <div id="cr_overall" data-role="page" data-transition="slide" >
     
     <script>
-        createHeader("cr_overall");
+        
+        //加载头部
+        $("#cr_overall").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
         
         //访问后台动态加载数据
         $.ajax({
@@ -27,21 +29,19 @@
             $("#cr_overall_list").append('<li><a href="#"><p>其他企业' + data[6] + '家，已抽查' + data[7] + '家</p></a></li>').listview('refresh');
 
                 
-            var cr_overall_pie_data = [
+            var pie_data = [
                 	{name : '上季度黑名单企业' + data[2] + '家',value : data[3],color:'#9d4a4a'},
                 	{name : '上季度上报无隐患企业' + data[4] + '家',value : data[5],color:'#5d7f97'},
-                	{name : '其它企业' + data[6] + '家',value : data[7],color:'#97b3bc'}
+                	{name : '其它企业' + data[6] + '家',value : data[7],color:'#97b3bc'},
             ];
         	        	
             new iChart.Pie2D({
-            	render : 'canvasDiv',
-            	data: cr_overall_pie_data,
+            	render : 'cr_overall_canvasDiv',
+            	data: pie_data,
             	title : '',
                 border:0,
-                width : 300,
-            	height : 300,
-                offsety : -45,
-                offsetx : -10,
+                width : $(window).width(),
+            	height : $(window).height(),
                 bound_event:null,
                 default_mouseover_css:false,
                 turn_off_touchmove:true,
@@ -51,8 +51,7 @@
                     background_color:null,
                     valign : 'bottom',
                     align :  'center',
-                    border : 1,
-                    offsety : 10
+                    border : 1
             	},
         		sub_option : {
                         mini_label_threshold_angle : 30,  //低于40度显示在外面
@@ -94,7 +93,7 @@
         });
     </script>
 
-    <div data-role="content">
+    <div data-role="none">
         
         <legend>工作提醒：</legend>
         
@@ -108,7 +107,7 @@
         </ul>
         
         <center>
-            <div id='canvasDiv'></div>
+            <div id='cr_overall_canvasDiv'></div>
         </center>
 
     </div>

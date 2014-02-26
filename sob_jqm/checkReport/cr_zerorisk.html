@@ -2,7 +2,7 @@
 <div id="cr_zerorisk" data-role="page" data-transition="slide" >
     
     <script>
-        createHeader("cr_zerorisk");
+        $("#cr_zerorisk").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
         createPagingFooterFooter("#cr_zerorisk",{page_cur:1,page_dis:5,page_count:10});
     </script>
     

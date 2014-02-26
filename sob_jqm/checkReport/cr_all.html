@@ -3,24 +3,36 @@
     
     <!--用脚本加载header-->
     <script>
-        createHeader("cr_all");   
+        $("#cr_all").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
+        
         createPagingFooterFooter("#cr_all",{page_cur:1,page_dis:5,page_count:10});
         
         //访问后台动态加载数据
         $.ajax({
                 type: "Post",
                 data:{type:"sy",mobileRqs:"jqm"},
-                dataType:"html",
-                url:"http://192.168.0.119:8080/SOB/safety/SafetyCheck/queryClassifyList.do"
+                dataType:"json",
+                url:"http://192.168.0.119:8080/SOB/safety/SafetyCheck/queryClassifyList_jqm.do"
             }).done(function (data) {
-             
-            //var obj = $.parseJSON(data);
-
-            //$.each(data,function(cr_index,cr_b){
-            //    alert(data[cr_index]);
-            //})  
+            
+            $("#cr_all_table").empty();
+        
+            //临时存放变量
+            var tempStrs = "";
+        
+            tempStrs += '<tr><th>企业名称</th><th>检查情况</th><th>操作</th></tr>';
  
-            alert(data);
+            $.each(data[1],function(cr_index,cr_b){
+                //alert(data[1][cr_index][1]);
+                //alert(data[1][cr_index][4]);
+                tempStrs += '<tr>';
+                tempStrs += '<td>' + data[1][cr_index][1] + '</td>';
+                tempStrs += '<td>' + data[1][cr_index][4] + '</td>';
+                tempStrs += '<td><a data-role="button" onclick="cr_search_page_on(\'../checkReport/cr_checkup.html\')" data-mini="true" data-transition="slide">录入</a></td>'; 
+                tempStrs += '</tr>';
+            });
+            
+            $("#cr_all_table").append(tempStrs).table("refresh");
                 
             return false;
             
@@ -31,19 +43,19 @@
     </script>
     
     <style type="text/css">
-          #customers  
+          #cr_all_table  
           {   
               border-collapse:collapse;
               width:100%;
           }  
           
-          #customers td, #customers th   
+          #cr_all_table td, #cr_all_table th   
           {  
               font-size:0.8em;  
               border:0.1em solid #C1C1C1;  
           }  
           
-          #customers th   
+          #cr_all_table th   
           {  
               font-size:0.9em;  
               text-align:left;  
@@ -51,7 +63,7 @@
               color:#ffffff;  
           }  
           
-          #customers tr.alt td   
+          #cr_all_table tr.alt td   
           {  
               color:#000000;  
               background-color:#C1C1C1;  
@@ -61,12 +73,13 @@
     
     <div data-role="content" >
 
-       <table id="customers">  
+       <table id="cr_all_table">
+            <!--
             <tr>  
             <th>企业名称</th>  
             <th>检查情况</th>  
             <th>操作</th>  
-            </tr>  
+            </tr>
               
             <tr>  
             <td>中华人民共和国广东省珠海市香洲区体育中心</td>
@@ -79,7 +92,8 @@
             <td>已检查</td>  
             <td><a data-role="button"  onclick="cr_search_page_on('../checkReport/cr_checkup.html')" data-mini="true" data-transition="slide">录入</a></td>  
             </tr>
-            <tr>
+            -->
+                
         </table>  
 
         

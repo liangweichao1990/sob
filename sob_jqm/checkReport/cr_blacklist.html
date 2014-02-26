@@ -2,7 +2,7 @@
 <div id="cr_blacklist" data-role="page" data-transition="slide" >
     
     <script>
-        createHeader("cr_blacklist");
+        $("#cr_blacklist").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
         createPagingFooterFooter("#cr_blacklist",{page_cur:1,page_dis:5,page_count:10});
     </script>
     
