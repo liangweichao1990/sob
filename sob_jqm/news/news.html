@@ -10,52 +10,19 @@
         <div id="news_View" data-role="page" data-title="最新资讯">
             <script>
                 createNewsNavbar("#news_View", "../news/newsNavbar.html", 0);
-                createNewsContent("#news_View", "../news/newsPopup.html");
-                createPagingFooterFooter("#news_View",{page_cur:1,page_dis:5,page_count:10});
-                //$(document).on("pageinit", "#news_View", initPage2);
-                //pagingFooterInit("{page_cur:1,page_dis:1,page_count:10}");
-                function initPage2(event) {
-                    //news_listview.selectmenu("refresh",false);
-                    //$.getScript("../news/js/news.js");
-                     /*if($('#news_detail').size()===0)
-                    $.mobile.loadPage("./news/newsDetail.html", {showLoadMsg:false});
-                    $(document).off('pageinit', '#news_View', initPage2);*/
-                };
-                $(function(){
+                createNewsContent("#news_View", "../news/newsPopup.html",0);
+                createPagingFooterFooter("#news_View",{type:0},{page_cur:1,page_dis:10},tempFunciton);
+                  $("#news_View").on("swipeleft",function(){
+                    openNewsNavbarPage('../news/newsCase.html');
+                  });
+                $("#news_View #news_popup_serarch").on("click",function(){
+                    tempFunciton({type:0},1,10);
+                    $("#news_View #news_seekPopup").popup("close");
+                    return false;
+                });
+                /*$(function(){
                    var data= [ 
                         {news_title:"为呃我呃我",news_time:"2014-02-17",news_content:"韦大卫"},
-                        {news_title:"邹树春的标题",news_time:"2014-02-17",news_content:"为额范围分为"},
-                        {news_title:"范文芳莪无法飞吻",news_time:"2014-02-17",news_content:"法威风威风"},
-                        {news_title:"违法单位为对方访问",news_time:"2014-02-17",news_content:"额外的违法单位"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"莪无法威风威风威风",news_time:"2014-02-17",news_content:"莪无法温柔"},
-                        {news_title:"ewfwefewfewfwe",news_time:"2014-02-17",news_content:"wefewfwef"}
                       ];
                    var news_listview=$('#news_listview');
                     for(var i=1;i<data.length;i++){
@@ -65,23 +32,23 @@
                         }
                         news_listview.append(newslist_themeli);
                     }
-                    //news_listview.selectmenu("refresh",false);
-                });
+                });*/
             </script>
             <!--头部导航预留-->
 
             <!-- 最新资讯列表 -->
-            <div data-role="content" data-theme="a">
-
-                <ul data-role="listview" id="news_listview" data-icon="arrow-r" style="border-top:1px solid silver;">
-                    <li data-position="inline" style="border-bottom: 1px solid silver;padding:0.5% 0 0.5% 0;">
-                        <a href="#" onclick="openNewsDetailPage();">
-                            <img src="images/news.png">
+            <div data-role="content">
+                <ul style="display:none;">
+                    <li id="theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="news_li_a" onclick="openNewsDetailPage();">
+                            <img dbField="news_images" src="images/news.png" width="80px" height="80px">
                             <h2 dbField="news_title">为呃我呃我</h2>
                             <p>摘要：<span dbField="news_content">韦大卫</span></p>
-                            <p dbField="news_time" class="ui-li-aside">2014-02-17</p>
+                            <p class="ui-li-aside" style="margin-top: -3%;"><strong dbField="news_time">2014-02-17</strong></p>
                         </a>
                     </li>
+                </ul>
+                <ul data-role="listview">
                 </ul>
                 
             </div>

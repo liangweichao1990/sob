@@ -1,11 +1,12 @@
-<div id="pagingFooter_id" data-role="footer"  data-theme="a" data-position="fixed">
-    <div data-role="navbar">
+<div id="pagingFooter_id" data-role="footer" data-position="fixed">
+    <div data-role="navbar" data-grid="d">
         <ul>
             <li>
                 <a id="pagingFooter_firstId" href="#" onclick="pagingFooterFirstPage()" class="ui-disabled">首页</a>
             </li>
             <li>
-                <a id="pagingFooter_upId" href="#" onclick="pagingFooterUpPage()" class="ui-disabled">上一页</a>
+                <a id="pagingFooter_upId" href="#" onclick="pagingFooterUpPage()" class="ui-disabled">上页</a>
+                <!--<button id="pagingFooter_upId" onclick="pagingFooterUpPage()" value="上一页"></button>-->
             </li>
             <li> <a id="pagingFooter_selectId" href="#" class="ui-disabled">1/10</a>
                 <!--<fieldset data-role="fieldcontain" style="padding: 0;">
@@ -19,7 +20,7 @@
                 </fieldset>-->
             </li>
             <li>
-                <a id="pagingFooter_nextId" href="#" onclick="pagingFooterNextPage()" class="ui-disabled">下一页</a>
+                <a id="pagingFooter_nextId" href="#" onclick="pagingFooterNextPage()" class="ui-disabled">下页</a>
             </li>
             <li>
                 <a id="pagingFooter_lastId" href="#" onclick="pagingFooterLastPage()" class="ui-disabled">尾页</a>

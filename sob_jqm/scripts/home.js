@@ -36,6 +36,15 @@ switch(currentMonth)
         break;
 }
 
+function ConvertJSONDateToJSDateObject(JSONDateString) 
+{ 
+    if(JSONDateString===null)return "";
+    var date = new Date(parseInt(JSONDateString.time, 10)); 
+    var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+    var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    return date.getFullYear() + "-" + month + "-" + currentDate+" "+date.getHours()+":"+date.getMinutes();
+} 
+
 // 打开菜单中页面
 function openPage(url) 
 {

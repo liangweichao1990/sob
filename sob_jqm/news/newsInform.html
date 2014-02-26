@@ -7,27 +7,39 @@
     </head>
     <body>
 
-        <div id="newsInform_View" data-role="page" data-title="通知通告">
+        <div id="newsInform_View" data-role="page" data-position="fixed" data-title="通知通告">
 
             <script>
                 createNewsNavbar("#newsInform_View", "../news/newsNavbar.html",2);
                 createNewsContent("#newsInform_View", "../news/newsPopup.html");
-                createPagingFooterFooter("#newsInform_View",{page_cur:3,page_dis:5,page_count:10});
+                createPagingFooterFooter("#newsInform_View",{type:2},{page_cur:1,page_dis:10},tempFunciton);
+                
+                $("#newsInform_View #news_popup_serarch").on("click",function(){
+                    tempFunciton({type:2},1,10);
+                    $("#newsInform_View #news_seekPopup").popup("close");
+                    return false;
+                });
+                $("#newsInform_View").on("swiperight",function(){
+                    openNewsNavbarPage('../news/newsCase.html');
+                });
             </script>
             
             <!--头部导航-->
             
             <!-- 最新资讯列表 -->
-            <div data-role="content" data-theme="w">
-                <ul data-role="listview" data-icon="arrow-r" style="border-top:1px solid silver;">
-                    <li data-position="inline" style="border-bottom: 1px solid silver;padding:0.5% 0 0.5% 0;">
-                        <a href="#" onclick="openNewsDetailPage();">
-                            <img src="images/news.png">
-                            <h3>邹树春的标题</h3>
-                            <p>为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</p>
-                            <p class="ui-li-aside">2014-02-17</p>
+            <div data-role="content">
+                
+                <ul style="display:none;">
+                    <li id="theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="news_li_a" onclick="openNewsDetailPage();">
+                            <img dbField="news_images" src="images/news.png" width="80px" height="80px">
+                            <h2 dbField="news_title">为呃我呃我</h2>
+                            <p>摘要：<span dbField="news_content">韦大卫</span></p>
+                            <p class="ui-li-aside" style="margin-top: -3%;"><strong dbField="news_time">2014-02-17</strong></p>
                         </a>
                     </li>
+                </ul>
+                <ul data-role="listview">
                 </ul>
             </div>
 

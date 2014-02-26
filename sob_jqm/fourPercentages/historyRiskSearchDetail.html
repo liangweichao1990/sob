@@ -48,18 +48,18 @@
                     </ul>
                 </div>
                 
-                <div data-role="fieldcontain">
-                <fieldset data-role="controlgroup" data-type="horizontal">
-                    <a data-role="button" id="" onclick="">消防</a> 
-                    <a data-role="button" id="" onclick="">安监</a>
-                    <a data-role="button" id="" onclick="">交通</a>
-                    <a data-role="button" id="" onclick="">教育</a>
-                    <a data-role="button" id="" onclick="">住建</a>
-                    <a data-role="button" id="" onclick="">卫生</a>
-                    <a data-role="button" id="" onclick="">港口</a>
-                    <a data-role="button" id="" onclick="">园林</a>
-                </fieldset>
+                <div id="historyRiskSearchDistrictBtnListDiv">
+                    <div data-role="navbar" id="historyRiskSearchDistrictBtnList">  
+                        <ul>  
+                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('消防')">消防</a> </li>
+                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('安监')">安监</a> </li>
+                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('交通')">交通</a> </li>
+                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('教育')">教育</a> </li>
+                            <li><a id="" onclick="changeHistoryRiskSearchDistrict('住建')">住建</a> </li>
+                        </ul>
+                    </div>
                 </div>
+                
                 
             </header>
             
@@ -110,6 +110,32 @@
             </div>
             
             <script>
+                
+                
+                function changeHistoryRiskSearchDistrict(district)
+                {
+                    if(district == "住建")
+                    {
+                        var tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'教育\')">教育</a></li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'住建\')">住建</a></li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'卫生\')">卫生</a> </li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'港口\')">港口</a> </li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'园林\')">园林</a> </li></ul></div>';
+                        $("#historyRiskSearchDistrictBtnListDiv").empty();
+                        $("#historyRiskSearchDistrictBtnListDiv").append(tc);
+                    }
+                    else if(district == "教育")
+                    {
+                        var tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'消防\')">消防</a> </li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'安监\')">安监</a> </li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'交通\')">交通</a> </li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'教育\')">教育</a> </li>' +
+                        '<li><a id="" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'住建\')">住建</a> </li></ul></div>';
+                        $("#historyRiskSearchDistrictBtnListDiv").empty();
+                       $("#historyRiskSearchDistrictBtnListDiv").append(tc);
+                    } 
+                        
+                }
                 
                 // 把年份值添加到年份下拉框中
                 for(var i = 1970; i <= currentYear; i++)

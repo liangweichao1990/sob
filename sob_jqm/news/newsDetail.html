@@ -7,45 +7,81 @@
     </head>
     <body>
         <div data-role="page" id="news_detail" data-title="最新资讯详细信息">
-
+        <script>
+            
+            $("#news_detail").on('pagebeforeshow',function (e) {
+                e.preventDefault();
+                    $.ajax({
+                        type: "Post",
+                        data:{mobileRqs:'jqm',id:news_detailId},
+                        dataType:"json",
+                        url:"http://192.168.0.119:8080/SOB/news/News/queryNewsView.do"
+                    }).done(function (data) {
+                        var datatem=data[0];
+                        $("#news_detail_title,#news_detail_time,#news_detail_digest,#news_detail_content").html("");
+                        if($.isEmptyObject(datatem)){
+                            $().toastmessage('showToast', {text:'该数据可能已经在被删除!',sticky:false,position:'middle-center',type:'info',closeText:'',close:function(){}});
+                            return false;
+                        }
+                        if(Number(datatem.isHot)===Number(1)){
+                            $("#news_detailDivTitle").append("<img src='images/hot.png'/>");
+                        }
+                        $("#news_detail_title").html(datatem.title);
+                        $("#news_detail_time").html(ConvertJSONDateToJSDateObject(datatem.xwsj));
+                        $("#news_detail_digest").html(datatem.compendium);
+                        $("#news_detail_content").html(datatem.content);
+                        if($.isEmptyObject(datatem.fj)===false){
+                            $("a[href='#news_Detail_adjunct']").removeClass("ui-disabled");
+                            $("#news_Detail_adjunct li[data-role='collapsible'] ul[data-role='listview']").empty();
+                            var detail_fj=datatem.fj.split(";");
+                            $.each(detail_fj,function(i,d_fj){
+                                var detail_split_a=d_fj.split(",");
+                                 if(detail_split_a.length>1){
+                                   $("#news_Detail_adjunct li[data-role='collapsible'] ul[data-role='listview']").append('<li><a data-ajax="true" href="http://192.168.0.119:8080'+detail_split_a[3]+'">'+detail_split_a[1]+'</a></li>');
+                                   $("#news_Detail_adjunct [data-role='listview']").listview('refresh')
+                                }
+                            });
+                        }
+                        return false;
+                    }).fail(function () {
+                        navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                        return false;
+                    });
+            
+                    $("#news_Detail_adjunct").on({
+                        popupbeforeposition: function() {
+                            var maxHeight = $( window ).height() - 60 + "px";
+                            $( "#news_Detail_adjunct" ).css( "max-height", maxHeight );
+                        }
+                    });
+            });
+        </script>
             <div data-role="header"  data-theme="a" data-position="fixed">
                 <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
                 <h1>最新资讯详细信息</h1>
+                <a href="#news_Detail_adjunct" data-rel="popup" class="ui-disabled" data-icon="grid">附件</a>
             </div>
 
             <div data-role="content">
                 <div>
-                    <div>
+                    <div id="news_detailDivTitle">
                         <p style="margin-top: 0;">
-                            <strong>邹树春的标题为额范围分为Google Chrome</strong>
+                            <strong id="news_detail_title">邹树春的标题为额范围分为Google Chrome</strong>
                         </p>
                     </div>
                     <div style="text-align: right;">
-                        <span>2014-02-17</span>
+                        <span id="news_detail_time">2014-02-17</span>
                     </div>
                     <div style="border-top:1px solid silver;border-bottom:1px solid silver;">
                         <p>
                             <strong>摘要：</strong>
-                            <span>为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</span>
+                            <span id="news_detail_digest">为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</span>
                         </p>
                     </div>
                 </div>
                 
                 <div>
-                    <p>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
-                            All pages and graphics on this web site are the property of W3School.<br/>
+                    <p id="news_detail_content">
                     </p>
 
                 </div>
@@ -54,7 +90,22 @@
                 <p>All pages and graphics on this web site are the property of W3School.</p>
                 </details>-->
             </div>
-
+            <!-- 附件下载窗口 -->
+            <div data-role="popup" id="news_Detail_adjunct" data-overlay-theme="a" data-position-to="window" data-tolerance="15,30">
+                <div data-role="header" class="ui-corner-top">
+                    <h1>附件下载</h1>
+                </div>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <div data-role="listview" data-inset="true" data-shadow="false">
+                    <li data-role="collapsible" data-iconpos="left" data-inset="false">
+                        <h2>点击展开附件列表</h2>
+                        <ul data-role="listview" data-theme="a">
+                          <li><a href="#">Condor</a></li>
+                        </ul>
+                    </li>
+                </div>
+                <a href="#" data-role="button" data-corners="false" style="margin: 0;" data-rel="back">取消</a>
+            </div>
         </div>
     </body>
 </html>

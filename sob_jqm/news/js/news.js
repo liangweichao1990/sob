@@ -20,8 +20,6 @@ function createNewsNavbar(page,url,active){
 		if (!footerHtml) {
 			footerHtml = urlLoadNewsContent(url);
 		}
-		//$(page).find("[data-role='navbar']").append(footerHtml);
-        //$(page).find("[data-role='navbar'] a:eq("+active+")").toggleClass("ui-btn-active");
 		$(page).children("script").after(footerHtml);
         $(page).find("[data-role='header'] h1").html($(page).attr("data-title"));
         $(page).find("[data-role='navbar'] a:eq("+active+")").toggleClass("ui-btn-active");
@@ -54,6 +52,46 @@ var urlLoadNewsContent = function(url) {
 	});
 	return content;
 };
+var tempFunciton=function(datajson,page_cur,page_dis){
+     $.ajax({
+        type: "Post",
+        data:{type:datajson.type,title:$(paging_id+" #news_seek").val()||"",mobileRqs:'jqm',queryCurPageNum:page_cur,queryRecNumPerPage:page_dis},
+        dataType:"json",
+        url:"http://192.168.0.119:8080/SOB/news/News/queryNewsList.do"
+    }).done(function (data) {
+        var datapage=data.list.page;
+        pagingFooterInit({page_cur:Number(datapage.curPageNum),page_dis:Number(datapage.recNumPerPage),page_count:Number(datapage.totalPageNum)});
+        $(paging_id).find("[data-role='listview']").empty();
+        if($.isEmptyObject(data.list.records)){
+            $(paging_id).find("[data-role='listview']").append("<li data-icon='false'><a href='#'>暂无数据</a></li>");
+            $(paging_id).find("[data-role='listview']").listview("refresh");
+            return false;
+        }
+        $(data.list.records.record).each(function(i,tedat){
+            var tempdata=tedat;
+            var temp=$('#theme_li').clone();
+            temp.find("[dbField='news_li_a']").attr("onclick","openNewsDetailPage('"+tempdata.element[0].text+"');");
+            temp.find("[dbField='news_title']").html(tempdata.element[1].text);
+            var imagetemp='';imagetemp=tempdata.element[2].text;
+            if(imagetemp===undefined||imagetemp==='undefined'){
+                temp.find("[dbField='news_images']").attr("src",'images/news.png');
+            }else{
+                temp.find("[dbField='news_images']").attr("src",'http://192.168.0.119:8080/'+imagetemp);
+            }
+            if(Number(tempdata.element[5].text)===1){
+                temp.find("[dbField='news_content']").parent().prepend('<img src="images/hot.png" height="15px"/>');
+            }
+            temp.find("[dbField='news_content']").html(tempdata.element[3].text);
+            temp.find("[dbField='news_time']").html(tempdata.element[4].text);
+            $(paging_id).find("[data-role='listview']").append(temp);
+        });
+        $(paging_id).find("[data-role='listview']").listview("refresh");
+        return false;
+    }).fail(function () {
+        navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+        return false;
+    });
+};
 //页面刷新
 function pageRefresh(){
 	$.mobile.pageContainer.trigger("create");
@@ -62,8 +100,10 @@ function pageRefresh(){
 function openNewsNavbarPage(url){
     $.mobile.changePage(url,{transition:"slide"});
 }
+var news_detailId='';
 // 打开最新资讯详情页面
-function openNewsDetailPage()
+function openNewsDetailPage(detail_id)
 {
+    news_detailId=detail_id;
     $.mobile.changePage("../news/newsDetail.html",{transition:"slide"});
 }
