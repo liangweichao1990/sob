@@ -1,6 +1,6 @@
 
-.menuRow {margin-top:3%;color:black;font-size:.8em}
-.menuItem {width:25%;text-align:center;float:left;}
+.menuRow {color:black;font-size:.8em;margin:0 auto;margin-top:2%}
+.menuItem {width:25%;text-align:center;float:left;margin:0 auto;}
 .menuImg {width:70%}
 
 .overflow_ellipsis {overflow:hidden;white-space:nowrap;text-overflow:ellipsis}

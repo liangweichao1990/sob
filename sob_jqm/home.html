@@ -14,42 +14,53 @@
     
     <body>
         <div id="homeView" data-dom-cache="true" data-role="page" data-theme="a" data-transition="none" >
+            
+            <!-- 头部头像及功能按钮 -->
             <div data-role="header" data-theme="a" data-position="fixed">
-                <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em" src="./styles/home/images/defaultUser_icon.png"  />
+                <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em" src="./styles/home/images/Policeman.png"  />
                 <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right;padding-right:.5em" src="./styles/home/images/bubble_index.png"  />
                 <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right" src="./styles/home/images/setting_index.png"  />
                 <img type="image" style="width:3em;padding-left:.5em;padding-top:.2em;float:right;" src="./styles/home/images/search_index.png"  />
             </div>
             
-            <div data-role="content">
-                <div class="menuRow">
-                    <div class="menuItem" onclick="openPage('./fourPercentages/fourPercentages.html')"><!-- historyRiskSearch-->
-                        <div><img type="image" class="menuImg" src="./fourPercentages/images/epSearch_icon.png" /></div>
-                        <div>四个百分率</div>
-                    </div>
-                    
-                    <div class="menuItem" onclick="openPage('./checkReport/checkReport.html')">
-                        <div><img type="image" class="menuImg" src="./checkReport/images/security_icon.png"  /></div>
-                        <div>检查上报</div>
-                    </div>
-                    
-                    <div class="menuItem" onclick="openPage('./examRank/examRank.html')">
-                        <div><img type="image" class="menuImg" src="./examRank/images/examRank_icon.png"  /></div>
-                        <div>考核排名</div>
-                    </div>
-                    
-                    <div class="menuItem" onclick="openPage('./news/news.html')">
-                        <div><img type="image" class="menuImg" src="./news/images/news_icon.png"  /></div>
-                        <div>最新资讯</div>
-                    </div>
-                    
-                    <div class="menuItem" onclick="openPage('./troubleClass/tc_area.html')">
-                        <div><img type="image" class="menuImg" src="./troubleClass/images/security_icon.png"  /></div> 
-                        <div>隐患分布分类</div>
-                    </div>
+            <div data-role="none">
+                
+                <!-- 滚动提示文字 -->
+                <div style="width:100%;background:#4488ff;color:#fff;height:2em;line-height:2em;font-weight:normal">
+                    <marquee>欢迎使用珠海市安监局e安通移动终端系统!</marquee>
                 </div>
                 
-
+                <!-- 功能菜单项 -->
+                <div style="height:100%;width:100%">
+                    <div class="menuRow">
+                        <div class="menuItem" onclick="openPage('./fourPercentages/fourPercentages.html')"><!-- historyRiskSearch-->
+                            <div><img type="image" class="menuImg" src="./fourPercentages/images/epSearch_icon.png" /></div>
+                            <div class="overflow_ellipsis">四个百分率</div>
+                        </div>
+                        
+                        <div class="menuItem" onclick="openPage('./checkReport/checkReport.html')">
+                            <div><img type="image" class="menuImg" src="./checkReport/images/security_icon.png"  /></div>
+                            <div class="overflow_ellipsis">检查上报</div>
+                        </div>
+                        
+                        <div class="menuItem" onclick="openPage('./examRank/examRank.html')">
+                            <div><img type="image" class="menuImg" src="./examRank/images/examRank_icon.png"  /></div>
+                            <div class="overflow_ellipsis">考核排名</div>
+                        </div>
+                        
+                        <div class="menuItem" onclick="openPage('./news/news.html')">
+                            <div><img type="image" class="menuImg" src="./news/images/news_icon.png"  /></div>
+                            <div class="overflow_ellipsis">最新资讯</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menuRow" style="padding-top:2%;clear:both">
+                        <div class="menuItem" onclick="openPage('./troubleClass/tc_area.html')">
+                            <div><img type="image" class="menuImg" src="./troubleClass/images/security_icon.png"  /></div> 
+                            <div class="overflow_ellipsis">隐患分布分类</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!--尾部-->
