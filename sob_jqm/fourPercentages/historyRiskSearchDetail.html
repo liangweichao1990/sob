@@ -47,26 +47,28 @@
                     </ul>
                 </div>
                 
+                <!-- 重点部门tab按钮 -->
                 <div id="historyRiskSearchDepartmentBtnListDiv">
                     <div data-role="navbar" id="historyRiskSearchDepartmentBtnList">  
                         <ul>  
-                            <li><a id="changeHistoryRiskSearchDepartment_xf" onclick="changeHistoryRiskSearchDepartment('消防', '20110617033432025784')">消防</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment('安监', '20110617095527007844')">安监</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment('交通', '20110617095113019302')">交通</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('教育', '20110617035111034585')">教育</a> </li>
-                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('住建', '20110617094847011000')">住建</a> </li>
+                            <li><a id="changeHistoryRiskSearchDepartment_xf" onclick="changeHistoryRiskSearchDepartment('消防', '20110617033432025784')">消防</a></li>
+                            <li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment('安监', '20110617095527007844')">安监</a></li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment('交通', '20110617095113019302')">交通</a></li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('教育', '20110617035111034585')">教育</a></li>
+                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('住建', '20110617094847011000')">住建</a></li>
                         </ul>
                     </div>
                 </div>
                 
+                <!-- 各区tab按钮 -->
                 <div id="historyRiskSearchDistrictBtnListDiv">
                     <div data-role="navbar" id="historyRiskSearchDistrictBtnList">  
                         <ul>  
-                            <li><a id="changeHistoryRiskSearchDistrict_xz" onclick="changeHistoryRiskSearchDistrict('香洲', '20110617043042091731')">香洲</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict('斗门', '20110618105828062662')">斗门</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict('金湾', '20110618105913076778')">金湾</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('横琴', '20110618110044034424')">横琴</a> </li>
-                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('保税', '20110618110244004188')">保税</a> </li>
+                            <li><a id="changeHistoryRiskSearchDistrict_xz" onclick="changeHistoryRiskSearchDistrict('香洲', '20110617043042091731')">香洲</a></li>
+                            <li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict('斗门', '20110618105828062662')">斗门</a></li>
+                            <li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict('金湾', '20110618105913076778')">金湾</a></li>
+                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('横琴', '20110618110044034424')">横琴</a></li>
+                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('保税', '20110618110244004188')">保税</a></li>
                         </ul>
                     </div>
                 </div>
@@ -74,7 +76,8 @@
             </header>
             
             <div data-role="none">
-                    
+                
+                <!-- 内容标题 -->
                 <div id="historyRiskSearchDetail_title" style="text-align:center">
                     <div style="color:red" id="historyRiskSearchDetail_st_title">全市2014年第1季度</div>
                 </div>
@@ -102,6 +105,7 @@
                     {
                         $("#historyRiskSearchDistrictBtnListDiv").show();
                         $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                        $("#historyRiskSearchDistrictBtnListDiv div ul li a").removeClass("ui-btn-active");
                         $("#changeHistoryRiskSearchDistrict_xz").addClass("ui-btn-active");
                         historyRiskDepAreaUUID = "20110617043042091731";
                     }
@@ -109,6 +113,7 @@
                     {
                         $("#historyRiskSearchDistrictBtnListDiv").hide();
                         $("#historyRiskSearchDepartmentBtnListDiv").show();
+                        $("#historyRiskSearchDepartmentBtnListDiv div ul li a").removeClass("ui-btn-active");
                         $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
                         historyRiskDepAreaUUID = "20110617033432025784";
                     }
