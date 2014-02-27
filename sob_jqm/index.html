@@ -64,7 +64,7 @@
                         <!-- 用户名 -->
                         <div>
                             <img src="styles/home/images/user.png" id="text" style="width:15%;align:center;vertical-align:middle;" />
-                            <input type="text" data-role="none" id="userName" value="市公安消防局" style="width:80%;height:2em;color:black;border:1px solid #fff;" />
+                            <input type="text" data-role="none" id="userName" value="" style="width:80%;height:2em;color:black;border:1px solid #fff;" />
                         </div>
                         
                         <hr size="1" />
@@ -72,7 +72,7 @@
                         <!-- 密码 -->
                         <div>
                             <img src="styles/home/images/key.png" id="text" style="width:15%;align:center;vertical-align:middle;" />
-                            <input type="password" data-role="none" id="passWord" value="123456" style="width:80%;height:2em;color:black;border:1px solid #fff;" />
+                            <input type="password" data-role="none" id="passWord" value="" style="width:80%;height:2em;color:black;border:1px solid #fff;" />
                         </div>
                         
                         <hr size="1" />
@@ -101,6 +101,18 @@
 
         <script type="text/javascript">
             document.addEventListener('deviceready', function () {navigator.splashscreen.hide();}, false);
+            
+            // 设置记住用户名和密码的操作
+            $("#userName").val(localStorage.getItem("username")); 
+            $("#passWord").val(localStorage.getItem("password"));
+            if($("#passWord").val() != "")
+            {
+                $("#savePassword").val("1")
+            }
+            else
+            {
+                $("#savePassword").val("0")
+            }
         </script>
         
     </body>

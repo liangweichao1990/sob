@@ -1,7 +1,13 @@
-//var app = new kendo.mobile.Application();
+/*******************
+    页面：登录页面JS
+    作者：邓世瑛、梁伟超
+    日期：2014-02-17
+    版本：1.0
+*******************/
 
 $.mobile.selectmenu.prototype.options.nativeMenu = false;
 
+// 登录按钮动态样式
 function loginonMouseOver()
 {
     $("#btn_login").css('background', "url(./styles/home/images/loginbtn_click.png)");
@@ -9,6 +15,7 @@ function loginonMouseOver()
     $("#btn_login").css('background-size', "100% 100%");
 }
 
+// 登录按钮动态样式
 function loginonMouseOut()
 {
     $("#btn_login").css('background', "url(./styles/home/images/loginbtn.png)");
@@ -40,7 +47,20 @@ function login()
     }).done(function (data) {
         if (data.res == "true") 
         {
-             jQuery.mobile.changePage("home.html",{changeHash: true,transition:"slide"});
+            // 进行记住用户名和密码的操作
+            if($("#savePassword").val() == "1")
+            {
+                localStorage.setItem("username",a);
+                localStorage.setItem("password",b);
+            }
+            else
+            {
+                localStorage.setItem("username",a);
+                localStorage.setItem("password","");
+            }
+            
+            // 打开主菜单页面
+            jQuery.mobile.changePage("home.html",{changeHash: true,transition:"slide"});
         }
         else 
         {

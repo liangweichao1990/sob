@@ -1,3 +1,10 @@
+/*******************
+    页面：主菜单页面JS
+    作者：梁伟超
+    日期：2014-02-17
+    版本：1.0
+*******************/
+
 var currentDate = new Date();
 var currentYear = currentDate.getFullYear();        // 当前年份
 var currentMonth = currentDate.getMonth() + 1;      // 当前月份
