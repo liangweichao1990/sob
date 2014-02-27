@@ -80,65 +80,41 @@
                 </div>
                 
                 <!-- 竖屏数据 -->
-                <div id="historyRiskSearchPortData">
-                    <div id="historyRiskSearchDetailBarChart" style="text-align:center;margin:0 auto;" onclick="viewChartDetail()"></div>
-                </div>
+                <div id="historyRiskSearchPortData"></div>
                 
                 <!-- 横屏数据 -->
-                <div id="historyRiskSearchLandData">
-                    <div style="width:100%;">
-                        <div class="fourPercentagesTd_gray overflow_ellipsis" style="width:30%;">类型</div>
-                        <div class="fourPercentagesTd_gray overflow_ellipsis" style="width:30%;">企业总数</div>
-                        <div class="fourPercentagesTd_gray overflow_ellipsis" style="width:40%;">上报数(查处、检查、抽查)</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="fourPercentagesTd_white overflow_ellipsis" style="width:30%;">企业上报率(61%)</div>
-                        <div class="fourPercentagesTd_white" style="width:30%">9726</div>
-                        <div class="fourPercentagesTd_white" style="width:40%">5933</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="fourPercentagesTd_lightgray overflow_ellipsis" style="width:30%;">黑名单企业查处率(1.9%)</div>
-                        <div class="fourPercentagesTd_lightgray" style="width:30%">2588</div>
-                        <div class="fourPercentagesTd_lightgray" style="width:40%">49</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="fourPercentagesTd_white overflow_ellipsis" style="width:30%;">零隐患企业检查率(8.1%)</div>
-                        <div class="fourPercentagesTd_white" style="width:30%">2725</div>
-                        <div class="fourPercentagesTd_white" style="width:40%">221</div>
-                    </div>
-                    
-                    <div style="width:100%;">
-                        <div class="fourPercentagesTd_lightgray overflow_ellipsis" style="width:30%;">其他企业抽查率(21.9%)</div>
-                        <div class="fourPercentagesTd_lightgray" style="width:30%">4184</div>
-                        <div class="fourPercentagesTd_lightgray" style="width:40%">915</div>
-                    </div>
-                </div>
+                <div id="historyRiskSearchLandData"></div>
                 
             </div>
             
             <script>
                 
                 // 根据用户的查询条件显示或隐藏tab列表
-                if(fourPercentages_area == "qs")
+                function showHideHistoryRiskSearchDetailTabBar()
                 {
-                    $("#historyRiskSearchDistrictBtnListDiv").hide();
-                    $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                    if(fourPercentages_area == "qs")    // 用户选择的是“全市”
+                    {
+                        $("#historyRiskSearchDistrictBtnListDiv").hide();
+                        $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                        historyRiskDepAreaUUID = "0";    // 根据用户点击不同的区域设置不同的默认的UUID值
+                    }
+                    else if(fourPercentages_area == "gq")// 用户选择的是“各区”
+                    {
+                        $("#historyRiskSearchDistrictBtnListDiv").show();
+                        $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                        $("#changeHistoryRiskSearchDistrict_xz").addClass("ui-btn-active");
+                        historyRiskDepAreaUUID = "20110617043042091731";
+                    }
+                    else if(fourPercentages_area == "zdbm")// 用户选择的是“重点部门”
+                    {
+                        $("#historyRiskSearchDistrictBtnListDiv").hide();
+                        $("#historyRiskSearchDepartmentBtnListDiv").show();
+                        $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
+                        historyRiskDepAreaUUID = "20110617033432025784";
+                    }
                 }
-                else if(fourPercentages_area == "gq")
-                {
-                    $("#historyRiskSearchDistrictBtnListDiv").show();
-                    $("#historyRiskSearchDepartmentBtnListDiv").hide();
-                    $("#changeHistoryRiskSearchDistrict_xz").addClass("ui-btn-active");
-                }
-                else if(fourPercentages_area == "zdbm")
-                {
-                    $("#historyRiskSearchDistrictBtnListDiv").hide();
-                    $("#historyRiskSearchDepartmentBtnListDiv").show();
-                    $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
-                }
+                
+                showHideHistoryRiskSearchDetailTabBar();
                 
                 // 改变部门选择
                 function changeHistoryRiskSearchDepartment(department, uuid)
@@ -246,36 +222,114 @@
                 // 根据用户的查询条件获取数据
                 function getHistoryRiskSearchData()
                 {
-                   
+                   $("#historyRiskSearchPortData, #historyRiskSearchLandData").empty();    // 查询之前先将横屏和竖屏的内容容器内的数据清空
+                        
                     //访问后台动态加载数据
                     $.ajax({
                             type: "Post",
-                            data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, year:fourPercentages_year, uuid:historyRiskDepAreaUUID},
+                            data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, years:fourPercentages_year, unid:historyRiskDepAreaUUID},
                             dataType:"json",
-                            url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList.do"
+                            url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList_jqm.do"
                      }).done(function (data) {
-                    
                         if(data[1].length > 0)    // 如果查询到数据
                         {
+                            // 设置竖屏数据图表的显示容器
+                            $("#historyRiskSearchPortData").append('<div id="historyRiskSearchDetailBarChart" style="text-align:center;margin:0 auto;" onclick="viewChartDetail()"></div>');
                             
-                            /*$(data[1]).each(function(i, e){
-                                var tDep = e[0];        // 单位
-                                var tPort = e[1];       // 上报率得分
-                                var tBlack = e[2];      // 黑名单查处得分
-                                var tNoRisk = e[3];     // 零隐患检查得分
-                                var tOther = e[4];      // 其它抽查得分
-                                var tTotal = e[5];      // 总分
-                                var tRank = e[6];       // 排名
+                            // 设置横屏数据列表的标题
+                            var tempHistoryRiskSearchLandTitle = 
+                                '<div style="width:100%;">' +
+                                    '<div class="fourPercentagesTd_gray overflow_ellipsis" style="width:30%;">类型</div>' +
+                                    '<div class="fourPercentagesTd_gray overflow_ellipsis" style="width:30%;">企业总数</div>' +
+                                    '<div class="fourPercentagesTd_gray overflow_ellipsis" style="width:40%;">上报数(查处、检查、抽查)</div>' +
+                                '</div>';
+                        
+                            $("#historyRiskSearchLandData").append(tempHistoryRiskSearchLandTitle);
+                        
+                            // 竖屏图表数据
+                            var d = [
+            				        	{name : '企业总数',value : [data[1][0][1], data[1][1][1], data[1][2][1], data[1][3][1]],color:'#1385a5'},
+            				        	{name : '上报数',value : [data[1][0][2], data[1][1][2], data[1][2][2], data[1][3][2]],color:'#c56966'}
+            				      ];
+            		        	
+            					historyRiskSearchChart = new iChart.ColumnMulti2D({
+                                    align:'center',
+            						render : 'historyRiskSearchDetailBarChart',
+            						data: d,
+                                    labels:["上报率", "黑名单", "零隐患", "其它"],
+            						title : '四个百分率统计图表', 
+            						showpercent:false,
+                                    turn_off_touchmove:true,
+            						decimalsnum:0,
+            						width : deviceWidth,
+            						height : deviceHeight / 1.3,
+                                    border:0,
+                                    background_color: null,
+                                    legend:{
+            							enable:true,
+                                        align:'center',
+                                        valign:'top',
+            							background_color : '#fff',
+            							border : {
+            								enable : true
+            							}
+            						},
+            						coordinate:{
+            							background_color:'#fefefe',
+            							scale:[{
+                                             scale_enable: false,
+                                             scale_share: 0,
+            								 position:'left',
+            								 start_scale:0,
+            								 end_scale:0,
+            								 scale_space:0,
+            								 listeners:{
+            									parseText:function(t,x,y){
+            										return {text:t}
+            									}
+            								}
+            							}]
+            						}
+            					});
+                                historyRiskSearchChart.draw();
+                            
+                            // 横屏列表数据
+                            $(data[1]).each(function(i, e){
+                                var tTitle = e[0];        // 标题
+                                var tTotal = e[1];        // 企业总数
+                                var tPort = e[2];         // 上报数
                                 
+                                var tempAppendHistoryRiskSearchLandData = "";
                                 
-                            });*/
+                                if(i % 2 == 0)
+                                {
+                                    tempAppendHistoryRiskSearchLandData = 
+                                        '<div style="width:100%;">' +
+                                            '<div class="fourPercentagesTd_white overflow_ellipsis" style="width:30%;">' + tTitle + '</div>' +
+                                            '<div class="fourPercentagesTd_white" style="width:30%">' + tTotal + '</div>' +
+                                            '<div class="fourPercentagesTd_white" style="width:40%">' + tPort + '</div>' +
+                                        '</div>';
+                                }
+                                else
+                                {
+                                    tempAppendHistoryRiskSearchLandData =
+                                        '<div style="width:100%;">' +
+                                            '<div class="fourPercentagesTd_lightgray overflow_ellipsis" style="width:30%;">' + tTitle + '</div>' +
+                                            '<div class="fourPercentagesTd_lightgray" style="width:30%">' + tTotal + '</div>' +
+                                            '<div class="fourPercentagesTd_lightgray" style="width:40%">' + tPort + '</div>' +
+                                        '</div>';
+                                }
+                        
+                                $("#historyRiskSearchLandData").append(tempAppendHistoryRiskSearchLandData);
+                                    
+                            });
                         }
                         else    // 查询数据为空则显示提示为空页面
                         {
-                            //$("#examRankListLandData, #examRankListPortData").html("<div style='text-align:center;margin-top:5%'>暂无数据!</div>");
+                            $("#historyRiskSearchPortData, #historyRiskSearchLandData").html("<div style='text-align:center;margin-top:5%'>暂无数据!</div>");
                         }
                     }).fail(function () {
-                        //$("#examRankListLandData, #examRankListPortData").html("<div style='text-align:center;margin-top:5%'>网络故障,加载失败!</div>");
+                        $("#historyRiskSearchPortData, #historyRiskSearchLandData").html("<div style='text-align:center;margin-top:5%'>网络故障,加载失败!</div>");
                         return false;
                     });
                 }
@@ -286,6 +340,7 @@
                 function changeHistoryRiskSearchDetailArea()
                 {
                     fourPercentages_area = $("#historyRiskSearchDetail_area").val();
+                    showHideHistoryRiskSearchDetailTabBar();
                     changeHistoryRiskSearchDetailTitle();
                     getHistoryRiskSearchData();
                 }
@@ -352,52 +407,6 @@
                 }
                 
                 changeHistoryRiskSearchDetailTitle();    // 进入页面时初始化获取标题内容
-                
-                // 图表数据
-                var data = [
-				        	{name : '企业总数',value : [9726, 2588, 2725, 4184],color:'#1385a5'},
-				        	{name : '上报数',value : [5933, 49, 221, 915],color:'#c56966'}
-				      ];
-		        	
-					new iChart.ColumnMulti2D({
-                        align:'center',
-						render : 'historyRiskSearchDetailBarChart',
-						data: data,
-                        labels:["上报率","黑名单查处","零隐患检查","其他抽查"],
-						title : '四个百分率统计图表', 
-						showpercent:false,
-                        turn_off_touchmove:true,
-						decimalsnum:0,
-						width : deviceWidth,
-						height : deviceHeight / 1.3,
-                        border:0,
-                        background_color: null,
-                        legend:{
-							enable:true,
-                            align:'center',
-                            valign:'top',
-							background_color : '#fff',
-							border : {
-								enable : true
-							}
-						},
-						coordinate:{
-							background_color:'#fefefe',
-							scale:[{
-                                 scale_enable: false,
-                                 scale_share: 0,
-								 position:'left',
-								 start_scale:0,
-								 end_scale:0,
-								 scale_space:0,
-								 listeners:{
-									parseText:function(t,x,y){
-										return {text:t}
-									}
-								}
-							}]
-						}
-					}).draw();
                 
                 // 判断当前的屏幕状态
                 if(window.orientation == 0 || window.orientation == 180)    // 当前是竖屏

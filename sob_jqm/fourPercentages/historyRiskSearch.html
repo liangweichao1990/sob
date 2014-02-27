@@ -32,9 +32,9 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul id="historyRiskAreaBtnList">  
-                                <li><a id="historyRiskArea_city" onclick="changeHistoryRiskSearchArea('qs', 'historyRiskArea_city')">全市</a></li>  
-                                <li><a id="historyRiskArea_district" onclick="changeHistoryRiskSearchArea('gq', 'historyRiskArea_district')">各区</a></li>  
-                                <li><a id="historyRiskArea_department" onclick="changeHistoryRiskSearchArea('zdbm', 'historyRiskArea_department')">重点部门</a></li>  
+                                <li><a id="historyRiskArea_city" name="qs" onclick="changeHistoryRiskSearchArea('qs', 'historyRiskArea_city')">全市</a></li>  
+                                <li><a id="historyRiskArea_district" name="gq" onclick="changeHistoryRiskSearchArea('gq', 'historyRiskArea_district')">各区</a></li>  
+                                <li><a id="historyRiskArea_department" name="zdbm" onclick="changeHistoryRiskSearchArea('zdbm', 'historyRiskArea_department')">重点部门</a></li>  
                             </ul>  
                         </div>
                     </div>
@@ -56,13 +56,13 @@
                     <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-top:.5em;padding-bottom:.5em">
                         <div data-role="navbar">  
                             <ul id="historyRiskSeasonBtnList">  
-                                <li><a id="historyRiskSeason1" onclick="changeHistoryRiskSearchSeason('1', 'historyRiskSeason1')">一季度</a></li>  
-                                <li><a id="historyRiskSeason2" onclick="changeHistoryRiskSearchSeason('2', 'historyRiskSeason2')">二季度</a></li>  
-                                <li><a id="historyRiskSeason3" onclick="changeHistoryRiskSearchSeason('3', 'historyRiskSeason3')">三季度</a></li>  
-                                <li><a id="historyRiskSeason4" onclick="changeHistoryRiskSearchSeason('4', 'historyRiskSeason4')">四季度</a></li>  
-                                <li><a id="historyRiskSeasonHalf1" onclick="changeHistoryRiskSearchSeason('5', 'historyRiskSeasonHalf1')">上半年</a></li>  
-                                <li><a id="historyRiskSeasonHalf2" onclick="changeHistoryRiskSearchSeason('6', 'historyRiskSeasonHalf2')">下半年</a></li>
-                                <li><a id="historyRiskSeasonFull"  onclick="changeHistoryRiskSearchSeason('7', 'historyRiskSeasonFull')">全年</a></li>  
+                                <li><a id="historyRiskSeason1" name="1" onclick="changeHistoryRiskSearchSeason('1', 'historyRiskSeason1')">一季度</a></li>  
+                                <li><a id="historyRiskSeason2" name="2" onclick="changeHistoryRiskSearchSeason('2', 'historyRiskSeason2')">二季度</a></li>  
+                                <li><a id="historyRiskSeason3" name="3" onclick="changeHistoryRiskSearchSeason('3', 'historyRiskSeason3')">三季度</a></li>  
+                                <li><a id="historyRiskSeason4" name="4" onclick="changeHistoryRiskSearchSeason('4', 'historyRiskSeason4')">四季度</a></li>  
+                                <li><a id="historyRiskSeasonHalf1" name="5" onclick="changeHistoryRiskSearchSeason('5', 'historyRiskSeasonHalf1')">上半年</a></li>  
+                                <li><a id="historyRiskSeasonHalf2" name="6" onclick="changeHistoryRiskSearchSeason('6', 'historyRiskSeasonHalf2')">下半年</a></li>
+                                <li><a id="historyRiskSeasonFull" name="7"  onclick="changeHistoryRiskSearchSeason('7', 'historyRiskSeasonFull')">全年</a></li>  
                             </ul>  
                         </div>
                     </div>
@@ -73,19 +73,26 @@
             <script>
                 
                 // 绑定用户点击的区域和季度按钮
-                $("#historyRiskAreaBtnList li a").each(function(){
-                    if($(this).text() == fourPercentages_area)
-                    {
-                        $(this).addClass("ui-btn-active");
-                    }
-                });
+                function bindHistoryRiskSearchClickedBtns()
+                {
+                    
+                    $("#historyRiskAreaBtnList li a").each(function(){
+                        if($(this).attr("name") == fourPercentages_area)
+                        {
+                            $(this).addClass("ui-btn-active");
+                        }
+                    });
                 
-                $("#historyRiskSeasonBtnList li a").each(function(){
-                    if($(this).text() == fourPercentages_season)
-                    {
-                        $(this).addClass("ui-btn-active");
-                    }
-                });
+                    $("#historyRiskSeasonBtnList li a").each(function(){
+                        if($(this).attr("name") == fourPercentages_season)
+                        {
+                            $(this).addClass("ui-btn-active");
+                        }
+                    });
+                    
+                }
+                
+                bindHistoryRiskSearchClickedBtns();
                 
                 // 把年份值添加到年份下拉框中
                 for(var i = 1970; i <= currentYear; i++)

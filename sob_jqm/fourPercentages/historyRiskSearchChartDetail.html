@@ -23,62 +23,86 @@
                 <h1>四个百分率</h1> 
             </header>
             
-            <div data-role="none">
-                
-                <center>
-                    <div id="historyRiskSearchDetailBarChart2" style="width:100%;margin:0 auto;"></div>
-                </center>
-                
-            </div>
+            <div data-role="none" id="historyRiskSearchChartDetailContent"></div>
             
             <script>
                 
-                // 图表数据
-                var data2 = [
-				        	{name : '企业总数',value : [9726, 2588, 2725, 4184],color:'#1385a5'},
-				        	{name : '上报数',value : [5933, 49, 221, 915],color:'#c56966'}
-				      ];
-		        	
-					new iChart.ColumnMulti2D({
-                        align:'center',
-						render : 'historyRiskSearchDetailBarChart2',
-						data: data2,
-                        labels:["上报率","黑名单查处","零隐患检查","其他抽查"], 
-						title : '四个百分率统计图表', 
-						showpercent:false,
-                        turn_off_touchmove:true,
-						decimalsnum:0,
-						width : deviceWidth,
-						height : deviceHeight/1.1,
-                        border:0,
-                        background_color: null,
-                        legend:{
-							enable:true,
-                            align:'center',
-                            valign:'top',
-							background_color : '#fff',
-							border : {
-								enable : true
-							}
-						},
-						coordinate:{
-							background_color:'#fefefe',
-							scale:[{
-                                 scale_enable: false,
-                                 scale_share: 0,
-								 position:'left',
-								 start_scale:0,
-								 end_scale:0,
-								 scale_space:0,
-								 listeners:{
-									parseText:function(t,x,y){
-										return {text:t}
-									}
-								}
-							}]
-						}
-					}).draw();
+                // 图表详情初始化方法
+                function historyRiskSearchChartDetailInit()
+                {
+                   $("#historyRiskSearchChartDetailContent").empty();    // 查询之前先将内容容器内的数据清空
+                        
+                    //访问后台动态加载数据
+                    $.ajax({
+                            type: "Post",
+                            data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, years:fourPercentages_year, unid:historyRiskDepAreaUUID},
+                            dataType:"json",
+                            url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList_jqm.do"
+                     }).done(function (data) {
+                        if(data[1].length > 0)    // 如果查询到数据
+                        {
+                            // 设置竖屏数据图表的显示容器
+                            $("#historyRiskSearchChartDetailContent").append('<center><div id="historyRiskSearchDetailBarChart2" style="width:100%;margin:0 auto;"></div></center>');
+                            
+                            // 竖屏图表数据
+                            var d = [
+            				        	{name : '企业总数',value : [data[1][0][1], data[1][1][1], data[1][2][1], data[1][3][1]],color:'#1385a5'},
+            				        	{name : '上报数',value : [data[1][0][2], data[1][1][2], data[1][2][2], data[1][3][2]],color:'#c56966'}
+            				      ];
+            		        	
+            					historyRiskSearchChart = new iChart.ColumnMulti2D({
+                                    align:'center',
+            						render : 'historyRiskSearchDetailBarChart2',
+            						data: d,
+                                    labels:["上报率", "黑名单", "零隐患", "其它"],
+            						title : '四个百分率统计图表', 
+            						showpercent:false,
+                                    turn_off_touchmove:true,
+            						decimalsnum:0,
+            						width : deviceWidth,
+            						height : deviceHeight / 1.1,
+                                    border:0,
+                                    background_color: null,
+                                    legend:{
+            							enable:true,
+                                        align:'center',
+                                        valign:'top',
+            							background_color : '#fff',
+            							border : {
+            								enable : true
+            							}
+            						},
+            						coordinate:{
+            							background_color:'#fefefe',
+            							scale:[{
+                                             scale_enable: false,
+                                             scale_share: 0,
+            								 position:'left',
+            								 start_scale:0,
+            								 end_scale:0,
+            								 scale_space:0,
+            								 listeners:{
+            									parseText:function(t,x,y){
+            										return {text:t}
+            									}
+            								}
+            							}]
+            						}
+            					});
+                                historyRiskSearchChart.draw();
+                            
+                        }
+                        else    // 查询数据为空则显示提示为空页面
+                        {
+                            $("#historyRiskSearchChartDetailContent").html("<div style='text-align:center;margin-top:5%'>暂无数据!</div>");
+                        }
+                    }).fail(function () {
+                        $("#historyRiskSearchChartDetailContent").html("<div style='text-align:center;margin-top:5%'>网络故障,加载失败!</div>");
+                        return false;
+                    });
+                }
                 
+                historyRiskSearchChartDetailInit();
             </script>
             
         </div>

@@ -67,7 +67,8 @@
                 var fourPercentages_area = "qs";                // 四个百分率全局区域变量
                 var fourPercentages_year = currentYear;         // 四个百分率全局年份变量
                 var fourPercentages_season = currentSeason;     // 四个百分率全局季度变量
-                var historyRiskDepAreaUUID = "0";
+                var historyRiskDepAreaUUID = "0";               // 默认UNID
+                var historyRiskSearchChart = null;              // 图表
                 
                 // 设置查询按钮上边的标题(年份+季度)
                 var tempFourPercentagesSeason = "";
@@ -93,6 +94,7 @@
                     tempFourPercentagesSeason = "未知季度";
                 }
                 
+                // 设置标题
                 $("#fourPercentagesSearchTitle").html(fourPercentages_year + "年" + tempFourPercentagesSeason);
                 
                 // 区域查询
