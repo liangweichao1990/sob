@@ -85,7 +85,7 @@
                             type: "Post",
                             data:{type:"all",mobileRqs:"jqm",area:examRank_area,season:examRank_season,year:examRank_year},
                             dataType:"json",
-                            url:"http://192.168.0.119:8080/SOB/examrank/ExamRank/queryExamList_jqm.do"
+                            url:"http://" + domain + "/examrank/ExamRank/queryExamList_jqm.do"
                      }).done(function (data) {
                     
                         if(data[1].length > 0)    // 如果查询到数据

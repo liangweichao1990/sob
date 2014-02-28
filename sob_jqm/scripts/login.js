@@ -43,7 +43,7 @@ function login()
         type: "Post",
         data:{username:a,password:b},
         dataType:"json",
-        url:"http://192.168.0.119:8080/SOB/webas/login1.do",
+        url:"http://" + domain + "/webas/login1.do",
     }).done(function (data) {
         if (data.res == "true") 
         {

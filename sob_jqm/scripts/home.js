@@ -11,8 +11,10 @@ var currentMonth = currentDate.getMonth() + 1;      // 当前月份
 var currentSeason = "";                             // 当前季度
 var currentHalfYear = "";                           // 当前半年 (下半年、下半年)
 
-var deviceWidth = $(window).width();
-var deviceHeight = $(window).height();
+var deviceWidth = $(window).width();                // 设备页面的宽度
+var deviceHeight = $(window).height();              // 设备页面的高度
+var domain = "192.168.0.119:8080/SOB";              // 对接后台的路径域名
+var downloadDomain = "192.168.0.119:8080";          // 对接下载路径域名
 
 // 取当前的季度和半年值
 switch(currentMonth)

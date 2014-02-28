@@ -54,8 +54,8 @@
                             <li><a id="changeHistoryRiskSearchDepartment_xf" onclick="changeHistoryRiskSearchDepartment('消防', '20110617033432025784')">消防</a></li>
                             <li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment('安监', '20110617095527007844')">安监</a></li>
                             <li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment('交通', '20110617095113019302')">交通</a></li>
-                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('教育', '20110617035111034585')">教育</a></li>
-                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('住建', '20110617094847011000')">住建</a></li>
+                            <li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment('changeHistoryRiskSearchDepartment_jy', '20110617035111034585')">教育</a></li>
+                            <li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment('changeHistoryRiskSearchDepartment_zj', '20110617094847011000')">住建</a></li>
                         </ul>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
                             <li><a id="changeHistoryRiskSearchDistrict_xz" onclick="changeHistoryRiskSearchDistrict('香洲', '20110617043042091731')">香洲</a></li>
                             <li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict('斗门', '20110618105828062662')">斗门</a></li>
                             <li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict('金湾', '20110618105913076778')">金湾</a></li>
-                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('横琴', '20110618110044034424')">横琴</a></li>
-                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('保税', '20110618110244004188')">保税</a></li>
+                            <li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict('changeHistoryRiskSearchDistrict_hq', '20110618110044034424')">横琴</a></li>
+                            <li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict('changeHistoryRiskSearchDistrict_bs', '20110618110244004188')">保税</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,6 +92,37 @@
             
             <script>
                 
+                var districtUNIDArr = ["20110617043042091731,changeHistoryRiskSearchDistrict_xz","20110618105828062662,changeHistoryRiskSearchDistrict_dm","20110618105913076778,changeHistoryRiskSearchDistrict_jw","20110618110044034424,changeHistoryRiskSearchDistrict_hq","20110618110244004188,changeHistoryRiskSearchDistrict_bs","20110618110200043394,changeHistoryRiskSearchDistrict_ws","20110618110008045632,changeHistoryRiskSearchDistrict_gx","20110618110125003109,changeHistoryRiskSearchDistrict_gl"];
+                var departmentUNIDArr = ["20110617033432025784,changeHistoryRiskSearchDepartment_xf","20110617095527007844,changeHistoryRiskSearchDepartment_aj","20110617095113019302,changeHistoryRiskSearchDepartment_jt","20110617035111034585,changeHistoryRiskSearchDepartment_jy","20110617094847011000,changeHistoryRiskSearchDepartment_zj","20110617095242063991,changeHistoryRiskSearchDepartment_ws","20110617100027086827,changeHistoryRiskSearchDepartment_gk","20110617095456003608,changeHistoryRiskSearchDepartment_yl"];
+                
+                $("#historyRiskSearchDetailView").on("swipeleft",function(){
+                    for(var i = 0; i < districtUNIDArr.length; i++)
+                    {
+                        var tUNID = districtUNIDArr[i].split(",")[0];    // 当前遍历的UNID
+                        
+                        if(tUNID == historyRiskDepAreaUUID)
+                        {
+                            if(i < districtUNIDArr.length - 1)
+                            {
+                                var tNextUNID = districtUNIDArr[i  + 1].split(",")[0];     // 用户划动到的UNID
+                                var tNextAID = districtUNIDArr[i + 1].split(",")[1];          // 用户划动到的A标签ID
+                                alert(tNextAID);
+                                historyRiskDepAreaUUID = tNextUNID;
+                                getHistoryRiskSearchData();
+                                $("#historyRiskSearchDistrictBtnListDiv div ul li a").removeClass("ui-btn-active");
+                                $("#" + tNextAID).addClass("ui-btn-active");
+                                break;
+                            }
+                        }
+                    }
+                
+                });
+                
+                $("#historyRiskSearchDetailView").on("swiperight",function(){
+                    
+                
+                });
+
                 // 根据用户的查询条件显示或隐藏tab列表
                 function showHideHistoryRiskSearchDetailTabBar()
                 {
@@ -100,11 +131,13 @@
                         $("#historyRiskSearchDistrictBtnListDiv").hide();
                         $("#historyRiskSearchDepartmentBtnListDiv").hide();
                         historyRiskDepAreaUUID = "0";    // 根据用户点击不同的区域设置不同的默认的UUID值
+                        getHistoryRiskSearchData();
                     }
                     else if(fourPercentages_area == "gq")// 用户选择的是“各区”
                     {
                         $("#historyRiskSearchDistrictBtnListDiv").show();
                         $("#historyRiskSearchDepartmentBtnListDiv").hide();
+                        changeHistoryRiskSearchDistrict("changeHistoryRiskSearchDistrict_hq","20110617043042091731");
                         $("#historyRiskSearchDistrictBtnListDiv div ul li a").removeClass("ui-btn-active");
                         $("#changeHistoryRiskSearchDistrict_xz").addClass("ui-btn-active");
                         historyRiskDepAreaUUID = "20110617043042091731";
@@ -113,6 +146,7 @@
                     {
                         $("#historyRiskSearchDistrictBtnListDiv").hide();
                         $("#historyRiskSearchDepartmentBtnListDiv").show();
+                        changeHistoryRiskSearchDepartment("changeHistoryRiskSearchDepartment_jy","20110617033432025784");
                         $("#historyRiskSearchDepartmentBtnListDiv div ul li a").removeClass("ui-btn-active");
                         $("#changeHistoryRiskSearchDepartment_xf").addClass("ui-btn-active");
                         historyRiskDepAreaUUID = "20110617033432025784";
@@ -126,22 +160,22 @@
                 {
                     historyRiskDepAreaUUID = uuid;
                     var tc = "";
-                    if(department == "住建")
+                    if(department == "changeHistoryRiskSearchDepartment_zj")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="changeHistoryRiskSearchDepartment_jy" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'教育\', \'20110617035111034585\')">教育</a></li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\', \'20110617094847011000\')">住建</a></li>' +
+                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="changeHistoryRiskSearchDepartment_jy" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'changeHistoryRiskSearchDepartment_jy\', \'20110617035111034585\')">教育</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'changeHistoryRiskSearchDepartment_zj\', \'20110617094847011000\')">住建</a></li>' +
                         '<li><a id="changeHistoryRiskSearchDepartment_ws" onclick="changeHistoryRiskSearchDepartment(\'卫生\', \'20110617095242063991\')">卫生</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDepartment_gk" onclick="changeHistoryRiskSearchDepartment(\'港口\', \'20110617100027086827\')">港口</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDepartment_yl" onclick="changeHistoryRiskSearchDepartment(\'园林\', \'20110617095456003608\')">园林</a> </li></ul></div>';
                         
                     }
-                    else if(department == "教育")
+                    else if(department == "changeHistoryRiskSearchDepartment_jy")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'消防\', \'20110617033432025784\')">消防</a> </li>' +
+                        tc = '<div data-role="navbar" id="historyRiskSearchDepartmentBtnList"><ul><li><a id="changeHistoryRiskSearchDepartment_xf" data-role="button" onclick="changeHistoryRiskSearchDepartment(\'消防\', \'20110617033432025784\')">消防</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDepartment_aj" onclick="changeHistoryRiskSearchDepartment(\'安监\', \'20110617095527007844\')">安监</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDepartment_jt" onclick="changeHistoryRiskSearchDepartment(\'交通\', \'20110617095113019302\')">交通</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment(\'教育\', \'20110617035111034585\')">教育</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'住建\', \'20110617094847011000\')">住建</a> </li></ul></div>';
+                        '<li><a id="changeHistoryRiskSearchDepartment_jy" onclick="changeHistoryRiskSearchDepartment(\'changeHistoryRiskSearchDepartment_jy\', \'20110617035111034585\')">教育</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDepartment_zj" onclick="changeHistoryRiskSearchDepartment(\'changeHistoryRiskSearchDepartment_zj\', \'20110617094847011000\')">住建</a> </li></ul></div>';
                         
                     } 
                         
@@ -150,11 +184,11 @@
                         $("#historyRiskSearchDepartmentBtnListDiv").empty();
                         $("#historyRiskSearchDepartmentBtnListDiv").append(tc);
                         $("#historyRiskSearchDepartmentBtnListDiv div").navbar();
-                        if(department == "住建")
+                        if(department == "changeHistoryRiskSearchDepartment_zj")
                         {
                             $("#changeHistoryRiskSearchDepartment_zj").addClass("ui-btn-active");
                         }
-                        else if(department == "教育")
+                        else if(department == "changeHistoryRiskSearchDepartment_jy")
                         {
                             $("#changeHistoryRiskSearchDepartment_jy").addClass("ui-btn-active");
                         }
@@ -169,22 +203,23 @@
                 {
                     historyRiskDepAreaUUID = uuid;
                     var tc = "";
-                    if(district == "保税")
+                    if(district == "changeHistoryRiskSearchDistrict_bs")
                     {
-                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_hq" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'横琴\', \'20110618110044034424\')">横琴</a></li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\', \'20110618110244004188\')">保税</a></li>' +
+                        tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_hq" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'changeHistoryRiskSearchDistrict_hq\', \'20110618110044034424\')">横琴</a></li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'changeHistoryRiskSearchDistrict_bs\', \'20110618110244004188\')">保税</a></li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_ws" onclick="changeHistoryRiskSearchDistrict(\'万山\',\'20110618110200043394\')">万山</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_gx" onclick="changeHistoryRiskSearchDistrict(\'高新\',\'20110618110008045632\')">高新</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_gl" onclick="changeHistoryRiskSearchDistrict(\'高栏\',\'20110618110125003109\')">高栏</a> </li></ul></div>';
                         
                     }
-                    else if(district == "横琴")
+                    else if(district == "changeHistoryRiskSearchDistrict_hq")
                     {
+                        
                         tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_xz" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'香洲\',\'20110617043042091731\')">香洲</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict(\'斗门\',\'20110618105828062662\')">斗门</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict(\'金湾\',\'20110618105913076778\')">金湾</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict(\'横琴\',\'20110618110044034424\')">横琴</a> </li>' +
-                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'保税\',\'20110618110244004188\')">保税</a> </li></ul></div>';
+                        '<li><a id="changeHistoryRiskSearchDistrict_hq" onclick="changeHistoryRiskSearchDistrict(\'changeHistoryRiskSearchDistrict_hq\',\'20110618110044034424\')">横琴</a> </li>' +
+                        '<li><a id="changeHistoryRiskSearchDistrict_bs" onclick="changeHistoryRiskSearchDistrict(\'changeHistoryRiskSearchDistrict_bs\',\'20110618110244004188\')">保税</a> </li></ul></div>';
                         
                     } 
                         
@@ -193,11 +228,11 @@
                         $("#historyRiskSearchDistrictBtnListDiv").empty();
                         $("#historyRiskSearchDistrictBtnListDiv").append(tc);
                         $("#historyRiskSearchDistrictBtnListDiv div").navbar();
-                        if(district == "保税")
+                        if(district == "changeHistoryRiskSearchDistrict_bs")
                         {
                             $("#changeHistoryRiskSearchDistrict_bs").addClass("ui-btn-active");
                         }
-                        else if(district == "横琴")
+                        else if(district == "changeHistoryRiskSearchDistrict_hq")
                         {
                             $("#changeHistoryRiskSearchDistrict_hq").addClass("ui-btn-active");
                         }
@@ -234,7 +269,7 @@
                             type: "Post",
                             data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, years:fourPercentages_year, unid:historyRiskDepAreaUUID},
                             dataType:"json",
-                            url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList_jqm.do"
+                            url:"http://" + domain +  "/control/Efficiency/queryEfficiencyList_jqm.do"
                      }).done(function (data) {
                         if(data[1].length > 0)    // 如果查询到数据
                         {
@@ -339,7 +374,7 @@
                     });
                 }
                 
-                getHistoryRiskSearchData();    // 进入页面时初始化获取查询数据
+                //getHistoryRiskSearchData();    // 进入页面时初始化获取查询数据
                 
                 // 改变区域选择
                 function changeHistoryRiskSearchDetailArea()
@@ -347,7 +382,7 @@
                     fourPercentages_area = $("#historyRiskSearchDetail_area").val();
                     showHideHistoryRiskSearchDetailTabBar();
                     changeHistoryRiskSearchDetailTitle();
-                    getHistoryRiskSearchData();
+                    //getHistoryRiskSearchData();
                 }
                 
                 // 改变年份选择

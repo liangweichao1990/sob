@@ -37,7 +37,7 @@
                             type: "Post",
                             data:{type:"all",mobileRqs:"jqm",area:fourPercentages_area, quarter:fourPercentages_season, years:fourPercentages_year, unid:historyRiskDepAreaUUID},
                             dataType:"json",
-                            url:"http://192.168.0.119:8080/SOB/control/Efficiency/queryEfficiencyList_jqm.do"
+                            url:"http://" + domain + "/control/Efficiency/queryEfficiencyList_jqm.do"
                      }).done(function (data) {
                         if(data[1].length > 0)    // 如果查询到数据
                         {
