@@ -16,9 +16,9 @@
     <body> 
         
         <!-- 历史隐患查询详情页面 -->
-        <div id="historyRiskSearchDetailView" data-theme="a" data-role="page" data-transition="slide">
+        <div id="historyRiskSearchDetailView" data-theme="b" data-role="page" data-transition="slide">
             
-            <header data-role="header" id="historyRiskSearchDetailViewHeader"  data-theme="a" data-position="fixed" data-tap-toggle="false">
+            <header data-role="header" id="historyRiskSearchDetailViewHeader" data-theme="b" data-position="fixed" data-tap-toggle="false">
                 <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
                 <h1>四个百分率</h1> 
                 <div data-role="navbar">  
@@ -78,7 +78,7 @@
             <div data-role="none">
                 
                 <!-- 内容标题 -->
-                <div id="historyRiskSearchDetail_title" style="text-align:center">
+                <div id="historyRiskSearchDetail_title" style="text-align:center;">
                     <div style="color:red" id="historyRiskSearchDetail_st_title">全市2014年第1季度</div>
                 </div>
                 
@@ -95,21 +95,61 @@
                 var districtUNIDArr = ["20110617043042091731,changeHistoryRiskSearchDistrict_xz","20110618105828062662,changeHistoryRiskSearchDistrict_dm","20110618105913076778,changeHistoryRiskSearchDistrict_jw","20110618110044034424,changeHistoryRiskSearchDistrict_hq","20110618110244004188,changeHistoryRiskSearchDistrict_bs","20110618110200043394,changeHistoryRiskSearchDistrict_ws","20110618110008045632,changeHistoryRiskSearchDistrict_gx","20110618110125003109,changeHistoryRiskSearchDistrict_gl"];
                 var departmentUNIDArr = ["20110617033432025784,changeHistoryRiskSearchDepartment_xf","20110617095527007844,changeHistoryRiskSearchDepartment_aj","20110617095113019302,changeHistoryRiskSearchDepartment_jt","20110617035111034585,changeHistoryRiskSearchDepartment_jy","20110617094847011000,changeHistoryRiskSearchDepartment_zj","20110617095242063991,changeHistoryRiskSearchDepartment_ws","20110617100027086827,changeHistoryRiskSearchDepartment_gk","20110617095456003608,changeHistoryRiskSearchDepartment_yl"];
                 
+                // 各区或重点部门tab向左划动的事件处理
                 $("#historyRiskSearchDetailView").on("swipeleft",function(){
+                
+                    // 各区的tab处理
                     for(var i = 0; i < districtUNIDArr.length; i++)
                     {
                         var tUNID = districtUNIDArr[i].split(",")[0];    // 当前遍历的UNID
                         
                         if(tUNID == historyRiskDepAreaUUID)
                         {
-                            if(i < districtUNIDArr.length - 1)
+                            if(i < districtUNIDArr.length - 1)    // 如果当前用户所处的tab选项不是最后一个
                             {
-                                var tNextUNID = districtUNIDArr[i  + 1].split(",")[0];     // 用户划动到的UNID
-                                var tNextAID = districtUNIDArr[i + 1].split(",")[1];          // 用户划动到的A标签ID
-                                alert(tNextAID);
-                                historyRiskDepAreaUUID = tNextUNID;
-                                getHistoryRiskSearchData();
+                                var tNextUNID = districtUNIDArr[i + 1].split(",")[0];     // 用户划动到的UNID
+                                var tNextAID = districtUNIDArr[i + 1].split(",")[1];      // 用户划动到的A标签ID
+                                if(tNextAID == "changeHistoryRiskSearchDistrict_bs")      // 如果用户处于第一行倒数第一个tab
+                                {
+                                    changeHistoryRiskSearchDistrict(tNextAID, tNextUNID);// 把第二行的tab显示出来再读取数据
+                                }
+                                else    // 直接读取数据
+                                {
+                                    historyRiskDepAreaUUID = tNextUNID;
+                                    getHistoryRiskSearchData();
+                                }
+                
+                                // 更改tab被选中的样式
                                 $("#historyRiskSearchDistrictBtnListDiv div ul li a").removeClass("ui-btn-active");
+                                $("#" + tNextAID).addClass("ui-btn-active");
+                                break;
+                            }
+                        }
+                    }
+                
+                    // 重点部门tab处理
+                    for(var i = 0; i < departmentUNIDArr.length; i++)
+                    {
+                        var tUNID = departmentUNIDArr[i].split(",")[0];    // 当前遍历的UNID
+                        
+                        if(tUNID == historyRiskDepAreaUUID)
+                        {
+                            if(i < departmentUNIDArr.length - 1)    // 如果当前用户所处的tab选项不是最后一个
+                            {
+                                var tNextUNID = departmentUNIDArr[i + 1].split(",")[0];     // 用户划动到的UNID
+                                var tNextAID = departmentUNIDArr[i + 1].split(",")[1];      // 用户划动到的A标签ID
+                                if(tNextAID == "changeHistoryRiskSearchDepartment_zj")      // 如果用户处于第一行倒数第一个tab
+                                {
+                                    changeHistoryRiskSearchDepartment(tNextAID, tNextUNID);// 把第二行的tab显示出来再读取数据
+                                }
+                                else    // 直接读取数据
+                                {
+                                    historyRiskDepAreaUUID = tNextUNID;
+                                    getHistoryRiskSearchData();
+                                }
+                
+                                // 更改tab被选中的样式
+                                $("#historyRiskSearchDepartmentBtnListDiv div ul li a").removeClass("ui-btn-active");
                                 $("#" + tNextAID).addClass("ui-btn-active");
                                 break;
                             }
@@ -118,8 +158,65 @@
                 
                 });
                 
+                // 各区或重点部门tab向右划动的事件处理
                 $("#historyRiskSearchDetailView").on("swiperight",function(){
-                    
+                    // 各区tab处理
+                    for(var i = 0; i < districtUNIDArr.length; i++)
+                    {
+                        var tUNID = districtUNIDArr[i].split(",")[0];    // 当前遍历的UNID
+                        
+                        if(tUNID == historyRiskDepAreaUUID)
+                        {
+                            if(i > 0)
+                            {
+                                var tPreUNID = districtUNIDArr[i - 1].split(",")[0];     // 用户划动到的UNID
+                                var tPreAID = districtUNIDArr[i - 1].split(",")[1];      // 用户划动到的A标签ID
+                                if(tPreAID == "changeHistoryRiskSearchDistrict_hq")      // 如果用户划动第二行的第一个
+                                {
+                                    changeHistoryRiskSearchDistrict(tPreAID, tPreUNID);  // 则把隐藏的上一行显示出来,再取数据
+                                }
+                                else    // 直接取数据
+                                {
+                                    historyRiskDepAreaUUID = tPreUNID;
+                                    getHistoryRiskSearchData();
+                                }
+                
+                                // 更改tab被选中的样式
+                                $("#historyRiskSearchDistrictBtnListDiv div ul li a").removeClass("ui-btn-active");
+                                $("#" + tPreAID).addClass("ui-btn-active");
+                                break;
+                            }
+                        }
+                    }
+                
+                    // 重点部门tab处理
+                    for(var i = 0; i < departmentUNIDArr.length; i++)
+                    {
+                        var tUNID = departmentUNIDArr[i].split(",")[0];    // 当前遍历的UNID
+                        
+                        if(tUNID == historyRiskDepAreaUUID)
+                        {
+                            if(i > 0)
+                            {
+                                var tPreUNID = departmentUNIDArr[i - 1].split(",")[0];     // 用户划动到的UNID
+                                var tPreAID = departmentUNIDArr[i - 1].split(",")[1];      // 用户划动到的A标签ID
+                                if(tPreAID == "changeHistoryRiskSearchDepartment_jy")      // 如果用户划动第二行的第一个
+                                {
+                                    changeHistoryRiskSearchDepartment(tPreAID, tPreUNID);  // 则把隐藏的上一行显示出来,再取数据
+                                }
+                                else    // 直接取数据
+                                {
+                                    historyRiskDepAreaUUID = tPreUNID;
+                                    getHistoryRiskSearchData();
+                                }
+                                
+                                // 更改tab被选中的样式
+                                $("#historyRiskSearchDepartmentBtnListDiv div ul li a").removeClass("ui-btn-active");
+                                $("#" + tPreAID).addClass("ui-btn-active");
+                                break;
+                            }
+                        }
+                    }
                 
                 });
 
@@ -214,7 +311,6 @@
                     }
                     else if(district == "changeHistoryRiskSearchDistrict_hq")
                     {
-                        
                         tc = '<div data-role="navbar" id="historyRiskSearchDistrictBtnList"><ul><li><a id="changeHistoryRiskSearchDistrict_xz" data-role="button" onclick="changeHistoryRiskSearchDistrict(\'香洲\',\'20110617043042091731\')">香洲</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_dm" onclick="changeHistoryRiskSearchDistrict(\'斗门\',\'20110618105828062662\')">斗门</a> </li>' +
                         '<li><a id="changeHistoryRiskSearchDistrict_jw" onclick="changeHistoryRiskSearchDistrict(\'金湾\',\'20110618105913076778\')">金湾</a> </li>' +
@@ -382,7 +478,7 @@
                     fourPercentages_area = $("#historyRiskSearchDetail_area").val();
                     showHideHistoryRiskSearchDetailTabBar();
                     changeHistoryRiskSearchDetailTitle();
-                    //getHistoryRiskSearchData();
+                    
                 }
                 
                 // 改变年份选择

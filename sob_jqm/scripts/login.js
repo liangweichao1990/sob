@@ -5,7 +5,7 @@
     版本：1.0
 *******************/
 
-$.mobile.selectmenu.prototype.options.nativeMenu = false;
+//$.mobile.selectmenu.prototype.options.nativeMenu = false;
 
 // 登录按钮动态样式
 function loginonMouseOver()
