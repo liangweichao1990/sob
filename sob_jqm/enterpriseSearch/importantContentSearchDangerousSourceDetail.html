@@ -1,0 +1,100 @@
+<!-- 
+    页面：重点内容查询_重大危险源详细页面
+    作者：梁伟超
+    日期：2014-03-03
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="importantContentSearchDangerousSourceDetailView" data-theme="b" data-role="page" data-tap-toggle="false">
+            
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>企业查询</h1> 
+            </div>
+            
+            <div data-role="none">
+                
+                <!-- 统计数据Tab页面 -->
+                <div id="importantContentSearchDangerousSourceDetailStaticsDataDiv">
+                    统计数据
+                </div>
+                
+                <!-- 详细信息tab页面 -->
+                <div id="importantContentSearchDangerousSourceDetailDetailInfomationDiv">
+                    详细信息
+                </div>
+                
+            </div>
+            
+            <div data-role="footer" data-position="fixed" id="importContentSearchDangerousSourceDetailFooter">
+                <div data-role="navbar"> 
+                    <ul id="importantContentSearchDangerousSourceDetailFooterTabBtns"> 
+                        <li><a data-role="button" data-corners="false" class="ui-btn-active" id="importantContentSearchDangerousSourceDetailFooterTabBtns_staticsData" href="javascript:changeImportantContentSearchDangerousSourceDetailTab('统计数据')">统计数据</a></li>
+                        <li><a data-role="button" data-corners="false" id="importantContentSearchDangerousSourceDetailFooterTabBtns_deailInfo" href="javascript:changeImportantContentSearchDangerousSourceDetailTab('详细信息')">详细信息</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <script>
+                
+                // 初始化tab选项卡按钮变量
+                if(importantContentSearchDangerousSourceDetailSwitchBtn == null)
+                {
+                    var importantContentSearchDangerousSourceDetailSwitchBtn = "统计数据";
+                }
+                
+                // 改变tab选项卡及其下面的页面内容
+                function changeImportantContentSearchDangerousSourceDetail()
+                {
+                    $("#importantContentSearchDangerousSourceDetailFooterTabBtns li a").removeClass("ui-btn-active");
+                    if(importantContentSearchDangerousSourceDetailSwitchBtn == "统计数据")
+                    {
+                        $("#importantContentSearchDangerousSourceDetailStaticsDataDiv").show();
+                        $("#importantContentSearchDangerousSourceDetailDetailInfomationDiv").hide();
+                        $("#importantContentSearchDangerousSourceDetailFooterTabBtns_staticsData").addClass("ui-btn-active");
+                    }
+                    else if(importantContentSearchDangerousSourceDetailSwitchBtn == "详细信息")
+                    {
+                        $("#importantContentSearchDangerousSourceDetailStaticsDataDiv").hide();
+                        $("#importantContentSearchDangerousSourceDetailDetailInfomationDiv").show();
+                        $("#importantContentSearchDangerousSourceDetailFooterTabBtns_deailInfo").addClass("ui-btn-active");
+                    }
+                }
+                
+                changeImportantContentSearchDangerousSourceDetail();
+                
+                // 用户点击tab选项卡上的按钮进行查询页面的切换
+                function changeImportantContentSearchDangerousSourceDetailTab(type)
+                {
+                    importantContentSearchDangerousSourceDetailSwitchBtn = type;
+                    changeImportantContentSearchDangerousSourceDetail(); 
+                }
+                
+                // 查询tab向左划动的事件处理
+                $("#importantContentSearchDangerousSourceDetailView").on("swipeleft",function(){ 
+                    importantContentSearchDangerousSourceDetailSwitchBtn = "详细信息";
+                    changeImportantContentSearchDangerousSourceDetail();
+                });
+                
+                // 查询tab向右划动的事件处理
+                $("#importantContentSearchDangerousSourceDetailView").on("swiperight",function(){
+                    importantContentSearchDangerousSourceDetailSwitchBtn = "统计数据";
+                    changeImportantContentSearchDangerousSourceDetail();
+                });
+                
+            </script> 
+        </div>
+        
+        
+    </body>
+    
+</html>

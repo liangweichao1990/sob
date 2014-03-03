@@ -27,8 +27,8 @@ function loginonMouseOut()
 function login() 
 {
     
-    //jQuery.mobile.changePage("home.html",{changeHash: true,transition:"slide"});
-    var a = $("#userName").val(); 
+    jQuery.mobile.changePage("home.html",{changeHash: true,transition:"slide"});
+    /*var a = $("#userName").val(); 
     var b = $("#passWord").val();
     if (a == "" || a == null) {
         navigator.notification.alert("小伙伴们，用户名不能为空！", function() {}, "登录提示", "点我继续");
@@ -70,7 +70,7 @@ function login()
     }).fail(function () {
         navigator.notification.alert("亲，您登录失败，请检查网络是否开启等故障！", function() {}, "登录提示", "明白");
         return false;
-    });
+    });*/
 }
 
 // 通过id获取对象

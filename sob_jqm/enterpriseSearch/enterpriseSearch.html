@@ -1,0 +1,324 @@
+<!-- 
+    页面：企业查询主页面
+    作者：梁伟超
+    日期：2014-03-03
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchView" data-theme="b" data-role="page" data-tap-toggle="false">
+            
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>企业查询</h1> 
+                <div data-role="navbar"> 
+                    <ul id="enterpriseSearchTabBtns"> 
+                        <li><a data-role="button" data-corners="false" id="enterpriseSearchImportSearchBtn" href="javascript:changeEnterpriseSearchTab('重点内容查询')">重点内容查询</a></li>
+                        <li><a data-role="button" data-corners="false" id="enterpriseSearchEnterpriseSsearchBtn" href="javascript:changeEnterpriseSearchTab('企业查询')">企业查询</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div data-role="none">
+                
+                <!-- 重点内容查询选项页 -->
+                <div id="importContentSearchDiv">
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;">
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchEnterpriseSearchImportContent()">1.重大危险源</a>
+                    </div>
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;">
+                        <div data-role="collapsible">
+                          <h3>2.涉及危险化学品信息</h3>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">全部</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液氨</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液氯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">苯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">甲苯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">二甲苯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">苯乙烯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">丙烯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">汽油</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液化石油气</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液化天然气</a>
+                          <div style="width:100%">
+                              <div><input type="text" /></div>
+                              <div><a data-role="button" href="">查询</a></div>
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;">
+                        <div data-role="collapsible">
+                          <h3>3.从业人员持证情况</h3>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">全部</a>
+                          <div data-role="collapsible">
+                              <h3>主要负责人持证</h3>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">有</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">无</a>
+                          </div>
+                          <div data-role="collapsible">
+                              <h3>安全监管人员持证</h3>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">有</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">无</a>
+                          </div>
+                          <div data-role="collapsible">
+                              <h3>特种人员持证</h3>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">全部</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">电工</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">焊工</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">冷气工</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">其它</a>
+                          </div>
+                        </div>
+                    </div> 
+                    
+                </div>
+                
+                <!-- 企业查询选项页 -->
+                <div id="enterpriseSearchDiv">
+                    
+                    <div id="enterpriseSearchSearchBar" style="width:98%;text-align:center;margin:0 auto;">
+                         <div style="width:69%;float:left;"><input type="search" /></div>
+                         <div style="width:30%;float:right"><a href="" style="height:.8em;line-height:.8em" data-role="button">搜索</a></div>
+                    </div>
+                     
+                     <div style="width:90%;text-align:center;margin:0 auto;clear:both">
+                         <div>管理属地</div>
+                         <div id="epSearchManagePlaceSelectDiv">
+                             <select id="epSearchManagePlaceSelect" onchange="changeEpSearchManagePlaceSelect()">
+                                 <option value="全市">全市</option>
+                                 <option value="横琴新区">横琴新区</option>
+                                 <option value="香洲区">香洲区</option>
+                                 <option value="金湾区">金湾区</option>
+                                 <option value="斗门区">斗门区</option>
+                                 <option value="高栏港区">高栏港区</option>
+                                 <option value="高新区">高新区</option>
+                                 <option value="保税区">保税区</option>
+                                 <option value="万山区">万山区</option>
+                                 <option value="市直属">市直属</option>
+                             </select>
+                         </div>
+                         <div id="epSearchManagePlaceSubSelectDiv" style="display:none">
+                             <select id="epSearchManagePlaceSubSelectDiv">
+                                 <option value="所有">所有</option>
+                                 <option value="区政府">区政府</option>
+                                 <option value="横琴镇">横琴镇</option>
+                             </select>
+                         </div>
+                     </div>
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;clear:both">
+                         <div>属地(位置)</div>
+                         <div id="epSearchManagePlaceAddrSelectDiv">
+                             <select id="epSearchManagePlaceAddrSelect" onchange="changeEpSearchManagePlaceAddrSelect()">
+                                 <option value="全市">全市</option>
+                                 <option value="横琴新区">横琴新区</option>
+                                 <option value="香洲区">香洲区</option>
+                                 <option value="金湾区">金湾区</option>
+                                 <option value="斗门区">斗门区</option>
+                                 <option value="高栏港区">高栏港区</option>
+                                 <option value="高新区">高新区</option>
+                                 <option value="保税区">保税区</option>
+                                 <option value="万山区">万山区</option>
+                                 <option value="市直属">市直属</option>
+                             </select>
+                         </div>
+                        <div id="epSearchManagePlaceAddrSubSelectDiv" style="display:none">
+                             <select id="epSearchManagePlaceAddrSubSelect">
+                                 <option value="所有">所有</option>
+                                 <option value="区政府">区政府</option>
+                                 <option value="横琴镇">横琴镇</option>
+                             </select>
+                         </div>
+                     </div>
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;clear:both">
+                         <div>企业类型</div>
+                         <div id="epSearchEnterpriseTypeSelectDiv">
+                             <select id="epSearchEnterpriseTypeSelect" onchange="changeEpSearchEnterpriseTypeSelect()">
+                                 <option value="全部类型">全部类型</option>
+                                 <option value="工业生产类">工业生产类</option>
+                                 <option value="危险化学品">危险化学品</option>
+                                 <option value="人员聚集类">人员聚集类</option>
+                                 <option value="工程建设类">工程建设类</option>
+                                 <option value="交通运输类">交通运输类</option>
+                                 <option value="学校类">学校类</option>
+                                 <option value="医疗机构类">医疗机构类</option>
+                                 <option value="中小微企业类">中小微企业类</option>
+                             </select>
+                         </div>
+                        <div id="epSearchEnterpriseTypeSubSelectDiv" style="display:none">
+                             <select id="epSearchEnterpriseTypeSubSelect">
+                                 <option value="所有">所有</option>
+                                 <option value="瓶装经营企业">瓶装经营企业</option>
+                                 <option value="化工经营企业">化工经营企业</option>
+                                 <option value="危险化学品生产企业">危险化学品生产企业</option>
+                                 <option value="烟花爆竹">烟花爆竹</option>
+                                 <option value="油库、气库">油库、气库</option>
+                                 <option value="加油站">加油站</option>
+                             </select>
+                        </div>
+                    </div>
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;clear:both">
+                         <div>行业部门</div>
+                         <div id="epSearchDepartmentSelectDiv">
+                             <select id="epSearchDepartmentSelect" onchange="changeEpSearchDepartmentSelect()">
+                                 <option value="全部">全部</option>
+                                 <option value="市教育局">市教育局</option>
+                                 <option value="市交通运输局">市交通运输局</option>
+                                 <option value="市卫生局">市卫生局</option>
+                                 <option value="市市政园林和林业局">市市政园林和林业局</option>
+                                 <option value="市安全生产监督管理局">市安全生产监督管理局</option>
+                                 <option value="市港口管理局">市港口管理局</option>
+                                 <option value="市公安消防局">市公安消防局</option>
+                                 <option value="市住房和城乡规划建设局">市住房和城乡规划建设局</option>
+                             </select>
+                         </div>
+                    </div>
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;clear:both">
+                         <div>企业级别</div>
+                         <div id="epSearchEnterpriseLevelSelectDiv">
+                             <select id="epSearchEnterpriseLevelSelect" onchange="changeEpSearchEnterpriseLevelSelect()">
+                                 <option value="全部">全部</option>
+                                 <option value="A">A</option>
+                                 <option value="B">B</option>
+                                 <option value="C">C</option>
+                                 <option value="D">D</option>
+                                 <option value="未评级">未评级</option>
+                             </select>
+                         </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <script>
+                
+                // 初始化tab选项卡按钮变量
+                if(enterpriseSearchSwitchBtn == null)
+                {
+                    var enterpriseSearchSwitchBtn = "重点内容查询";
+                }
+                
+                // 改变tab选项卡及其下面的页面内容
+                function changeEnterpriseSearch()
+                {
+                    $("#enterpriseSearchTabBtns li a").removeClass("ui-btn-active");
+                    if(enterpriseSearchSwitchBtn == "重点内容查询")
+                    {
+                        $("#importContentSearchDiv").show();
+                        $("#enterpriseSearchDiv").hide();
+                        $("#enterpriseSearchImportSearchBtn").addClass("ui-btn-active");
+                        $("#enterpriseSearchSearchBar").hide();
+                    }
+                    else if(enterpriseSearchSwitchBtn == "企业查询")
+                    {
+                        $("#importContentSearchDiv").hide();
+                        $("#enterpriseSearchDiv").show();
+                        $("#enterpriseSearchEnterpriseSsearchBtn").addClass("ui-btn-active");
+                        $("#enterpriseSearchSearchBar").show();
+                    }
+                }
+                
+                changeEnterpriseSearch();
+                
+                // 用户点击tab选项卡上的按钮进行查询页面的切换
+                function changeEnterpriseSearchTab(type)
+                {
+                    enterpriseSearchSwitchBtn = type;
+                    changeEnterpriseSearch(); 
+                }
+                
+                // 查询tab向左划动的事件处理
+                $("#enterpriseSearchView").on("swipeleft",function(){ 
+                    enterpriseSearchSwitchBtn = "企业查询";
+                    changeEnterpriseSearch();
+                });
+                
+                // 查询tab向右划动的事件处理
+                $("#enterpriseSearchView").on("swiperight",function(){
+                    enterpriseSearchSwitchBtn = "重点内容查询";
+                    changeEnterpriseSearch();
+                });
+                
+                // 改变管理属地选择
+                function changeEpSearchManagePlaceSelect()
+                {
+                    if($("#epSearchManagePlaceSelect").val() != "全市")
+                    {
+                        $("#epSearchManagePlaceSubSelectDiv").css("display", "block");
+                    }
+                    else
+                    {
+                        $("#epSearchManagePlaceSubSelectDiv").css("display", "none");
+                    }
+                }
+                
+                // 改变属地位置选择
+                function changeEpSearchManagePlaceAddrSelect()
+                {
+                    if($("#epSearchManagePlaceAddrSelect").val() != "全市")
+                    {
+                        $("#epSearchManagePlaceAddrSubSelectDiv").css("display", "block");
+                    }
+                    else
+                    {
+                        $("#epSearchManagePlaceAddrSubSelectDiv").css("display", "none");
+                    }
+                }
+                
+                // 改变企业类型选择
+                function changeEpSearchEnterpriseTypeSelect()
+                {
+                    if($("#epSearchEnterpriseTypeSelect").val() != "全部类型")
+                    {
+                        $("#epSearchEnterpriseTypeSubSelectDiv").css("display", "block");
+                    }
+                    else
+                    {
+                        $("#epSearchEnterpriseTypeSubSelectDiv").css("display", "none");
+                    }
+                }
+                
+                // 改变行业部门选择
+                function changeEpSearchDepartmentSelect()
+                {
+                    
+                }
+                
+                // 改变企业级别查询
+                function changeEpSearchEnterpriseLevelSelect()
+                {
+                    
+                }
+                
+                // 重点内容查询方法
+                function searchEnterpriseSearchImportContent()
+                {
+                    $.mobile.changePage("./importantContentSearchDangerousSourceDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 企业查询的查询方法
+                function searchEnterpriseSearchEnterpriseSearch()
+                {
+                    
+                }
+                
+            </script>
+        </div>
+    </body>
+    
+</html>
