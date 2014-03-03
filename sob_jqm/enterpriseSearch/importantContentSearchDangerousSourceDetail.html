@@ -19,6 +19,45 @@
             <div data-role="header" data-theme="b" data-position="fixed">
                 <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
                 <h1>企业查询</h1> 
+                
+                <!-- 区域tab按钮 -->
+                <div id="importantContentSearchDangerousSourceAreaBtns1">
+                    <div data-role="navbar" id="">  
+                        <ul>  
+                            <li><a id="importantContentSearchDangerousSourceAreaQS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'全市')">全市</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaXZ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'香洲')">香洲</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaDM" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'斗门')">斗门</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaJW" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'金湾')">金湾</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'横琴')">横琴</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 区域tab按钮 -->
+                <div id="importantContentSearchDangerousSourceAreaBtns2" style="display:none">
+                    <div data-role="navbar" id="">  
+                        <ul>  
+                            <li><a id="importantContentSearchDangerousSourceAreaJW" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'金湾')">金湾</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'横琴')">横琴</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaBS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'保税')">保税</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaWS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'万山')">万山</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaGX" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'高新')">高新</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 区域tab按钮 -->
+                <div id="importantContentSearchDangerousSourceAreaBtns3" style="display:none">
+                    <div data-role="navbar" id="">  
+                        <ul>  
+                            <li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'横琴')">横琴</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaBS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'保税')">保税</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaWS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'万山')">万山</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaGX" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'高新')">高新</a></li>
+                            <li><a id="importantContentSearchDangerousSourceAreaGL" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'高栏')">高栏</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
             <div data-role="none">
@@ -90,6 +129,33 @@
                     importantContentSearchDangerousSourceDetailSwitchBtn = "统计数据";
                     changeImportantContentSearchDangerousSourceDetail();
                 });
+                
+                // 用户改变区域的选择
+                function changeImportantContentSearchDangerousSourceAreaBtn(id, area)
+                {
+                    $("#importantContentSearchDangerousSourceAreaBtns1 div ul li a, importantContentSearchDangerousSourceAreaBtns2 div ul li a, importantContentSearchDangerousSourceAreaBtns3 div ul li a").removeClass("ui-btn-active");
+                    
+                    if(area == "横琴")
+                    {
+                        $("#importantContentSearchDangerousSourceAreaBtns2").show();
+                        $("#importantContentSearchDangerousSourceAreaBtns1").hide();
+                        $("#importantContentSearchDangerousSourceAreaBtns3").hide();
+                    }
+                    else if(area == "金湾")
+                    {
+                        $("#importantContentSearchDangerousSourceAreaBtns1").show();
+                        $("#importantContentSearchDangerousSourceAreaBtns2").hide();
+                        $("#importantContentSearchDangerousSourceAreaBtns3").hide();
+                    }
+                    else if(area == "高新")
+                    {
+                        $("#importantContentSearchDangerousSourceAreaBtns1").hide();
+                        $("#importantContentSearchDangerousSourceAreaBtns2").hide();
+                        $("#importantContentSearchDangerousSourceAreaBtns3").show();
+                    }
+                    $("#" + id).addClass("ui-btn-active");
+                    
+                }
                 
             </script> 
         </div>
