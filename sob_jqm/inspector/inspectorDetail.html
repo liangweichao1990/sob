@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div data-role="page" id="inspector_detail" data-title="督查督办详细信息">
+        <script>
+            var getinspectorType=["领导批示","警示督办函","会议纪要"];
+            function open_inspectorDetaildownloadPopup(docurl,pathFile){
+                downloadFile(docurl,pathFile);
+            }
+            $("#inspector_detail").on('pagebeforeshow',function (e) {
+                e.preventDefault();
+                    $.ajax({
+                        type: "Post",
+                        data:{mobileRqs:'jqm',id:inspector_detailId},
+                        dataType:"json",
+                        url:"http://"+domain+"/inspector/Inspector/queryInspectorView.do"
+                    }).done(function (data) {
+                        var datatem=data[0];
+                        $("#inspector_detail_title,#inspector_detail_type,#inspector_detail_unit,#inspector_detail_dispose,#inspector_detail_performance,#inspector_detail_createtime,#inspector_detail_content").html("");
+                        if($.isEmptyObject(datatem)){
+                            $().toastmessage('showToast', {text:'该数据可能已经在被删除!',sticky:false,position:'middle-center',type:'info',closeText:'',close:function(){}});
+                            return false;
+                        }
+                        $("#inspector_detail_title").html(datatem.name);
+                        $("#inspector_detail_type").html(getinspectorType[Number(datatem.type)]);
+                        $("#inspector_detail_unit").html(datatem.accountabilityUnit);
+                        if(datatem.imeLimit!==""||datatem.imeLimit!==null){
+                            $("#inspector_detail_dispose").html(ConvertJSONDateToJSDateObject(datatem.timeLimit).substr(0,10));
+                        }
+                        $("#inspector_detail_performance").html((Number(datatem.isComplete)===0?"未完成":"完成"));
+                        $("#inspector_detail_createtime").html(ConvertJSONDateToJSDateObject(datatem.createDate).substr(0,10));
+                        $("#inspector_detail_content").html(datatem.content);
+                        if($.isEmptyObject(datatem.fj)===false){
+                            $("a[href='#inspector_Detail_adjunct']").removeClass("ui-disabled");
+                            $("#inspector_Detail_adjunct li[data-role='collapsible'] ul[data-role='listview']").empty();
+                            var detail_fj=datatem.fj.split(";");
+                            $.each(detail_fj,function(i,d_fj){
+                                var detail_split_a=d_fj.split(",");
+                                 if(detail_split_a.length>1){
+                                    var tempdocurl="http://"+downloadDomain+detail_split_a[3];
+                                    var tempfileurl=detail_split_a[1];
+                                    var tempopenfile="open_inspectorDetaildownloadPopup('"+tempdocurl+"','"+tempfileurl+"');";
+                                   $("#inspector_Detail_adjunct li[data-role='collapsible'] ul[data-role='listview']").append('<li><a href="#" onclick="'+tempopenfile+'">'+tempfileurl+'</a></li>');
+                                   $("#inspector_Detail_adjunct [data-role='listview']").listview('refresh')
+                                }
+                            });
+                        }
+                        return false;
+                    }).fail(function () {
+                        navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                        return false;
+                    });
+                    
+            });
+            
+            $("#inspector_Detail_adjunct").on({
+                popupbeforeposition: function() {
+                    //防止弹出窗口点击其他位置自动消失
+                    $('.ui-popup-screen').off();
+                    var maxHeight = $( window ).height() - 30 + "px";
+                    $( "#news_Detail_adjunct" ).css( "max-height", maxHeight );
+                }
+            });
+        </script>
+            <div data-role="header"  data-theme="a" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>最新资讯详细信息</h1>
+                <a href="#inspector_Detail_adjunct" data-rel="popup" class="ui-disabled" data-icon="grid">附件</a>
+            </div>
+
+            <div data-role="content">
+                <div>
+                    <div>
+                        <p style="margin-top: 0;">
+                            <strong id="inspector_detail_title"></strong>
+                        </p>
+                    </div>
+                    <div>
+                        <div>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：<font id="inspector_detail_type"></font></div>
+            			<div>责任单位：<font id="inspector_detail_unit"></font></div>
+            			<div>办理时限：<font id="inspector_detail_dispose"></font></div>
+            			<div>完成情况：<font id="inspector_detail_performance"></font></div>
+            			<div>创建时间：<font id="inspector_detail_createtime"></font></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <p id="inspector_detail_content"></p>
+                </div>
+            </div>
+            <!-- 附件下载窗口 -->
+            <div data-role="popup" id="inspector_Detail_adjunct" data-overlay-theme="a" data-position-to="window">
+                <div data-role="header" class="ui-corner-top">
+                    <h1>附件下载</h1>
+                </div>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+                <div data-role="listview" data-inset="true" data-shadow="false">
+                    <li data-role="collapsible" data-iconpos="left" data-inset="false">
+                        <h2>点击展开附件列表</h2>
+                        <ul data-role="listview" data-theme="a">
+                        </ul>
+                    </li>
+                </div>
+                <a href="#" data-role="button" data-corners="false" style="margin: 0;" data-rel="back">取消</a>
+            </div>
+            
+            <!--<div data-role="popup" id="popupMenu" data-position-to="window" data-theme="b">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                    <li><a href="#">下载</a></li>
+                </ul>
+            </div>-->
+            
+        </div>
+    </body>
+</html>

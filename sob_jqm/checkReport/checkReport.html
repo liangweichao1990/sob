@@ -1,27 +1,38 @@
 <!-- 首页搜索 -->
-<div id="checkReportView" data-role="page">
+<div id="checkReportView" data-role="page" data-theme="b">
     
     <script>
         $("#checkReportView").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
+        
+        $("a[name='checkReportView_search']").bind("click",function(){
+            
+            //alert("查询");
+            //alert($("input[name='checkReportView_type']:checked").val());
+            //alert($("input[name='checkReportView_name']").val());
+            
+            
+             $.mobile.changePage("../checkReport/cr_all.html?name=" + $("input[name='checkReportView_name']").val() + "&type=" + $("input[name='checkReportView_type']:checked").val(),{changeHash:true,transition:"slide"});
+            
+        });
     </script>
 
     <div data-role="content">
         <!-- 企业查询 -->
         <legend>企业名称：</legend>
-        <input type="text" name="name" id="name" placeholder="企业名称..."/>
+        <input type="text" name="checkReportView_name" id="checkReportView_name" placeholder="企业名称..."/>
 
         <fieldset data-role="controlgroup" data-type="horizontal">
             <legend>检查情况：</legend>
-            <label for="all">全部</label>
-            <input type="radio" name="type" id="all" value="all" checked>
-            <label for="check">已检查</label>
-            <input type="radio" name="type" id="check" value="check">
-            <label for="uncheck">未检查</label>
-            <input type="radio" name="type" id="uncheck" value="uncheck">
+            <label for="checkReportView_type_all">全部</label>
+            <input type="radio" name="checkReportView_type" id="checkReportView_type_all" value="0" checked>
+            <label for="checkReportView_type_check">已检查</label>
+            <input type="radio" name="checkReportView_type" id="checkReportView_type_check" value="1">
+            <label for="checkReportView_type_uncheck">未检查</label>
+            <input type="radio" name="checkReportView_type" id="checkReportView_type_uncheck" value="2">
         </fieldset>
         
         <div style="width:100%;margin:0 auto;margin-top:1%;text-align:center;padding-bottom:.5em">
-            <div><a data-role="button" onclick="" href="#" style="text-align:center">查询</a></div>
+            <div><a data-role="button" name="checkReportView_search" href="#" style="text-align:center">查询</a></div>
         </div>
     </div>
 </div>

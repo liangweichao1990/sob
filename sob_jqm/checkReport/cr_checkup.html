@@ -1,44 +1,150 @@
 <!-- 所有 -->
-<div id="cr_checkup" data-role="page" data-transition="slide" >
-    <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
-        <a href="#cr_all" data-rel="back" data-role="button" data-icon="arrow-l">返回</a>
+<div id="cr_checkup" data-role="page" data-transition="slide" data-theme="b">
+    
+    <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+        <a href="#" data-rel="back" data-role="button" data-icon="arrow-l">返回</a>
         <h1>安全检查上报</h1>
-        <a href="#" data-role="button" onclick="" data-icon="check">提交</a>
+        <a href="#" data-role="button" data-icon="check" name="cr_checkup_submit">提交</a>
     </div>
+    
+    <script>
+    
+    //取出上个页面传过来的值，只绑定一次
+	$(document).one("pagebeforechange", beforechange_cr_checkup);
+	
+
+    function beforechange_cr_checkup(e, data) {
+        //测定是否生成页面
+		if (typeof data.toPage != "string") {
+			var url = $.mobile.path.parseUrl(e.target.baseURI);
+			var re = 'cr_checkup.html';            //测定是否是当前html
+			if (url.href.search(re) != -1) {
+				var data = cr_getUrlParam(url.href);
+ 
+                $("#cr_checkup_company_id").val(decodeURIComponent(data[0]));
+                $("#cr_checkup_company").val(decodeURIComponent(data[1]));
+			}
+		}
+	}
+        
+    $("input[name='cr_checkup_punish']").bind("click",function(){
+            if($(this).val() == "1"){
+                $("#cr_checkup_div1_child").show();
+                $("#cr_checkup_div2").hide();
+            }else{
+                $("#cr_checkup_div1_child").hide();
+                $("#cr_checkup_div2").show();
+            }
+    });
+        
+    $("input[name='cr_checkup_trouble']").bind("click",function(){
+            if($(this).val() == "1"){
+                $("#cr_checkup_div2_child").show();
+                $("#cr_checkup_div1").hide();
+            }else{
+                $("#cr_checkup_div2_child").hide();
+                $("#cr_checkup_div1").show();
+            }
+    });
+    
+    
+    $("a[name='cr_checkup_submit']").bind("click",function(){
+            var tempdata = "({";
+            tempdata += '"id":"' + $("input[name='cr_checkup_company_id']").val() + '",';              //企业id
+            tempdata += '"jcry":"' + $("input[name='cr_checkup_name']").val()+ '",';                   //企业名称
+            tempdata += '"checktime":"' + $("input[name='cr_checkup_time']").val()+ '",';              //检查时间
+            tempdata += '"ispunish":"' + $("input[name='cr_checkup_punish']:checked").val()+ '",';             //是否处罚
+            tempdata += '"punishName":"' + $("input[name='cr_checkup_why']").val()+ '",';              //查处依据
+            tempdata += '"fine":"' + $("input[name='cr_checkup_money']").val()+ '",';                  //处罚金额
+            tempdata += '"isdanger":"' + $("input[name='cr_checkup_trouble']:checked").val()+ '",';            //是否存在隐患
+            tempdata += '"dangernub":"' + $("input[name='cr_checkup_num']").val()+ '",';               //隐患数
+            tempdata += '"dangercz":"' + $("input[name='cr_checkup_chnum']").val()+ '",';              //已整改的隐患
+            tempdata += '"jytext":"' + $("input[name='cr_checkup_remark']").val()+ '",';               //隐患等情况
+            tempdata += '"mobileRqs":"jqm"';                                                           //访问类型
+            tempdata += '})';
+
+            $.ajax({
+                type:"Post",
+                data:eval(tempdata),
+                dataType:"json",
+                url:"http://192.168.0.119:8080/SOB/safety/SafetyCheck/upchecked.do"
+            }).done(function(data) {
+                alert(data);
+                return false;
+           }).fail(function () {
+             navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                return false;
+           });
+            
+    });
+    
+        
+    </script>
  
     <div data-role="content">
         
-        <label for="company">企业名称:</label>
-        <input type="text" name="company" id="company">
+        <input type="hidden" name="cr_checkup_company_id" id="cr_checkup_company_id">
+        
+        <label for="cr_checkup_company">企业名称:</label>
+        <input type="text" name="cr_checkup_company" id="cr_checkup_company" readonly>
 
-        <label for="name">检查人员:</label>
-        <input type="text" name="name" id="name">
+        <label for="cr_checkup_name">检查人员:</label>
+        <input type="text" name="cr_checkup_name" id="cr_checkup_name">
         
-        <label for="time">检查时间:</label>
-        <input type="text" name="time" id="time">
+        <label for="cr_checkup_time">检查时间:</label>
+        <input type="text" name="cr_checkup_time" id="cr_checkup_time">
+        
+        <div id="cr_checkup_div1">
+            
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>是否行政处罚：</legend>
+                <label for="cr_checkup_punish_yes">是</label>
+                <input type="radio" name="cr_checkup_punish" id="cr_checkup_punish_yes" value="1">
+                <label for="cr_checkup_punish_no">否</label>
+                <input type="radio" name="cr_checkup_punish" id="cr_checkup_punish_no" value="0" checked>
+            </fieldset>
+            
+            <div id="cr_checkup_div1_child" style="display:none">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <legend>查处依据：</legend>
+                    <label for="cr_checkup_why_other">其他</label>
+                    <input type="radio" name="cr_checkup_why" id="cr_checkup_why_other" value="其他">
+                    <label for="cr_checkup_why_16">安监总局16号令</label>
+                    <input type="radio" name="cr_checkup_why" id="cr_checkup_why_16" value="安监总局16号令" checked>
+                </fieldset>
+                
+                <label for="cr_checkup_money">处罚金额:</label>
+                <input type="text" name="cr_checkup_money" id="cr_checkup_money">
+            </div>
+            
+        </div>
+        
+        <div id="cr_checkup_div2">
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <legend>是否存在隐患：</legend>
+                <label for="cr_checkup_trouble_yes">有</label>
+                <input type="radio" name="cr_checkup_trouble" id="cr_checkup_trouble_yes" value="1" >
+                <label for="cr_checkup_trouble_no">无</label>
+                <input type="radio" name="cr_checkup_trouble" id="cr_checkup_trouble_no" value="0" checked>
+            </fieldset>
+            
+            
+            <div id="cr_checkup_div2_child" style="display:none">
+                <label for="cr_checkup_num">隐患数:</label>
+                <input type="text" name="cr_checkup_num" id="cr_checkup_num">
+                
+                <label for="cr_checkup_chnum">已整改的隐患:</label>
+                <input type="text" name="cr_checkup_chnum" id="cr_checkup_chnum">
+            </div>
+         </div>
         
         
-        <fieldset data-role="controlgroup" data-type="horizontal">
-            <legend>是否行政处罚：</legend>
-            <label for="yes">是</label>
-            <input type="radio" name="punish" id="yes" value="yes" checked>
-            <label for="no">否</label>
-            <input type="radio" name="punish" id="no" value="no">
-        </fieldset>
-        
-        
-        <fieldset data-role="controlgroup" data-type="horizontal">
-            <legend>是否存在隐患：</legend>
-            <label for="yes">是</label>
-            <input type="radio" name="trouble" id="yes" value="yes" checked>
-            <label for="no">否</label>
-            <input type="radio" name="trouble" id="no" value="no">
-        </fieldset>
-        
-        
-        <label for="remark">隐患等情况:</label>
-        <input type="text" name="time" id="time">
-        
+    	<label for="cr_checkup_remark">隐患等情况：</label>
+    	<input type="text" name="cr_checkup_remark" id="cr_checkup_remark">
+          
+                
     </div>
+    
+
     
 </div>

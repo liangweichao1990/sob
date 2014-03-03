@@ -27,7 +27,7 @@ function createPagingFooterFooter(page,datajson0,datajson1,dispose){
     $(paging_id).append($(footerHtml));
     disposeFunction=dispose;
     paging_datajson=datajson0;
-    $(paging_id).find("[data-role='header']").trigger('create');
+    //$(paging_id).find("[data-role='header']").trigger('create');
     disposeFunction(paging_datajson,datajson1.page_cur,datajson1.page_dis);
 /*    $(page).on("pagebeforehide", function(e){
         e.preventDefault();

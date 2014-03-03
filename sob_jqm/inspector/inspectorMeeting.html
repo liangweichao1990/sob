@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <!--督查督办 会议纪要-->
+        <div id="inspectorMeeting_View" data-role="page" data-position="fixed" data-title="会议纪要">
+
+            <script>
+                createInspectorNavbar("#inspectorMeeting_View", 2);
+                createInspectorContent("#inspectorMeeting_View",2);
+                createPagingFooterFooter("#inspectorMeeting_View",{type:2},{page_cur:1,page_dis:10},inspectorFunciton);
+                
+                $("#inspectorMeeting_View #inspector_popup_serarch").on("click",function(){
+                    inspectorFunciton({type:2},1,10);
+                    $("#inspectorMeeting_View #inspector_seekPopup").popup("close");
+                    return false;
+                });
+                $("#inspectorMeeting_View").on("swiperight",function(){
+                    openInspectorNavbarPage('../inspector/inspectorCaution.html');
+                });
+            </script>
+            
+            <!--头部导航-->
+            
+            <!-- 最新资讯列表 -->
+            <div data-role="content">
+                
+                <ul style="display:none;">
+                    <li id="inspector_theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="inspector_li_a">
+                            <img dbField="inspector_images" src="images/list_icon.png" class="ui-li-icon">
+                            <div><span dbField="inspector_title">为呃我呃我</span><span  dbField="inspector_time" style="float:right;">2014-02-17</span></div>
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview">
+                    <li id="inspector_theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="inspector_li_a">
+                            <img dbField="inspector_images" src="images/list_icon.png" class="ui-li-icon">
+                            <div><span dbField="inspector_title">为呃我呃我2</span><span  dbField="inspector_time" style="float:right;">2014-02-17</span></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </body>
+</html>

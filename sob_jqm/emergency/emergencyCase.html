@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <!--应急处置 案例-->
+        <div id="emergencyCase_View" data-role="page" data-position="fixed" data-title="案例">
+
+            <script>
+                createEmergencyNavbar("#emergencyCase_View", 3);
+                createEmergencyContent("#emergencyCase_View",3);
+                createPagingFooterFooter("#emergencyCase_View",{type:3},{page_cur:1,page_dis:10},emergencyFunciton);
+                
+                $("#emergencyCase_View #emergency_popup_serarch").on("click",function(){
+                    emergencyFunciton({type:3},1,10);
+                    $("#emergencyCase_View #emergency_seekPopup").popup("close");
+                    return false;
+                });
+                //向右滑-专家库
+                $("#emergencyCase_View").on("swiperight",function(){
+                    openEmergencyNavbarPage('../emergency/emergencyExpert.html');
+                });
+                //向左滑-演练
+                $("#emergencyCase_View").on("swipeleft",function(){
+                    openEmergencyNavbarPage('../emergency/emergencyDrill.html');
+                }); 
+            </script>
+            
+            <!--头部导航-->
+            
+            <!-- 最新资讯列表 -->
+            <div data-role="content">
+                
+                <ul style="display:none;">
+                    <li id="emergency_theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="emergency_li_a">
+                            <img src="images/wendang.png" class="ui-li-icon">
+                            <span dbField="emergency_title">为呃我呃我0</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview">
+                </ul>
+            </div>
+
+        </div>
+
+    </body>
+</html>

@@ -1,32 +1,85 @@
-<!-- 零隐患 -->
-<div id="cr_zerorisk" data-role="page" data-transition="slide" >
+ <!-- 所有 -->
+<div id="cr_zerorisk" data-role="page" data-transition="slide" data-theme="b">
     
+    <!--用脚本加载header-->
     <script>
         $("#cr_zerorisk").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
-        createPagingFooterFooter("#cr_zerorisk",{page_cur:1,page_dis:5,page_count:10});
+        
+        var cr_zerorisk_tempFunciton=function(datajson,page_cur,page_dis){
+             $.ajax({
+                type: "Post",
+                data:{type:datajson.type,mobileRqs:'jqm',queryCurPageNum:page_cur,queryRecNumPerPage:page_dis},
+                dataType:"json",
+                url:"http://" + domain + "/safety/SafetyCheck/queryClassifyList_jqm.do"
+            }).done(function (data) {
+        
+                var datapage=data[0];
+        
+                //改变toptext
+                $("#cr_zerorisk_toptext").val(data[0].cap);
+                
+                //动态加载顶部菜单
+                pagingFooterInit({page_cur:Number(datapage.queryCurPageNum),page_dis:Number(datapage.queryRecNumPerPage),page_count:Number(datapage.queryTotalPageNum)});
+                
+                $(paging_id).find("[data-role='cr_zerorisk_listview']").empty();
+        
+                if($.isEmptyObject(data[1])){
+                    $(paging_id).find("[data-role='cr_zerorisk_listview']").append("<li data-icon='false'><a href='#'>暂无数据</a></li>");
+                    $(paging_id).find("[data-role='cr_zerorisk_listview']").listview("refresh");
+                    return false;
+                }
+
+                $("#cr_zerorisk_table").empty();
+        
+                //临时存放变量
+                var tempStrs = "";
+            
+                tempStrs += '<tr><th>企业名称</th><th>检查情况</th><th>操作</th></tr>';
+     
+                $.each(data[1],function(cr_index,cr_b){
+                    tempStrs += '<tr>';
+                    tempStrs += '<td>' + data[1][cr_index][1] + '</td>';
+                    tempStrs += '<td>' + data[1][cr_index][4] + '</td>';
+                    tempStrs += '<td><a data-role="button" onclick="cr_search_page_on(\'../checkReport/cr_checkup.html?id=' + data[1][cr_index][0] + '&name=' + data[1][cr_index][1] + '\')" data-mini="true" data-transition="slide">录入</a></td>'; 
+                    tempStrs += '</tr>';
+                });
+                
+                $("#cr_zerorisk_table").append(tempStrs).table("refresh");
+                    
+                //$(paging_id).find("[data-role='listview']").listview("refresh");
+                
+                return false;
+            }).fail(function () {
+                navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                return false;
+            });
+        };
+                    
+        createPagingFooterFooter("#cr_zerorisk",{type:"nodanger"},{page_cur:1,page_dis:15},cr_zerorisk_tempFunciton);
     </script>
     
-<style type="text/css">  
-          #customers  
+    <style type="text/css">
+          #cr_zerorisk_table  
           {   
               border-collapse:collapse;
+              width:100%;
           }  
           
-          #customers td, #customers th   
+          #cr_zerorisk_table td, #cr_zerorisk_table th   
           {  
-              font-size:0.8em;  
+              font-size:1.1em;  
               border:0.1em solid #C1C1C1;  
           }  
           
-          #customers th   
+          #cr_zerorisk_table th   
           {  
-              font-size:0.9em;  
+              font-size:1.3em;  
               text-align:left;  
               background-color:#69A4CF;  
               color:#ffffff;  
           }  
           
-          #customers tr.alt td   
+          #cr_zerorisk_table tr.alt td   
           {  
               color:#000000;  
               background-color:#C1C1C1;  
@@ -34,33 +87,14 @@
     </style>  
 
     
-    <div data-role="content">
-        
-       <table id="customers">  
-            <tr>  
-            <th>企业名称</th>  
-            <th>检查情况</th>  
-            <th>操作</th>  
-            </tr>  
-              
-            <tr>  
-            <td>中华人民共和国广东省珠海市香洲区体育中心</td>
-            <td>未检查</td>  
-            <td><a data-role="button" onclick="" href="#" data-mini="true">录入</a></td>  
-            </tr>  
-              
-            <tr class="alt">  
-            <td>中华人民共和国广东省珠海市香洲区体育中心</td>  
-            <td>已检查</td>  
-            <td><a data-role="button" onclick="" href="#" data-mini="true">录入</a></td>  
-            </tr>
-            <tr>  
- 
-  
-        </table>  
+    <div data-role="none" >
+       <input id="cr_zerorisk_toptext" type="text" readonly/>
 
+       <ul data-role="cr_zerorisk_listview">
+       </ul>
+        
+       <table id="cr_zerorisk_table">      
+       </table>
         
     </div>
-    
 </div>
-

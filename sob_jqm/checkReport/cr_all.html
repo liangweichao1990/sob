@@ -1,45 +1,90 @@
  <!-- 所有 -->
-<div id="cr_all" data-role="page" data-transition="slide">
+<div id="cr_all" data-role="page" data-transition="slide" data-theme="b">
     
     <!--用脚本加载header-->
     <script>
         $("#cr_all").prepend(cr_urlLoadContent("../checkReport/cr_header.html"));
         
-        createPagingFooterFooter("#cr_all",{page_cur:1,page_dis:5,page_count:10});
+        var cr_all_name = "";                 //企业名称
+        var cr_all_type = "0";                 //企业名称
         
-        //访问后台动态加载数据
-        $.ajax({
+        //取出上个页面传过来的值，只绑定一次
+    	$(document).one("pagebeforechange", beforechange_cr_all);
+        
+        function beforechange_cr_all(e, data) {
+            //测定是否生成页面
+    		if (typeof data.toPage != "string") {
+    			var url = $.mobile.path.parseUrl(e.target.baseURI);
+    			var re = 'cr_all.html';            //测定是否是当前html
+    			if (url.href.search(re) != -1) {
+    				var data = cr_getUrlParam(url.href);
+                    
+                    if(data != ""){
+                        cr_all_name = decodeURIComponent(data[0]);
+                        cr_all_type = decodeURIComponent(data[1]);
+                    }
+                    
+                    createPagingFooterFooter("#cr_all",{type:"sy"},{page_cur:1,page_dis:15},cr_all_tempFunciton);
+                    
+    			}
+    		}
+    	}
+        
+        var cr_all_tempFunciton=function(datajson,page_cur,page_dis){
+        
+             //alert($.mobile.path.parseUrl(e.target.baseURI));
+             //alert(cr_all_name);
+             $.ajax({
                 type: "Post",
-                data:{type:"sy",mobileRqs:"jqm"},
+                data:{type:datajson.type,mobileRqs:'jqm',name:cr_all_name,jcqk:cr_all_type,queryCurPageNum:page_cur,queryRecNumPerPage:page_dis},
                 dataType:"json",
-                url:"http://192.168.0.119:8080/SOB/safety/SafetyCheck/queryClassifyList_jqm.do"
+                url: "http://" + domain + "/safety/SafetyCheck/queryClassifyList_jqm.do"
             }).done(function (data) {
-            
-            $("#cr_all_table").empty();
         
-            //临时存放变量
-            var tempStrs = "";
-        
-            tempStrs += '<tr><th>企业名称</th><th>检查情况</th><th>操作</th></tr>';
- 
-            $.each(data[1],function(cr_index,cr_b){
-                //alert(data[1][cr_index][1]);
-                //alert(data[1][cr_index][4]);
-                tempStrs += '<tr>';
-                tempStrs += '<td>' + data[1][cr_index][1] + '</td>';
-                tempStrs += '<td>' + data[1][cr_index][4] + '</td>';
-                tempStrs += '<td><a data-role="button" onclick="cr_search_page_on(\'../checkReport/cr_checkup.html\')" data-mini="true" data-transition="slide">录入</a></td>'; 
-                tempStrs += '</tr>';
-            });
-            
-            $("#cr_all_table").append(tempStrs).table("refresh");
+                var datapage=data[0];
+                //改变toptext
+                $("#cr_all_toptext").val(data[0].cap);
                 
-            return false;
+                //动态加载顶部菜单
+                pagingFooterInit({page_cur:Number(datapage.queryCurPageNum),page_dis:Number(datapage.queryRecNumPerPage),page_count:Number(datapage.queryTotalPageNum)});
+        
+                $(paging_id).find("[data-role='cr_all_listview']").empty();
+        
+                if($.isEmptyObject(data[1])){
+                    $(paging_id).find("[data-role='cr_all_listview']").append("<li data-icon='false'><a href='#'>暂无数据</a></li>");
+                    $(paging_id).find("[data-role='cr_all_listview']").listview("refresh");
+                    return false;
+                }
+
+                $("#cr_all_table").empty();
+        
+                //临时存放变量
+                var tempStrs = "";
             
-        }).fail(function () {
-            navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
-            return false;
-        });
+                tempStrs += '<tr><th>企业名称</th><th>检查情况</th><th>操作</th></tr>';
+     
+                $.each(data[1],function(cr_index,cr_b){
+                    tempStrs += '<tr>';
+                    tempStrs += '<td>' + data[1][cr_index][1] + '</td>';
+                    tempStrs += '<td>' + data[1][cr_index][4] + '</td>';
+                    tempStrs += '<td><a data-role="button" onclick="cr_search_page_on(\'../checkReport/cr_checkup.html?id=' + data[1][cr_index][0] + '&name=' + data[1][cr_index][1] + '\')" data-mini="true" data-transition="slide">录入</a></td>'; 
+                    tempStrs += '</tr>';
+                });
+                
+                $("#cr_all_table").append(tempStrs).table("refresh");
+                    
+                //$(paging_id).find("[data-role='listview']").listview("refresh");
+                
+                return false;
+            }).fail(function () {
+                navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                return false;
+            });
+        };
+                    
+        //传入查询条件
+        //createPagingFooterFooter("#cr_all",{type:"sy"},{page_cur:1,page_dis:15},cr_all_tempFunciton);
+        
     </script>
     
     <style type="text/css">
@@ -51,13 +96,13 @@
           
           #cr_all_table td, #cr_all_table th   
           {  
-              font-size:0.8em;  
+              font-size:1.1em;  
               border:0.1em solid #C1C1C1;  
           }  
           
           #cr_all_table th   
           {  
-              font-size:0.9em;  
+              font-size:1.3em;  
               text-align:left;  
               background-color:#69A4CF;  
               color:#ffffff;  
@@ -71,34 +116,13 @@
     </style>  
 
     
-    <div data-role="content" >
+    <div data-role="none" >
+       <input id="cr_all_toptext" type="text" readonly/>
 
-       <table id="cr_all_table">
-            <!--
-            <tr>  
-            <th>企业名称</th>  
-            <th>检查情况</th>  
-            <th>操作</th>  
-            </tr>
-              
-            <tr>  
-            <td>中华人民共和国广东省珠海市香洲区体育中心</td>
-            <td>未检查</td>  
-            <td><a data-role="button"  onclick="cr_search_page_on('../checkReport/cr_checkup.html')" data-mini="true" data-transition="slide">录入</a></td>  
-            </tr>  
-              
-            <tr class="alt">  
-            <td>中华人民共和国广东省珠海市香洲区体育中心</td>  
-            <td>已检查</td>  
-            <td><a data-role="button"  onclick="cr_search_page_on('../checkReport/cr_checkup.html')" data-mini="true" data-transition="slide">录入</a></td>  
-            </tr>
-            -->
-                
-        </table>  
-
+       <ul data-role="cr_all_listview">
+       </ul>
         
+       <table id="cr_all_table">      
+       </table>
     </div>
-                
- 
-    
 </div>

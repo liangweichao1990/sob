@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <!--应急处置 文件-->
+        <div id="emergency_View" data-role="page" data-title="文件">
+            <script>
+                createEmergencyNavbar("#emergency_View", 0);
+                createEmergencyContent("#emergency_View",0);
+                createPagingFooterFooter("#emergency_View",{type:0},{page_cur:1,page_dis:10},emergencyFunciton);
+                //向左滑-预案
+                $("#emergency_View").on("swipeleft",function(){
+                    openEmergencyNavbarPage('../emergency/emergencyPlan.html');
+                });
+                //向右滑-演练
+                $("#emergency_View").on("swiperight",function(){
+                    openEmergencyNavbarPage('../emergency/emergencyDrill.html');
+                });
+                $("#emergency_View #emergency_popup_serarch").on("click",function(){
+                    emergencyFunciton({type:0},1,10);
+                    $("#emergency_View #emergency_seekPopup").popup("close");
+                    return false;
+                });
+            </script>
+            <!--头部导航预留-->
+
+            <!-- 列表 -->
+            <div data-role="content">
+                <ul style="display:none;">
+                    <li id="emergency_theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="emergency_li_a">
+                            <img src="images/wendang.png" class="ui-li-icon">
+                            <span dbField="emergency_title">为呃我呃我0</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview">
+                </ul>
+                
+            </div>
+
+        </div>
+
+    </body>
+</html>

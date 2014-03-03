@@ -1,5 +1,5 @@
  <!-- 行业监管-->
-<div id="tc_trade" data-role="page" data-transition="slide" >
+<div id="tc_trade" data-role="page" data-transition="slide" data-theme="b">
     
     <script>
           $("#tc_trade").prepend(cr_urlLoadContent("../troubleClass/tc_header.html"));
@@ -9,7 +9,7 @@
                 type: "Post",
                 data:{type:"tj",area:"hyjg",mobileRqs:"jqm"},
                 dataType:"json",
-                url:"http://192.168.0.119:8080/SOB/danger/HiddenDanger/queryHiddenDangerList_jqm.do"
+                url:"http://" + domain + "/danger/HiddenDanger/queryHiddenDangerList_jqm.do"
          }).done(function (data) {
              
             var piecolor = eval('[["#4bb2c5"],["#c5b47f"], ["#EAA228"], ["#579575"], ["#839557"], ["#958c12"],["#953579"], ["#4b5de4"], ["#d8b83f"], ["#ff5800"], ["#0085cc"]]');

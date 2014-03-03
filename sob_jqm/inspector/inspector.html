@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <!--督查督办 领导批示-->
+        <div id="inspector_View" data-position="fixed" data-role="page" data-title="领导批示">
+            <script>
+            
+            //$.mobile.loadingMessageTextVisible = true;  
+            //$.mobile.showPageLoadingMsg('b', "Please wait...");
+            //setTimeout(function() {$.mobile.hidePageLoadingMsg();}, 7000);
+                createInspectorNavbar("#inspector_View", 0);
+                createInspectorContent("#inspector_View",0);
+                createPagingFooterFooter("#inspector_View",{type:0},{page_cur:1,page_dis:10},inspectorFunciton);
+                  $("#inspector_View").on("swipeleft",function(){
+                    openInspectorNavbarPage('../inspector/inspectorCaution.html');
+                  });
+                $("#inspector_View #inspector_popup_serarch").on("click",function(){
+                    inspectorFunciton({type:0},1,10);
+                    $("#inspector_View #inspector_seekPopup").popup("close");
+                    return false;
+                });
+            </script>
+            <!--头部导航预留-->
+
+            <!-- 督查督办列表 -->
+            <div data-role="content">
+                <ul style="display:none;">
+                    <li id="inspector_theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="inspector_li_a">
+                            <img dbField="inspector_images" src="images/list_icon.png" class="ui-li-icon">
+                            <div><span dbField="inspector_title">为呃我呃我0</span><span  dbField="inspector_time" style="float:right;">2014-02-17</span></div>
+                        </a>
+                    </li>
+                </ul>
+                <ul data-role="listview">
+                    <li id="inspector_theme_li" style="margin-top:0px;">
+                        <a href="#" dbField="inspector_li_a">
+                            <img dbField="inspector_images" src="images/list_icon.png" class="ui-li-icon">
+                            <div><span dbField="inspector_title">为呃我呃我0</span><span  dbField="inspector_time" style="float:right;">2014-02-17</span></div>
+                        </a>
+                    </li>
+                </ul>
+                
+            </div>
+
+        </div>
+
+    </body>
+</html>

@@ -21,7 +21,7 @@ function createNewsNavbar(page,url,active){
 			footerHtml = urlLoadNewsContent(url);
 		}
 		$(page).children("script").after(footerHtml);
-        $(page).find("[data-role='header'] h1").html($(page).attr("data-title"));
+        //$(page).find("[data-role='header'] h1").html("最新资讯列表");
         $(page).find("[data-role='navbar'] a:eq("+active+")").toggleClass("ui-btn-active");
 	}
 }
@@ -57,7 +57,7 @@ var tempFunciton=function(datajson,page_cur,page_dis){
         type: "Post",
         data:{type:datajson.type,title:$(paging_id+" #news_seek").val()||"",mobileRqs:'jqm',queryCurPageNum:page_cur,queryRecNumPerPage:page_dis},
         dataType:"json",
-        url:"http://192.168.0.119:8080/SOB/news/News/queryNewsList.do"
+        url:"http://"+domain+"/news/News/queryNewsList.do"
     }).done(function (data) {
         var datapage=data.list.page;
         pagingFooterInit({page_cur:Number(datapage.curPageNum),page_dis:Number(datapage.recNumPerPage),page_count:Number(datapage.totalPageNum)});
@@ -76,7 +76,7 @@ var tempFunciton=function(datajson,page_cur,page_dis){
             if(imagetemp===undefined||imagetemp==='undefined'){
                 temp.find("[dbField='news_images']").attr("src",'images/news.png');
             }else{
-                temp.find("[dbField='news_images']").attr("src",'http://192.168.0.119:8080/'+imagetemp);
+                temp.find("[dbField='news_images']").attr("src","http://"+downloadDomain+'/'+imagetemp);
             }
             if(Number(tempdata.element[5].text)===1){
                 temp.find("[dbField='news_content']").parent().prepend('<img src="images/hot.png" height="15px"/>');

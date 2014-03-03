@@ -1,5 +1,5 @@
 <!-- 总体情况 -->
-<div id="cr_overall" data-role="page" data-transition="slide" >
+<div id="cr_overall" data-role="page" data-transition="slide" data-theme="b">
     
     <script>
         
@@ -11,7 +11,7 @@
                 type: "Post",
                 data:{type:"all",mobileRqs:"jqm"},
                 dataType:"json",
-                url:"http://192.168.0.119:8080/SOB/safety/SafetyCheck/queryAllList.do"
+                url:"http://" + domain + "/safety/SafetyCheck/queryAllList.do"
          }).done(function (data) {
              
             //var obj = $.parseJSON(data);
