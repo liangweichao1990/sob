@@ -1,0 +1,8 @@
+#tabBtnsDiv {width:100%;float:left;overflow:hidden}
+#tabBtnsDiv ul {list-style-type:none;margin:0 auto;}
+#tabBtnsDiv ul li {float:left;text-align:center;display:inline;list-style-position:inside}
+#tabBtnsDiv ul li a {background:#6495ED;;cursor:hand;font-weight:normal;font-size:.9em;color:#fff;padding:.5em;}
+#tabBtnsDiv ul li a:link {}
+#tabBtnsDiv ul li a:visited {}
+#tabBtnsDiv ul li a:active {color:#ff0;}
+#tabBtnsDiv ul li a:hover {color:#000;background:#00EEEE;font-weight:normal}

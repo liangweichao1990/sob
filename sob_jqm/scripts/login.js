@@ -26,7 +26,17 @@ function loginonMouseOut()
 /*登录*/
 function login() 
 {
-    
+    // 进行记住用户名和密码的操作
+    if($("#savePassword").val() == "1")
+    {
+        localStorage.setItem("username", $("#userName").val());
+        localStorage.setItem("password", $("#passWord").val());
+    }
+    else
+    {
+        localStorage.setItem("username", $("#userName").val());
+        localStorage.setItem("password", "");
+    }
     jQuery.mobile.changePage("home.html",{changeHash: true,transition:"slide"});
     /*var a = $("#userName").val(); 
     var b = $("#passWord").val();

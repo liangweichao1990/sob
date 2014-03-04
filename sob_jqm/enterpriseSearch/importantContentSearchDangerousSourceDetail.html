@@ -21,7 +21,7 @@
                 <h1>企业查询</h1> 
                 
                 <!-- 区域tab按钮 -->
-                <div id="importantContentSearchDangerousSourceAreaBtns1">
+                <div id="importantContentSearchDangerousSourceAreaBtns">
                     <div data-role="navbar" id="">  
                         <ul>  
                             <li><a id="importantContentSearchDangerousSourceAreaQS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'全市')">全市</a></li>
@@ -33,47 +33,77 @@
                     </div>
                 </div>
                 
-                <!-- 区域tab按钮 -->
-                <div id="importantContentSearchDangerousSourceAreaBtns2" style="display:none">
-                    <div data-role="navbar" id="">  
-                        <ul>  
-                            <li><a id="importantContentSearchDangerousSourceAreaJW" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'金湾')">金湾</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'横琴')">横琴</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaBS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'保税')">保税</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaWS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'万山')">万山</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaGX" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'高新')">高新</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- 区域tab按钮 -->
-                <div id="importantContentSearchDangerousSourceAreaBtns3" style="display:none">
-                    <div data-role="navbar" id="">  
-                        <ul>  
-                            <li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'横琴')">横琴</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaBS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'保税')">保税</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaWS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'万山')">万山</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaGX" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'高新')">高新</a></li>
-                            <li><a id="importantContentSearchDangerousSourceAreaGL" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,'高栏')">高栏</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
             
             <div data-role="none">
                 
                 <!-- 统计数据Tab页面 -->
                 <div id="importantContentSearchDangerousSourceDetailStaticsDataDiv">
-                    统计数据
+                    <div id="importantContentSearchDangerousSourceDetailStaticsDataChart"></div>
+                    <div id="importantContentSearchDangerousSourceDetailStaticsDataChartBottomTitle" style="text-align:center;margin:0 auto;font-size:.9em;margin-top:.5em">全市总计37家</div>
                 </div>
                 
                 <!-- 详细信息tab页面 -->
                 <div id="importantContentSearchDangerousSourceDetailDetailInfomationDiv">
-                    详细信息
+                    <div id="importantContentSearchDangerousSourceDetailDetailInfomationPortData">
+                        <div id="importantContentSearchDangerousSourceDetailDetailInfomationPortDataTitle" style="text-align:center;margin:0 auto;font-size:.9em;margin-top:.5em">全市重大危险源企业分布情况</div>
+                        <div style="width:100%;">
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">序号</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:45%;">企业名称</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:30%;">危险源场所</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:15%;">属地</div>
+                        </div>
+                        <div style="width:100%;">
+                            <div class="examRankListTd_white" style="width:10%;">1</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:45%">卡德莱化工(珠海)有限公司</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:30%">危险源场所</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:15%">高栏港区</div>
+                        </div>
+                        <div style="width:100%;">
+                            <div class="examRankListTd_gray" style="width:10%;">2</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:45%">德莱化工(珠海)有限公司</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:30%">危险源场所</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:15%">香洲区</div>
+                        </div>
+                    </div>
+                    
+                    <div id="importantContentSearchDangerousSourceDetailDetailInfomationLandData">
+                        <div style="width:100%;">
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">序号</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:20%;">企业名称</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">危险源场所</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:20%;">存储物质</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">设计容量</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">实际容量</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">属地</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">详细</div>
+                        </div>
+                        <div style="width:100%;">
+                            <div class="examRankListTd_white" style="width:10%;">1</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:20%">卡德莱化工(珠海)有限公司</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:10%">危险源场所</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:20%">二甲苯、环</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:10%">设计容量</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:10%">实际容量</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:10%">高栏港区</div>
+                            <div class="examRankListTd_white overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewDangerousSourceCorporationDetail()" /></div>
+                        </div>
+                        <div style="width:100%;">
+                            <div class="examRankListTd_gray" style="width:10%;">2</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:20%">德莱化工(珠海)有限公司</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%">危险源场所</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:20%">空气</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%">设计容量</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%">实际容量</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%">高栏港区</div>
+                            <div class="examRankListTd_gray overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewDangerousSourceCorporationDetail()" /></div>
+                        </div>
+                    </div>
                 </div>
                 
             </div>
             
+            <!-- 底部切换按钮 -->
             <div data-role="footer" data-position="fixed" id="importContentSearchDangerousSourceDetailFooter">
                 <div data-role="navbar"> 
                     <ul id="importantContentSearchDangerousSourceDetailFooterTabBtns"> 
@@ -84,6 +114,8 @@
             </div>
             
             <script>
+                
+                $("#importantContentSearchDangerousSourceAreaQS").addClass("ui-btn-active");
                 
                 // 初始化tab选项卡按钮变量
                 if(importantContentSearchDangerousSourceDetailSwitchBtn == null)
@@ -119,7 +151,7 @@
                 }
                 
                 // 查询tab向左划动的事件处理
-                $("#importantContentSearchDangerousSourceDetailView").on("swipeleft",function(){ 
+                $("#importantContentSearchDangerousSourceDetailView").on("swipeleft",function(){
                     importantContentSearchDangerousSourceDetailSwitchBtn = "详细信息";
                     changeImportantContentSearchDangerousSourceDetail();
                 });
@@ -133,29 +165,157 @@
                 // 用户改变区域的选择
                 function changeImportantContentSearchDangerousSourceAreaBtn(id, area)
                 {
-                    $("#importantContentSearchDangerousSourceAreaBtns1 div ul li a, importantContentSearchDangerousSourceAreaBtns2 div ul li a, importantContentSearchDangerousSourceAreaBtns3 div ul li a").removeClass("ui-btn-active");
-                    
+                    $("#importantContentSearchDangerousSourceAreaBtns div ul li a").removeClass("ui-btn-active");
+                    var tc = "";
                     if(area == "横琴")
                     {
-                        $("#importantContentSearchDangerousSourceAreaBtns2").show();
-                        $("#importantContentSearchDangerousSourceAreaBtns1").hide();
-                        $("#importantContentSearchDangerousSourceAreaBtns3").hide();
+                        tc = 
+                            '<div data-role="navbar" id="">' +
+                                '<ul>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaJW" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'金湾\')">金湾</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'横琴\')">横琴</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaBS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'保税\')">保税</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaWS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'万山\')">万山</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaGX" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'高新\')">高新</a></li>' +
+                                '</ul>' +
+                            '</div>';
                     }
                     else if(area == "金湾")
                     {
-                        $("#importantContentSearchDangerousSourceAreaBtns1").show();
-                        $("#importantContentSearchDangerousSourceAreaBtns2").hide();
-                        $("#importantContentSearchDangerousSourceAreaBtns3").hide();
+                        tc = 
+                        '<div data-role="navbar" id="">' +
+                            '<ul>' +
+                                '<li><a id="importantContentSearchDangerousSourceAreaQS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'全市\')">全市</a></li>' +
+                                '<li><a id="importantContentSearchDangerousSourceAreaXZ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'香洲\')">香洲</a></li>' +
+                                '<li><a id="importantContentSearchDangerousSourceAreaDM" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'斗门\')">斗门</a></li>' +
+                                '<li><a id="importantContentSearchDangerousSourceAreaJW" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'金湾\')">金湾</a></li>' +
+                                '<li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'横琴\')">横琴</a></li>' +
+                            '</ul>' +
+                        '</div>';
                     }
                     else if(area == "高新")
                     {
-                        $("#importantContentSearchDangerousSourceAreaBtns1").hide();
-                        $("#importantContentSearchDangerousSourceAreaBtns2").hide();
-                        $("#importantContentSearchDangerousSourceAreaBtns3").show();
+                        tc = 
+                            '<div data-role="navbar" id="">' +
+                                '<ul>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaHQ" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'横琴\')">横琴</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaBS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'保税\')">保税</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaWS" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'万山\')">万山</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaGX" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'高新\')">高新</a></li>' +
+                                    '<li><a id="importantContentSearchDangerousSourceAreaGL" onclick="changeImportantContentSearchDangerousSourceAreaBtn(this.id,\'高栏\')">高栏</a></li>' +
+                                '</ul>' +
+                            '</div>';
                     }
+                    
+                    if(tc != "")
+                    {
+                        $("#importantContentSearchDangerousSourceAreaBtns").html(tc);
+                        $("#importantContentSearchDangerousSourceAreaBtns div").navbar();
+                    }
+                    
                     $("#" + id).addClass("ui-btn-active");
                     
                 }
+                
+                // 获取统计数据
+                function getStaticsData()
+                {
+                    var pie_data = [
+                	    {name : '斗门区' + '8家',value : "8",color:'#9d4a4a'},
+                	    {name : '横琴新区' + '3家',value : "3",color:'#5d7f97'},
+                	    {name : '高栏港区' + '15家',value : "15",color:'#97b3bc'},
+                	    {name : '高新区' + '3家',value : "3",color:'#25b4bc'},
+                	    {name : '香洲区' + '5家',value : "5",color:'#17a3bc'},
+                	    {name : '金湾区' + '3家',value : "3",color:'#69c3bc'},
+                    ];
+                	        	
+                    new iChart.Pie2D({
+                    	render : 'importantContentSearchDangerousSourceDetailStaticsDataChart',
+                    	data: pie_data,
+                    	title : '全市重大危险源企业分布情况',
+                        border:0,
+                        width : $(window).width(),
+                    	height : $(window).height()/1.1,
+                        bound_event:null,
+                        default_mouseover_css:false,
+                        turn_off_touchmove:true,
+                        background_color:null,
+                    	legend : {
+                    		enable : true,
+                            background_color:null,
+                            valign : 'top',
+                            align :  'center',
+                            border : 1
+                    	},
+                		sub_option : {
+                                mini_label_threshold_angle : 10,  //低于40度显示在外面
+                                mini_label:{                       //迷你label配置项，设置其中内容字体大小，颜色
+            						fontsize:20,
+            						fontweight:300,
+            						color : '#ffffff'
+            					},
+            					label : {
+            							background_color:null,
+            							sign:false,//设置禁用label的小图标
+            							padding:'0 4',
+            							border:{
+            								enable:false,
+            								color:'#666666'
+            							},
+            							fontsize:20,
+            							fontweight:300,
+            							color : '#4572a7'
+            				    },
+            					border : {
+            							width : 2,
+            							color : '#ffffff'
+            					},
+                    			listeners:{
+                    				parseText:function(d, t){
+                    					return d.get('value') + "%";        //自定义label文本
+                    				}
+                    			}
+            		   }
+             
+                    }).draw();
+                }
+                
+                getStaticsData();
+                
+                // 查看危险源公司详情
+                function viewDangerousSourceCorporationDetail()
+                {
+                    alert("查看危险源公司详情");
+                }
+                
+                // 判断当前的屏幕状态
+                if(window.orientation == 0 || window.orientation == 180)    // 当前是竖屏
+                {
+                    $("#importantContentSearchDangerousSourceDetailDetailInfomationPortData").css("display","block");
+                    $("#importantContentSearchDangerousSourceDetailDetailInfomationLandData").css("display","none");
+                }
+                else if(window.orientation == 90 || window.orientation == -90)    // 当前是横屏
+                {
+                     $("#importantContentSearchDangerousSourceDetailDetailInfomationPortData").css("display","none");
+                     $("#importantContentSearchDangerousSourceDetailDetailInfomationLandData").css("display","block");
+                }
+                
+                // 用户进行屏幕转动时的事件处理
+                $(window).bind("orientationchange", function( event ) { 
+                    if(event.orientation)
+                    { 
+                        if(event.orientation == 'portrait')    // 竖屏
+                        { 
+                            $("#importantContentSearchDangerousSourceDetailDetailInfomationPortData").css("display","block");
+                            $("#importantContentSearchDangerousSourceDetailDetailInfomationLandData").css("display","none");
+                        } 
+                        else if(event.orientation == 'landscape') // 横屏
+                        { 
+                            $("#importantContentSearchDangerousSourceDetailDetailInfomationPortData").css("display","none");
+                            $("#importantContentSearchDangerousSourceDetailDetailInfomationLandData").css("display","block");
+                        } 
+                    } 
+                });
                 
             </script> 
         </div>
