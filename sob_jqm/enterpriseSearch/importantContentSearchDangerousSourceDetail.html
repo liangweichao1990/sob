@@ -39,8 +39,7 @@
                 
                 <!-- 统计数据Tab页面 -->
                 <div id="importantContentSearchDangerousSourceDetailStaticsDataDiv">
-                    <div id="importantContentSearchDangerousSourceDetailStaticsDataChart"></div>
-                    <div id="importantContentSearchDangerousSourceDetailStaticsDataChartBottomTitle" style="text-align:center;margin:0 auto;font-size:.9em;margin-top:.5em">全市总计37家</div>
+                    <center><div id="importantContentSearchDangerousSourceDetailStaticsDataChart"></div></center>
                 </div>
                 
                 <!-- 详细信息tab页面 -->
@@ -232,7 +231,7 @@
                     new iChart.Pie2D({
                     	render : 'importantContentSearchDangerousSourceDetailStaticsDataChart',
                     	data: pie_data,
-                    	title : '全市重大危险源企业分布情况',
+                    	title : '\r\n全市重大危险源企业分布情况\r\n\r\n全市共计37家',
                         border:0,
                         width : $(window).width(),
                     	height : $(window).height()/1.1,
@@ -240,12 +239,14 @@
                         default_mouseover_css:false,
                         turn_off_touchmove:true,
                         background_color:null,
+                        offsety:20,
                     	legend : {
                     		enable : true,
                             background_color:null,
                             valign : 'top',
                             align :  'center',
-                            border : 1
+                            border : 1,
+                            offsety: 20
                     	},
                 		sub_option : {
                                 mini_label_threshold_angle : 10,  //低于40度显示在外面
