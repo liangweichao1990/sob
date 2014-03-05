@@ -14,7 +14,7 @@
     
     <body>
         <!-- 主页 -->
-        <div id="enterpriseSearchView" data-theme="b" data-role="page" data-tap-toggle="false">
+        <div id="enterpriseSearchView" data-dom-cache="true" data-theme="b" data-role="page" data-tap-toggle="false">
             
             <div data-role="header" data-theme="b" data-position="fixed">
                 <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
@@ -33,26 +33,26 @@
                 <div id="importContentSearchDiv">
                     
                     <div style="width:90%;text-align:center;margin:0 auto;">
-                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchEnterpriseSearchImportContent()">1.重大危险源</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousSource()">1.重大危险源</a>
                     </div>
                     
                     <div style="width:90%;text-align:center;margin:0 auto;">
                         <div data-role="collapsible">
                           <h3>2.涉及危险化学品信息</h3>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">全部</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液氨</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液氯</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">苯</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">甲苯</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">二甲苯</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">苯乙烯</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">丙烯</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">汽油</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液化石油气</a>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">液化天然气</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('涉及危险化学品')">全部</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('液氨')">液氨</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('液氯')">液氯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('苯')">苯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('甲苯')">甲苯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('二甲苯')">二甲苯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('苯乙烯')">苯乙烯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('丙烯')">丙烯</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('汽油')">汽油</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('液化石油气')">液化石油气</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentDangerousChemicals('液化天然气')">液化天然气</a>
                           <div style="width:100%">
-                              <div><input type="text" /></div>
-                              <div><a data-role="button" href="">查询</a></div>
+                              <div><input type="search" id="dangerousChemicalsSelfSearchValue" /></div>
+                              <div><a data-role="button" href="javascript:dangerousChemicalsSelfSearch()">查询</a></div>
                           </div>
                         </div>
                     </div>
@@ -60,24 +60,24 @@
                     <div style="width:90%;text-align:center;margin:0 auto;">
                         <div data-role="collapsible">
                           <h3>3.从业人员持证情况</h3>
-                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">全部</a>
+                          <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('全部')">全部</a>
                           <div data-role="collapsible">
                               <h3>主要负责人持证</h3>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">有</a>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">无</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('主要负责人持证')">有</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('主要负责人持证')">无</a>
                           </div>
                           <div data-role="collapsible">
                               <h3>安全监管人员持证</h3>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">有</a>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">无</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('安全监管人员持证')">有</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('安全监管人员持证')">无</a>
                           </div>
                           <div data-role="collapsible">
                               <h3>特种人员持证</h3>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">全部</a>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">电工</a>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">焊工</a>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">冷气工</a>
-                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">其它</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('特种人员持证')">全部</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('特种人员持证')">电工</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('特种人员持证')">焊工</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('特种人员持证')">冷气工</a>
+                              <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="javascript:searchImportantContentWorkersCertificate('特种人员持证')">其它</a>
                           </div>
                         </div>
                     </div> 
@@ -88,8 +88,8 @@
                 <div id="enterpriseSearchDiv">
                     
                     <div id="enterpriseSearchSearchBar" style="width:98%;text-align:center;margin:0 auto;">
-                         <div style="width:69%;float:left;"><input type="search" /></div>
-                         <div style="width:30%;float:right"><a href="" style="height:.8em;line-height:.8em" data-role="button">搜索</a></div>
+                         <div style="width:69%;float:left;"><input type="search" id="enterpriseSearchSelfSearchValue" /></div>
+                         <div style="width:30%;float:right"><a href="javascript:searchEnterpriseSearchEnterpriseSearch()" style="height:.8em;line-height:.8em" data-role="button">搜索</a></div>
                     </div>
                      
                      <div style="width:90%;text-align:center;margin:0 auto;clear:both">
@@ -109,7 +109,7 @@
                              </select>
                          </div>
                          <div id="epSearchManagePlaceSubSelectDiv" style="display:none">
-                             <select id="epSearchManagePlaceSubSelectDiv">
+                             <select id="epSearchManagePlaceSubSelect">
                                  <option value="所有">所有</option>
                                  <option value="区政府">区政府</option>
                                  <option value="横琴镇">横琴镇</option>
@@ -207,6 +207,17 @@
             
             <script>
                 
+                var searchEnterpriseId = "";    // 某个企业的id
+                var epSearchSelfSearchValue = "";                    // 企业查询输入框的值
+                var epSearchManagePlaceSelectValue = "全市";         // 企业查询管理属地的值
+                var epSearchManagePlaceSubSelectValue = "";          // 企业查询管理属地子区域的值
+                var epSearchManagePlaceAddrSelectValue = "全市";     // 企业查询属地位置的值
+                var epSearchManagePlaceAddrSubSelectValue = "";      // 企业查询属地位置子区域的值
+                var epSearchEnterpriseTypeSelectValue = "全部类型";   // 企业查询企业类型的值
+                var epSearchEnterpriseTypeSubSelectValue = "";       // 企业查询企业类型子类型的值
+                var epSearchDepartmentSelectValue = "全部";          // 企业查询行业部门的值
+                var epSearchEnterpriseLevelSelectValue = "全部";     // 企业查询企业级别的值
+                
                 // 初始化tab选项卡按钮变量
                 if(enterpriseSearchSwitchBtn == null)
                 {
@@ -254,6 +265,9 @@
                     changeEnterpriseSearch();
                 });
                 
+                var dangerousChemicalType = "涉及危险化学品";
+                var workersCertificateType = "全部";
+                
                 // 改变管理属地选择
                 function changeEpSearchManagePlaceSelect()
                 {
@@ -296,25 +310,65 @@
                 // 改变行业部门选择
                 function changeEpSearchDepartmentSelect()
                 {
-                    
+                    //
                 }
                 
                 // 改变企业级别查询
                 function changeEpSearchEnterpriseLevelSelect()
                 {
-                    
+                    //
                 }
                 
-                // 重点内容查询方法
-                function searchEnterpriseSearchImportContent()
+                // 重点内容_危险源查询方法
+                function searchImportantContentDangerousSource()
                 {
                     $.mobile.changePage("./importantContentSearchDangerousSourceDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 重点内容_危险化学品查询方法
+                function searchImportantContentDangerousChemicals(type)
+                {
+                    dangerousChemicalType = type;
+                    $.mobile.changePage("./importantContentSearchDangerousChemicalsDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 重点内容_用户进行自助危险化学品查询方法
+                function dangerousChemicalsSelfSearch()
+                {
+                    var searchValue = $("#dangerousChemicalsSelfSearchValue").val().trim();
+                    if(searchValue != "")
+                    {
+                        searchImportantContentDangerousChemicals(searchValue);
+                    }
+                    else
+                    {
+                        navigator.notification.alert("请输入要查询的内容!", function() {}, "查询提示", "好的");
+                        return false;
+                    }
+                }
+                
+                // 重点内容_从业人员持证查询方法
+                function searchImportantContentWorkersCertificate(type)
+                {
+                    workersCertificateType = type;
+                    $.mobile.changePage("./importantContentSearchWorkersCertificateDetail.html",{changeHash:true, transition:"slide"});
                 }
                 
                 // 企业查询的查询方法
                 function searchEnterpriseSearchEnterpriseSearch()
                 {
+                    epSearchSelfSearchValue = $("#enterpriseSearchSelfSearchValue").val().trim();
+                    epSearchManagePlaceSelectValue = $("#epSearchManagePlaceSelect").val();
+                    epSearchManagePlaceSubSelectValue = $("#epSearchManagePlaceSubSelect").val();
+                    epSearchManagePlaceAddrSelectValue = $("#epSearchManagePlaceAddrSelect").val();
+                    epSearchManagePlaceAddrSubSelectValue = $("#epSearchManagePlaceAddrSubSelect").val();
+                    epSearchEnterpriseTypeSelectValue = $("#epSearchEnterpriseTypeSelect").val();
+                    epSearchEnterpriseTypeSubSelectValue = $("#epSearchEnterpriseTypeSubSelect").val();
+                    epSearchDepartmentSelectValue = $("#epSearchDepartmentSelect").val();
+                    epSearchEnterpriseLevelSelectValue = $("#epSearchEnterpriseLevelSelect").val();
                     
+                    $.mobile.changePage("./enterpriseSearchList.html",{changeHash:true, transition:"slide"});
+
                 }
                 
             </script>

@@ -1,0 +1,170 @@
+<!-- 
+    页面：企业查询_企业列表页面
+    作者：梁伟超
+    日期：2014-03-05
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchListView" data-theme="b" data-role="page" data-tap-toggle="false">
+            
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>我的企业</h1> 
+            </div>
+            
+            <div data-role="none">
+                
+                <div id="enterpriseSearchListSearchBar" style="width:98%;text-align:center;margin:0 auto;">
+                     <div style="width:69%;float:left;"><input type="search" id="enterpriseSearchListSelfSearchValue" /></div>
+                     <div style="width:30%;float:right"><a href="javascript:enterpriseSearchListSelfSearch()" style="height:.8em;line-height:.8em" data-role="button">搜索</a></div>
+                </div>
+                
+                <div id="enterprseSearchListResultTitle" style="text-align:center;margin:0 auto;font-size:.9em;padding-top:.5em;padding-bottom:.5em">共搜索到企业10家</div>
+                
+                <!-- 企业数据列表 -->
+                <div id="enterprseSearchListData">
+                    <div style="width:100%;">
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:55%;">企业名称</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:35%;">属地</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%;">详细</div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:55%">汇邦环保科技(珠海)有限公司</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:35%">金湾区</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:55%">珠海欧姆斯厨房电器有限公司</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:35%">香洲区</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:55%">汇邦环保科技(珠海)有限公司</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:35%">金湾区</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:55%">珠海欧姆斯厨房电器有限公司</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:35%">香洲区</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:55%">汇邦环保科技(珠海)有限公司</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:35%">金湾区</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:55%">珠海欧姆斯厨房电器有限公司</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:35%">香洲区</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:55%">汇邦环保科技(珠海)有限公司</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:35%">金湾区</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:55%">珠海欧姆斯厨房电器有限公司</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:35%">香洲区</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:55%">汇邦环保科技(珠海)有限公司</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:35%">金湾区</div>
+                        <div class="examRankListTd_white overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                    <div style="width:100%;">
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:55%">珠海欧姆斯厨房电器有限公司</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:35%">香洲区</div>
+                        <div class="examRankListTd_gray overflow_ellipsis" style="width:10%"><img src="./images/rightarrow_btn.png" style="width:25%" onclick="viewEnterpriseSearchListCorporationDetail('cid')" /></div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <script>
+                
+                var enterpriseSearchListResultCount = 0;    // 搜索结果数
+                
+                var tempCurPage = 1;
+                var tempTotalPage = 2;
+                var enterpriseSearchListPaging = function(datajson,page_cur,page_dis){
+                    
+                    pagingFooterInit({page_cur:Number(tempCurPage),page_dis:Number(10),page_count:Number(tempTotalPage)});
+                    if(tempCurPage < tempTotalPage)
+                    {
+                        tempCurPage++;
+                    }
+                    else
+                    {
+                        tempCurPage--;
+                    }
+                    
+                    /* $.ajax({
+                        type: "Post",
+                        data:{type:datajson.type,title:$(paging_id+" #news_seek").val()||"",mobileRqs:'jqm',queryCurPageNum:page_cur,queryRecNumPerPage:page_dis},
+                        dataType:"json",
+                        url:"http://"+domain+"/news/News/queryNewsList.do"
+                    }).done(function (data) {
+                        var datapage = data.list.page;
+                        pagingFooterInit({page_cur:Number(datapage.curPageNum),page_dis:Number(datapage.recNumPerPage),page_count:Number(datapage.totalPageNum)});
+                        
+                        return false;
+                    }).fail(function () {
+                        navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                        return false;
+                    });*/
+                };
+                
+                var epSearchListSelfSearchValue = "";
+                
+                // 企业查询的查询方法
+                function enterpriseSearchListSelfSearch()
+                {
+                    epSearchListSelfSearchValue = $("#enterpriseSearchListSelfSearchValue").val().trim();
+                    
+                    // 此处添加访问后台接口代码
+                    
+                }
+                
+                // 获取数据
+                function getEnterpriseSearchListData()
+                {
+                    // 此处添加访问后台接口代码
+                    enterpriseSearchListResultCount = 10;
+                     
+                    changeEnterprseSearchListResultTitle();    // 搜索完成后修改搜索结果标题
+                    createPagingFooterFooter("#enterpriseSearchListView", {type:0}, {page_cur:1,page_dis:10}, enterpriseSearchListPaging);
+                }
+                
+                getEnterpriseSearchListData();    // 初始化获取查询数据
+                
+                // 修改搜索结果标题
+                function changeEnterprseSearchListResultTitle()
+                {
+                    $("#enterprseSearchListResultTitle").html("共搜索到企业" + enterpriseSearchListResultCount + "家");
+                }
+                
+                // 查看企业详情
+                function viewEnterpriseSearchListCorporationDetail(cid)
+                {
+                    searchEnterpriseId = cid;
+                    $.mobile.changePage("./enterprisePages/enterprise.html",{changeHash:true, transition:"slide"});
+                }
+                
+            </script> 
+        </div>
+        
+        
+    </body>
+    
+</html>

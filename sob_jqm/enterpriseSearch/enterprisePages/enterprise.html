@@ -1,0 +1,90 @@
+<!-- 
+    页面：我的企业主页面
+    作者：梁伟超
+    日期：2014-03-03
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseIndexView" data-dom-cache="true" data-theme="b" data-role="page" data-tap-toggle="false">
+            
+            <div data-role="header" data-theme="b" data-position="fixed">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>我的企业基本信息</h1> 
+            </div>
+            
+            <div data-role="none">
+                
+                <div style="width:100%;text-align:center;" id="enterpriseName"><h2>珠海罗西尼表业有限公司</h2></div>
+                
+                <!-- 企业主要信息页 -->
+                <div id="enterpriseMainInfoDiv">
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;"> 
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">企业基本信息</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">隐患上报</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">重要风险点</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">安全管理制度</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">人员信息</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">安全教育培训</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">工作例会</a>
+                        <a data-role="button" data-icon="arrow-r" data-iconpos="right" style="text-align:left" href="">生产安全事故</a>
+                    </div> 
+                    
+                </div>
+                
+                <!-- 企业其它信息页 -->
+                <div id="enterpriseOtherInfoDiv" style="display:none">
+                    
+                    <div style="width:90%;text-align:center;margin:0 auto;"> 
+                        <a data-role="button" data-icon="arrow-d" data-iconpos="right" style="text-align:left" href="">公司地址:珠第市香洲区人民东路245号</a>
+                        <a data-role="button" data-icon="arrow-d" data-iconpos="right" style="text-align:left" href="">2013年7月2日香洲区安监局进行了安全检查</a>
+                        <a data-role="button" data-icon="arrow-d" data-iconpos="right" style="text-align:left" href="">2013年2季度黑名单企业</a>
+                        <a data-role="button" data-icon="arrow-d" data-iconpos="right" style="text-align:left" href="">企业主要负责人未持证</a>
+                        <a data-role="button" data-icon="arrow-d" data-iconpos="right" style="text-align:left" href="">企业安全管理人员未持证</a>
+                        <a data-role="button" data-icon="arrow-d" data-iconpos="right" style="text-align:left" href="">企业安全管理人员未持证</a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">  
+                    <ul>  
+                        <li><a href="" class="ui-btn-active">基本情况</a></li>  
+                        <li><a href="">历史上报</a></li>  
+                        <li><a href="">检查(执法)情况</a></li>  
+                    </ul>  
+                </div>
+            </div>
+            
+            <script>
+                
+                // 向左划动的事件处理
+                $("#enterpriseIndexView").on("swipeleft",function(){ 
+                    $("#enterpriseOtherInfoDiv").show();
+                    $("#enterpriseMainInfoDiv").hide();
+                });
+                
+                // 向右划动的事件处理
+                $("#enterpriseIndexView").on("swiperight",function(){
+                    $("#enterpriseOtherInfoDiv").hide();
+                    $("#enterpriseMainInfoDiv").show();
+                });
+                
+            </script>
+            
+        </div>
+        
+    </body>
+    
+</html>
