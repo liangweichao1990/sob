@@ -1,0 +1,56 @@
+<!-- 
+    页面：企业查询_安全生产事故列表页面
+    作者：梁伟超
+    日期：2014-03-06
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchAccidentListView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>查看已上报隐患</h1> 
+            </div>
+            
+            <div data-role="none">
+                
+                
+
+            </div>
+            
+            <script>
+                
+                var tempAccidentCurPage = 1;
+                var tempAccidentTotalPage = 2;
+                var enterpriseSearchAccidentListPaging = function(datajson,page_cur,page_dis){
+                    
+                    pagingFooterInit({page_cur:Number(tempAccidentCurPage),page_dis:Number(10),page_count:Number(tempAccidentTotalPage)});
+                    if(tempAccidentCurPage < tempAccidentTotalPage)
+                    {
+                        tempAccidentCurPage++;
+                    }
+                    else
+                    {
+                        tempAccidentCurPage--;
+                    }
+                    
+                };
+                
+                createPagingFooterFooter("#enterpriseSearchAccidentListView", {type:0}, {page_cur:1,page_dis:10}, enterpriseSearchAccidentListPaging);
+                
+            </script> 
+        </div>
+        
+        
+    </body>
+    
+</html>
