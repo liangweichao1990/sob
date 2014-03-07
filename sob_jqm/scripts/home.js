@@ -15,6 +15,7 @@ var deviceWidth = $(window).width();                // 设备页面的宽度
 var deviceHeight = $(window).height();              // 设备页面的高度
 var domain = "10.10.1.9:8089/SOB";              // 对接后台的路径域名
 var downloadDomain = "10.10.1.9:8089";          // 对接下载路径域名
+var projectLocalPath;                           // 获取项目的根路径
 
 // 取当前的季度和半年值
 switch(currentMonth)

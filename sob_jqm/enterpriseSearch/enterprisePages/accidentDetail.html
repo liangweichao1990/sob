@@ -1,0 +1,104 @@
+<!-- 
+    页面：企业查询_安全生产事故详细页面
+    作者：梁伟超
+    日期：2014-03-07
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchAccidentDetailView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>查看生产安全事故信息</h1> 
+            </div>
+            
+            <div data-role="none">
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent" style="padding-bottom:0">
+                        <span class="epContentDetailListContentTitle">事故记录照片:</span>
+                        <span></span>
+                    </div>
+                    <div style="padding-bottom:.5em">
+                        <a href="#accidentPhotoDiv" data-rel="popup" onclick="$('#accidentPhotoDiv img').attr('src','../images/default_list_hz.jpg')"><img style="width:30%;" src="../images/default_list_hz.jpg" /></a>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListEven">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">发生时间:</span>
+                        <span>2014-01-05</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">发生地点:</span>
+                        <span>技术部临时样品储存室</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListEven">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">简单经过:</span>
+                        <span>1月05日(星期天)上午8时15分,我司值班保安吴桂友在巡厂时发现技术部临时样品储存室冒出滚滚浓烟值班保安吴桂友立即拔打119及110</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">处理结果:</span>
+                        <span>技术部临时样品储存室主要存放供应商提供的丙烯酸树脂，丙烯酸色彩浆及我司</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListEven">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">事故描述:</span>
+                        <span>于1月13日前将技术部临时样品储存室拆除。</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">受伤人数:</span>
+                        <span>技术部临时样品储存室主要存放供应商提供的丙烯酸树脂，丙烯酸色浆，助齐样品及我司</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListEven">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">死亡人数:</span>
+                        <span>0</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">经济损失:</span>
+                        <span>0</span>
+                    </div>
+                </div>
+                
+                <div data-role="popup" data-overlay-theme="b" id="accidentPhotoDiv">
+                  <img style="width:100%" src="../images/default_list_hz.jpg" />
+                </div>
+            </div>
+            
+            <script>
+                
+            </script> 
+        </div>
+        
+        
+    </body>
+    
+</html>

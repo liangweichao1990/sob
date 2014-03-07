@@ -1,0 +1,156 @@
+<!-- 
+    页面：企业查询_工作例会列表页面
+    作者：梁伟超
+    日期：2014-03-07
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchWorkMettingListView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>安全生产工作会议</h1> 
+            </div>
+            
+            <div data-role="none">
+                <div role="main" class="ui-content">
+                    <ul data-role="listview">
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                      
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getWorkMettingDetail('mid')">
+                              <img class="listItemImg" src="../images/default_list_hy.jpg" />
+                              <span>会议主题:</span><span>安全管理委员会例会</span>
+                              <p><span>参加人数:</span><span>7人</span></p>
+                              <p><span>召开时间:</span><span>2014-01-07</span></p>
+                          </a>
+                      </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <script>
+                
+                var workMettingDetailId = "";    // 工作会议ID
+                
+                // 通过工作会议ID获取该工作会议的详细信息
+                function getWorkMettingDetail(mid)
+                {
+                    workMettingDetailId = mid;
+                    $.mobile.changePage("./workMettingDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 分页条
+                var tempWorkMettingCurPage = 1;
+                var tempWorkMettingTotalPage = 2;
+                var enterpriseSearchWorkMettingListPaging = function(datajson,page_cur,page_dis){
+                    
+                    pagingFooterInit({page_cur:Number(tempWorkMettingCurPage),page_dis:Number(10),page_count:Number(tempWorkMettingTotalPage)});
+                    if(tempWorkMettingCurPage < tempWorkMettingTotalPage)
+                    {
+                        tempWorkMettingCurPage++;
+                    }
+                    else
+                    {
+                        tempWorkMettingCurPage--;
+                    }
+                    
+                };
+                
+                createPagingFooterFooter("#enterpriseSearchWorkMettingListView", {type:0}, {page_cur:1,page_dis:10}, enterpriseSearchWorkMettingListPaging);
+                
+            </script> 
+        </div>
+        
+    </body>
+    
+</html>

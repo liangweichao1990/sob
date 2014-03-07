@@ -6,3 +6,9 @@
 #tabBtnsDiv ul li a:visited {}
 #tabBtnsDiv ul li a:active {color:#ff0;}
 #tabBtnsDiv ul li a:hover {color:#000;background:#00EEEE;font-weight:normal}
+
+.listItemImg {width:80px;height:80px;padding:.3em}
+.enterpriseContentDetailListOdd {width:99%;text-align:center;margin:0 auto;background:#eee}
+.enterpriseContentDetailListEven {width:99%;text-align:center;margin:0 auto;background:#fff}
+.enterpriseContentDetailListContent {text-align:left;padding:.5em}
+.epContentDetailListContentTitle {font-weight:bold;}

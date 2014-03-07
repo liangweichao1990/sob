@@ -22,13 +22,113 @@
             </div>
             
             <div data-role="none">
-                
-                
-
+                <div role="main" class="ui-content">
+                    <ul data-role="listview">
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2014-01-05</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2014-01-04</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2014-01-03</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2014-01-02</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2014-01-01</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2013-12-31</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2013-12-30</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2013-12-29</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2013-12-28</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getAccidentDetail('aid')">
+                              <img class="listItemImg" src="../images/default_list_hz.jpg" />
+                              <span>发生时间:</span><span>2013-12-27</span>
+                              <p><span>伤亡情况:</span><span>伤0人|亡0人</span></p>
+                              <p><span>发生地点:</span><span>技术部临时样品储存室</span></p>
+                          </a>
+                      </li>
+                    </ul>
+                </div>
             </div>
             
             <script>
                 
+                var accidentDetailId = "";    // 事故ID
+                
+                // 通过事故ID获取该事故的详细信息
+                function getAccidentDetail(aid)
+                {
+                    accidentDetailId = aid;
+                    $.mobile.changePage("./accidentDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 分页条
                 var tempAccidentCurPage = 1;
                 var tempAccidentTotalPage = 2;
                 var enterpriseSearchAccidentListPaging = function(datajson,page_cur,page_dis){

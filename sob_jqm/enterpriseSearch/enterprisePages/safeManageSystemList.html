@@ -1,0 +1,121 @@
+<!-- 
+    页面：企业查询_安全管理制度列表页面
+    作者：梁伟超
+    日期：2014-03-07
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchSafeManageSystemListView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>安全管理制度和操作规程</h1> 
+            </div>
+            
+            <div data-role="none">
+                <div role="main" class="ui-content">
+                    <ul data-role="listview">
+                      <li>
+                          <a href="javascript:getSafeManageSystemDetail('sid')">
+                              <img class="listItemImg" style="padding:0" src="../images/default_list_safeManage.jpg" />
+                              <span>安全生产管理制度</span>
+                              <br/>
+                              <p><span>落实时间:</span><span>2013-10-09</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getSafeManageSystemDetail('sid')">
+                              <img class="listItemImg" style="padding:0" src="../images/default_list_safeManage.jpg" />
+                              <span>应急预案管理制度</span>
+                              <br/>
+                              <p><span>落实时间:</span><span>2013-10-09</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getSafeManageSystemDetail('sid')">
+                              <img class="listItemImg" style="padding:0" src="../images/default_list_safeManage.jpg" />
+                              <span>应急准备和响应控制制度</span>
+                              <br/>
+                              <p><span>落实时间:</span><span>2013-10-09</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getSafeManageSystemDetail('sid')">
+                              <img class="listItemImg" style="padding:0" src="../images/default_list_safeManage.jpg" />
+                              <span>安全生产管理制度</span>
+                              <br/>
+                              <p><span>落实时间:</span><span>2013-10-09</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getSafeManageSystemDetail('sid')">
+                              <img class="listItemImg" style="padding:0" src="../images/default_list_safeManage.jpg" />
+                              <span>应急预案管理制度</span>
+                              <br/>
+                              <p><span>落实时间:</span><span>2013-10-09</span></p>
+                          </a>
+                      </li>
+                        
+                      <li>
+                          <a href="javascript:getSafeManageSystemDetail('sid')">
+                              <img class="listItemImg" style="padding:0" src="../images/default_list_safeManage.jpg" />
+                              <span>应急准备和响应控制制度</span>
+                              <br/>
+                              <p><span>落实时间:</span><span>2013-10-09</span></p>
+                          </a>
+                      </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <script>
+                
+                var safeManageSystemDetailId = "";    // 安全管理制度ID
+                
+                // 通过安全管理制度ID获取该安全管理制度的详细信息
+                function getSafeManageSystemDetail(sid)
+                {
+                    safeManageSystemDetailId = sid;
+                    $.mobile.changePage("./safeManageSystemDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 分页条
+                var tempSafeManageSystemCurPage = 1;
+                var tempSafeManageSystemTotalPage = 2;
+                var enterpriseSearchSafeManageSystemListPaging = function(datajson,page_cur,page_dis){
+                    
+                    pagingFooterInit({page_cur:Number(tempSafeManageSystemCurPage),page_dis:Number(10),page_count:Number(tempSafeManageSystemTotalPage)});
+                    if(tempSafeManageSystemCurPage < tempSafeManageSystemTotalPage)
+                    {
+                        tempSafeManageSystemCurPage++;
+                    }
+                    else
+                    {
+                        tempSafeManageSystemCurPage--;
+                    }
+                    
+                };
+                
+                createPagingFooterFooter("#enterpriseSearchSafeManageSystemListView", {type:0}, {page_cur:1,page_dis:10}, enterpriseSearchSafeManageSystemListPaging);
+                
+            </script> 
+        </div>
+        
+        
+    </body>
+    
+</html>

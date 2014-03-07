@@ -22,7 +22,7 @@ var disposeFunction=new Object(),paging_id,paging_datajson;
 
 //加载底部分页 page页面id，datajson{mobileRqs:"jqm",page_cur:当前页，page_dis:显示条目，[page_count:总页数,type:0]}
 function createPagingFooterFooter(page,datajson0,datajson1,dispose){
-	var footerHtml =  urlLoadPagingFooterContent("../scripts/pagingFooter/pagingFooter.html");
+	var footerHtml =  urlLoadPagingFooterContent(projectLocalPath + "/scripts/pagingFooter/pagingFooter.html");
     paging_id=page;
     $(paging_id).append($(footerHtml));
     disposeFunction=dispose;

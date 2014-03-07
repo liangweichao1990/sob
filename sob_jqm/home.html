@@ -90,6 +90,19 @@
                     </ul>  
                 </div>  
             </div>
+            
+            <script>
+                $(document).one("pagebeforechange", function(e,data){
+                    if(typeof data.toPage!=="string"){
+            			var url = $.mobile.path.parseUrl(e.target.baseURI);
+            			var re = 'home.html';            //测定是否是当前html
+            			if (url.href.search(re) !== -1) {
+                            var tempurl=decodeURIComponent(url.href);
+                            projectLocalPath=tempurl.substr(0,tempurl.lastIndexOf(re)-1);
+            			}
+                    }
+                });
+            </script>
         </div> 
     </body>
 </html>

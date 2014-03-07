@@ -1,0 +1,65 @@
+<!-- 
+    页面：企业查询_教育培训信息详细页面
+    作者：梁伟超
+    日期：2014-03-07
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchEducationInfoDetailView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>岗前教育培训</h1> 
+            </div>
+            
+            <div data-role="none">
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent" style="text-align:center">
+                        <a href="#educationInfoPhotoDiv" data-rel="popup" onclick="$('#educationInfoPhotoDiv img').attr('src','../images/default_list_edu.jpg')"><img style="width:97%;" src="../images/default_list_edu.jpg" /></a>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListEven">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">参加人数:</span>
+                        <span>10人</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListOdd">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">人员岗位:</span>
+                        <span>开发部</span>
+                    </div>
+                </div>
+                
+                <div class="enterpriseContentDetailListEven">
+                    <div class="enterpriseContentDetailListContent">
+                        <span class="epContentDetailListContentTitle">培训内容:</span>
+                        <span>消防、安全制度、安全要点</span>
+                    </div>
+                </div>
+                
+                <div data-role="popup" data-overlay-theme="b" id="educationInfoPhotoDiv">
+                  <img style="width:100%" src="../images/default_list_edu.jpg" />
+                </div>
+            </div>
+            
+            <script>
+                
+            </script> 
+        </div>
+        
+        
+    </body>
+    
+</html>

@@ -1,0 +1,154 @@
+<!-- 
+    页面：企业查询_安全管理人员信息列表页面
+    作者：梁伟超
+    日期：2014-03-07
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchSafeManagerInfoListView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>安全管理人员信息</h1> 
+                <div data-role="navbar"> 
+                    <ul id="enterpriseSearchSafeManagerInfoTabBtns"> 
+                        <li><a data-role="button" data-corners="false" id="enterpriseSearchSafeManagerInfoBtn" class="ui-btn-active" href="javascript:changeSafeManagerTab('safeManager')">安全管理人员信息</a></li>
+                        <li><a data-role="button" data-corners="false" id="enterpriseSearchSpecialWokerInfoBtn" href="javascript:changeSafeManagerTab('specialWorker')">特种作业人员信息</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div data-role="none">
+                <div role="main" class="ui-content">
+                    
+                    <!-- 安全管理人员信息tab页面 -->
+                    <div id="safeManagerEduList">
+                        <ul data-role="listview">
+                          <li>
+                              <a href="javascript:getSafeManagerInfoDetail('sid')">
+                                  <img class="listItemImg" src="../images/default_list_safeManager1.jpg" />
+                                  <span>姓名:</span><span>陈静</span>
+                                  <p><span>职务:</span><span>经理</span></p>
+                                  <p><span>联系电话:</span><span>13075636242</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getSafeManagerInfoDetail('sid')">
+                                  <img class="listItemImg" src="../images/default_list_safeManager2.jpg" />
+                                  <span>姓名:</span><span>张三</span>
+                                  <p><span>职务:</span><span>经理</span></p>
+                                  <p><span>联系电话:</span><span>13075612345</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getSafeManagerInfoDetail('sid')">
+                                  <img class="listItemImg" src="../images/default_list_safeManager3.jpg" />
+                                  <span>姓名:</span><span>李四</span>
+                                  <p><span>职务:</span><span>经理</span></p>
+                                  <p><span>联系电话:</span><span>13075665432</span></p>
+                              </a>
+                          </li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <!-- 特种作业人员信息tab页面 -->
+                    <div id="specialWorkerList" style="display:none">
+                        <ul data-role="listview">
+                          <li>
+                              <a href="javascript:getSafeManagerInfoDetail('sid')">
+                                  <img class="listItemImg" src="../images/default_list_safeManager3.jpg" />
+                                  <span>姓名:</span><span>李四</span>
+                                  <p><span>职务:</span><span>经理</span></p>
+                                  <p><span>联系电话:</span><span>13075665432</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getSafeManagerInfoDetail('sid')">
+                                  <img class="listItemImg" src="../images/default_list_safeManager2.jpg" />
+                                  <span>姓名:</span><span>张三</span>
+                                  <p><span>职务:</span><span>经理</span></p>
+                                  <p><span>联系电话:</span><span>13075612345</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getSafeManagerInfoDetail('sid')">
+                                  <img class="listItemImg" src="../images/default_list_safeManager1.jpg" />
+                                  <span>姓名:</span><span>陈静</span>
+                                  <p><span>职务:</span><span>经理</span></p>
+                                  <p><span>联系电话:</span><span>13075636242</span></p>
+                              </a>
+                          </li>
+                            
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <script>
+                
+                var safeManagerInfoDetailId = "";    // 安全管理人员详情ID
+                
+                // 通过安全管理人员详情ID获取该安全管理人员的详细信息
+                function getSafeManagerInfoDetail(sid)
+                {
+                    safeManagerInfoDetailId = sid;
+                    $.mobile.changePage("./safeManagerInfoDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 用户点击切换tab页面
+                function changeSafeManagerTab(type)
+                {
+                    if(type == "safeManager")
+                    {
+                        $("#enterpriseSearchSafeManagerInfoBtn").addClass("ui-btn-active");
+                        $("#safeManagerEduList").show();
+                        $("#specialWorkerList").hide();
+                    }
+                    else if(type == "specialWorker")
+                    {
+                        $("#enterpriseSearchSpecialWokerInfoBtn").addClass("ui-btn-active");
+                        $("#safeManagerEduList").hide();
+                        $("#specialWorkerList").show();
+                    }
+                }
+                
+                // 分页条
+                var tempSafeManagerInfoCurPage = 1;
+                var tempSafeManagerInfoTotalPage = 2;
+                var enterpriseSearchSafeManagerInfoListPaging = function(datajson,page_cur,page_dis){
+                    
+                    pagingFooterInit({page_cur:Number(tempSafeManagerInfoCurPage),page_dis:Number(10),page_count:Number(tempSafeManagerInfoTotalPage)});
+                    if(tempSafeManagerInfoCurPage < tempSafeManagerInfoTotalPage)
+                    {
+                        tempSafeManagerInfoCurPage++;
+                    }
+                    else
+                    {
+                        tempSafeManagerInfoCurPage--;
+                    }
+                    
+                };
+                
+                createPagingFooterFooter("#enterpriseSearchSafeManagerInfoListView", {type:0}, {page_cur:1,page_dis:10}, enterpriseSearchSafeManagerInfoListPaging);
+                
+            </script> 
+        </div>
+        
+    </body>
+    
+</html>

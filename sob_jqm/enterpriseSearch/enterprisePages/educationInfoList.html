@@ -1,0 +1,280 @@
+<!-- 
+    页面：企业查询_教育培训信息列表页面
+    作者：梁伟超
+    日期：2014-03-07
+    版本：1.0
+-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    
+    <body>
+        <!-- 主页 -->
+        <div id="enterpriseSearchEducationInfoListView" data-theme="b" data-role="page">
+            
+            <div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false">
+                <a data-role="button" data-icon="arrow-l" data-rel="back">返回</a>
+                <h1>教育培训信息</h1> 
+                <div data-role="navbar"> 
+                    <ul id="enterpriseSearchEduInfoTabBtns"> 
+                        <li><a data-role="button" data-corners="false" id="enterpriseSearchNewStuffEduBtn" class="ui-btn-active" href="javascript:changeEduTab('newStuff')">新进员工岗前培训</a></li>
+                        <li><a data-role="button" data-corners="false" id="enterpriseSearchSafeEduBtn" href="javascript:changeEduTab('safeEdu')">日常安全教育</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div data-role="none">
+                <div role="main" class="ui-content">
+                    
+                    <!-- 新员工培训tab页面 -->
+                    <div id="newStuffEduList">
+                        <ul data-role="listview">
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-11</span>
+                                  <p><span>岗位:</span><span>开发部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-10</span>
+                                  <p><span>岗位:</span><span>运输部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-09</span>
+                                  <p><span>岗位:</span><span>财务部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-08</span>
+                                  <p><span>岗位:</span><span>技术部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-07</span>
+                                  <p><span>岗位:</span><span>采购部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-06</span>
+                                  <p><span>岗位:</span><span>仓储部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-05</span>
+                                  <p><span>岗位:</span><span>销售部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-04</span>
+                                  <p><span>岗位:</span><span>经理人员</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-03</span>
+                                  <p><span>岗位:</span><span>部门主管</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu.jpg" />
+                                  <span>培训时间:</span><span>2014-01-02</span>
+                                  <p><span>岗位:</span><span>开发部</span></p>
+                                  <p><span>培训内容:</span><span>消防器材使用培训</span></p>
+                              </a>
+                          </li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <!-- 日常安全教育tab页面 -->
+                    <div id="safeEduList" style="display:none">
+                        <ul data-role="listview">
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-08</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-07</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-06</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-05</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-04</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-03</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-02</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-10-01</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-09-30</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                          <li>
+                              <a href="javascript:getEducationInfoDetail('eid')">
+                                  <img class="listItemImg" src="../images/default_list_edu_safe.jpg" />
+                                  <span>培训主题:</span><span>早会安全教育</span>
+                                  <p><span>培训时间:</span><span>2013-09-29</span></p>
+                                  <p><span>培训内容:</span><span>安全教育</span></p>
+                              </a>
+                          </li>
+                            
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <script>
+                
+                var educationInfoDetailId = "";    // 教育培训信息详情ID
+                
+                // 通过教育培训信息详情ID获取该培训的详细信息
+                function getEducationInfoDetail(eid)
+                {
+                    educationInfoDetailId = eid;
+                    $.mobile.changePage("./educationInfoDetail.html",{changeHash:true, transition:"slide"});
+                }
+                
+                // 用户点击切换tab页面
+                function changeEduTab(type)
+                {
+                    if(type == "newStuff")
+                    {
+                        $("#enterpriseSearchNewStuffEduBtn").addClass("ui-btn-active");
+                        $("#newStuffEduList").show();
+                        $("#safeEduList").hide();
+                    }
+                    else if(type == "safeEdu")
+                    {
+                        $("#enterpriseSearchSafeEduBtn").addClass("ui-btn-active");
+                        $("#newStuffEduList").hide();
+                        $("#safeEduList").show();
+                    }
+                }
+                
+                // 分页条
+                var tempEducationInfoCurPage = 1;
+                var tempEducationInfoTotalPage = 2;
+                var enterpriseSearchEducationInfoListPaging = function(datajson,page_cur,page_dis){
+                    
+                    pagingFooterInit({page_cur:Number(tempEducationInfoCurPage),page_dis:Number(10),page_count:Number(tempEducationInfoTotalPage)});
+                    if(tempEducationInfoCurPage < tempEducationInfoTotalPage)
+                    {
+                        tempEducationInfoCurPage++;
+                    }
+                    else
+                    {
+                        tempEducationInfoCurPage--;
+                    }
+                    
+                };
+                
+                createPagingFooterFooter("#enterpriseSearchEducationInfoListView", {type:0}, {page_cur:1,page_dis:10}, enterpriseSearchEducationInfoListPaging);
+                
+            </script> 
+        </div>
+        
+    </body>
+    
+</html>
