@@ -6,7 +6,7 @@
         <meta charset="utf-8" />
     </head>
     <body>
-        <div data-role="page" id="news_detail" data-title="最新资讯详细信息">
+        <div data-role="page" data-theme="b" id="news_detail" data-title="最新资讯详细信息">
         <script>
             function open_DetaildownloadPopup(docurl,pathFile){
                 downloadFile(docurl,pathFile);
@@ -62,7 +62,7 @@
                 }
             });
         </script>
-            <div data-role="header"  data-theme="a" data-position="fixed">
+            <div data-role="header" data-position="fixed">
                 <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
                 <h1>最新资讯详细信息</h1>
                 <a href="#news_Detail_adjunct" data-rel="popup" class="ui-disabled" data-icon="grid">附件</a>
@@ -73,10 +73,9 @@
                     <div id="news_detailDivTitle">
                         <p style="margin-top: 0;">
                             <strong id="news_detail_title">邹树春的标题为额范围分为Google Chrome</strong>
+                            <span><strong>类型：</strong><strong id="news_detail_type"></strong></span>
+                            <span id="news_detail_time">2014-02-17</span>
                         </p>
-                    </div>
-                    <div style="text-align: right;">
-                        <span id="news_detail_time">2014-02-17</span>
                     </div>
                     <div style="border-top:1px solid silver;border-bottom:1px solid silver;">
                         <p>
@@ -90,10 +89,6 @@
                     <p id="news_detail_content">
                     </p>
                 </div>
-                <!--<details open="open">
-                <summary><strong>摘要：</strong>为额范围分为Google Chrome 免费的开源 web 浏览器。发布于 2008 年。</summary>
-                <p>All pages and graphics on this web site are the property of W3School.</p>
-                </details>-->
             </div>
             <!-- 附件下载窗口 -->
             <div data-role="popup" id="news_Detail_adjunct" data-overlay-theme="a" data-position-to="window" data-tolerance="15,30">

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!--年度累计各类伤亡事故统计分析表(二)-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="accidentYear_View" data-theme="b" data-role="page" data-title="年度累计各类伤亡事故统计分析表">
+            <style>
+                .accidentYear_content{
+                    margin:0;
+                    padding:0;
+                }
+                table{
+                    border-collapse:collapse;
+                    font-size: .8em;
+                }
+                table,td,th{
+                    border: 1px solid gray;
+                    text-align: center;
+                }
+                #accidentYear_land_table td,th{
+                    line-height: 30px;
+                    vertical-align: middle;
+                    white-space:nowrap;
+                    word-break:nowrap;
+                    text-overflow:ellipsis;
+                    word-break:keep-all;
+                }
+                .accidentYear_scroll{
+                    overflow:scroll;
+                    overflow-x:auto;
+                    overflow-y:auto;
+                }
+                .silder_div{
+                    float:left;
+                }
+                .ui-select{
+                    margin:0px;
+                }
+                .accidentYear_navbar_li{
+                    text-align: center;
+                    vertical-align: middle;
+                    line-height: 35px;
+                }
+            </style>
+            <!--头部-->
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>年度累计各类伤亡事故统计分析表</h1>
+                <div data-role="navbar">
+                    <ul >
+                        <li style="width:30%;">
+                            <select style="margin: 0;" id="accidentYear_year" data-corners="false" onchange="changeAccidentYear_Year()"></select>
+                        </li>
+                        <li style="width:20%;"><div class="accidentYear_navbar_li">1月</div></li>
+                        <li style="width:20%;"><div class="accidentYear_navbar_li">至</div></li>
+                        <li style="width:30%;">
+                            <select id="accidentYear_month" data-corners="false" onchange="changeAccidentYear_Month()"></select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--内容-->
+            <div data-role="content" class="accidentYear_content">
+                
+                <!--竖屏显示数据-->
+                <div id="accidentYear_port" style="display:block;">
+                <div style="text-align:center;">珠海市<font name="accidentYear_curr_year"></font>年1-<font name="accidentYear_curr_month"></font>月份各类伤亡事故统计表(二)</div>
+                <div style="text-align:center;">（事故统计分析表  累计）</div>
+                    <table style="display:none">
+                        <thead>
+                            <tr>
+            				    <td rowspan="2" style="width:30%;">类型</td>
+            				    <td colspan="4" style="width:70%;" dbField="Year_title">2014年12月各类事故</td>
+            				</tr>
+                            <tr>
+            					<td style="width:15%;">起数</td>
+            					<td style="width:15%;">死亡人数</td>
+            					<td style="width:15%;">受伤人数</td>
+            					<td style="width:20%;">经济损失/万元</td>
+            				</tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="accidentYear_portDiv">
+                            
+                    </div>
+                </div>
+                
+                <!--横屏显示数据-->
+                <div id="accidentYear_land" style="display:none;">
+                <div style="text-align:center;">珠海市<font name="accidentYear_curr_year"></font>年1-<font name="accidentYear_curr_month"></font>月份各类伤亡事故统计表(二)（事故统计分析表  累计）</div>
+                    <div id="accidentYear_landDiv" class="accidentYear_scroll">
+                    <table id="accidentYear_land_table">
+                        <thead>
+                            <tr>
+            				    <td rowspan="2" style="">类型</td>
+            				    <td colspan="4" style="background-color:#CCFFCC">2014年1-12月各类事故</td>
+            				    <td colspan="4" style="">2013年1-12月各类事故</td>
+            				    <td colspan="4" style="background-color:#CCFFCC">同比增长绝对数</td>
+            				    <td colspan="4" style="">同比增长百分数</td>
+            				</tr>
+                            <tr>
+            					<td style="background-color:#CCFFCC">起数</td>
+            					<td style="background-color:#CCFFCC">死亡人数</td>
+            					<td style="background-color:#CCFFCC">受伤人数</td>
+            					<td style="background-color:#CCFFCC">经济损失(万元)</td>
+            					<td>起数</td>
+            					<td>死亡人数</td>
+            					<td>受伤人数</td>
+            					<td>经济损失(万元)</td>
+            					<td style="background-color:#CCFFCC">起数</td>
+            					<td style="background-color:#CCFFCC">死亡人数</td>
+            					<td style="background-color:#CCFFCC">受伤人数</td>
+            					<td style="background-color:#CCFFCC">经济损失(万元)</td>
+            					<td >起数</td>
+            					<td >死亡人数</td>
+            					<td >受伤人数</td>
+            					<td >经济损失(万元)</td>
+            				</tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+            					<td >工矿企业</td>
+            					<td style="background-color:#CCFFCC">1</td>
+            					<td style="background-color:#CCFFCC">1</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">50</td>
+            					<td >1</td>
+            					<td >1</td>
+            					<td >0</td>
+            					<td >86</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">-36</td>
+            					<td >0%</td>
+            					<td >0%</td>
+            					<td >0%</td>
+            					<td >-41.86%</td>                                
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+            </div>
+            <style>
+                .circle {
+                    display: inline-block;
+                    margin-left: 4px;
+                    width: 10px;
+                    opacity: .05;
+                    height: 10px;
+                    /* border: 1px solid black; */
+                    background: black;
+                    border-radius: 5px;
+                }
+            </style> 
+            <div id="accidentYear_footer" data-role="footer" data-theme="false" style="background-color:transparent;border: 0;" data-position="fixed">
+                <div style="text-align:center">
+                    
+                </div>
+            </div>
+            <script>
+                // 把年份值添加到年份下拉框中
+                for(var i = currentYear; i >= currentYear-10; i--){
+                    if(i === currentYear){    // 如果是当前年份，则把它选中
+                        $("<option selected='selected' value='" + i + "'>" + i +"年"+ "</option>").appendTo($("#accidentYear_year"));
+                    }else{
+                        $("<option value='" + i + "'>" + i+"年" + "</option>").appendTo($("#accidentYear_year"));
+                    }
+                }
+                // 把月份值添加到月份下拉框中
+                for(var m=1;m<=12;m++){
+                    if(m === currentMonth){    // 如果是当前月份，则把它选中
+                        $("<option selected='selected' value='" + m + "'>" + m +"月"+ "</option>").prependTo($("#accidentYear_month"));
+                    }else{
+                        $("<option value='" + m + "'>" + m+"月" + "</option>").prependTo($("#accidentYear_month"));
+                    }
+                }
+                        
+                for(var t=1;t<8;t++){
+                    $("#accidentYear_land_table > tbody").append('<tr>'+
+        					'<td >工矿企业'+t+'</td>'+
+        					'<td style="background-color:#CCFFCC">1</td>'+
+        					'<td style="background-color:#CCFFCC">1</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">50</td>'+
+        					'<td >1</td>'+
+        					'<td >1</td>'+
+        					'<td >0</td>'+
+        					'<td >86</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">-36</td>'+
+        					'<td >0%</td>'+
+        					'<td >0%</td>'+
+        					'<td >0%</td>'+
+        					'<td >-41.86%</td></tr>');
+                }
+                var accidentYear_clonetitleArray=['2014年1-12月各类事故','2013年1-12月各类事故','同比增长绝对数','同比增长百分数']
+                for(var s=0;s<4;s++){
+                    $("#accidentYear_footer > div").append('<span class="circle"></span>');
+                    var accidentYear_cloneTable=$("#accidentYear_port > table").clone();
+                    $(accidentYear_cloneTable).attr("name","accidentYear_port_table").css("display","");
+                    if(s%2===0){$(accidentYear_cloneTable).css("backgroundColor","#CCFFCC");}
+                    $(accidentYear_cloneTable).find("[dbField='Year_title']").html(accidentYear_clonetitleArray[s]);
+                    for(var p=1;p<8;p++){
+                        $(accidentYear_cloneTable).children("tbody").append('<tr>'+
+                                        '<td text-align="center" style="width:30%;height:50px;">生产经营性火灾'+p+'</td>'+
+                    					'<td>1</td>'+
+                    					'<td>1</td>'+
+                    					'<td>0</td>'+
+                    					'<td>50</td></tr>');
+                    }
+                    $("#accidentYear_portDiv").append(accidentYear_cloneTable);
+                }
+                //选择年事件
+                function changeAccidentYear_Year(){
+                    $("[name='accidentYear_curr_year']").html($("#accidentYear_year").val());
+                };
+                //选择月份事件
+                function changeAccidentYear_Month(){
+                    $("[name='accidentYear_curr_month']").html($("#accidentYear_month").val());
+                };
+                changeAccidentYear_Year();
+                changeAccidentYear_Month();
+                
+                if(window.orientation === 0 || window.orientation === 180){    // 当前是竖屏
+                    $("#accidentYear_port").css("display","block");
+                    $("#accidentYear_land").css("display","none");
+                    $("[data-role='footer']").css("display","block");
+                    //改变竖屏table宽度
+                    $("#accidentYear_portDiv").css({width:($("#accidentYear_View").width())*4});
+                    $("table[name='accidentYear_port_table']").css({width:$("#accidentYear_View").width(),float:"left"});
+                }else if(window.orientation === 90 || window.orientation === -90){   // 当前是横屏
+                    $("#accidentYear_port").css("display","none");
+                    $("#accidentYear_land").css("display","block");
+                    $("[data-role='footer']").css("display","none");
+                    //改变横屏显示宽度
+                    $("#accidentYear_landDiv").css({width:$("#accidentYear_View").width()});
+                }
+                var AccidentYear_swipe_id=0;
+                $("#accidentYear_footer .circle:first").css("opacity","0.2");//点点
+                //横屏向左滑动
+                $("#accidentYear_portDiv").on("swipeleft", function(e){
+                    var tempsilderdiv;
+                    if(AccidentYear_swipe_id<$("table[name='accidentYear_port_table']").size()-1){
+                        $("#accidentYear_footer .circle").css("opacity","0.05");
+                        $("#accidentYear_footer .circle:eq("+(AccidentYear_swipe_id+1)+")").css("opacity","0.2");
+                        tempsilderdiv=$("table[name='accidentYear_port_table']:eq("+(AccidentYear_swipe_id)+")");
+                        AccidentYear_swipe_id++;
+                        $(tempsilderdiv).animate({marginLeft:"-"+($("#accidentYear_View").width())+"px"},800);
+                        $(tempsilderdiv).dequeue();
+                    }
+                });
+                //横屏向右滑动
+                $("#accidentYear_portDiv").on("swiperight", function(e){
+                    var tempsilderdiv;
+                    if(AccidentYear_swipe_id>0){
+                        $("#accidentYear_footer .circle").css("opacity","0.05");
+                        $("#accidentYear_footer .circle:eq("+(AccidentYear_swipe_id-1)+")").css("opacity","0.2");
+                        tempsilderdiv=$("table[name='accidentYear_port_table']:eq("+(AccidentYear_swipe_id-1)+")");
+                        AccidentYear_swipe_id--;
+                        $(tempsilderdiv).animate({marginLeft:"0px"},800);
+                        $(tempsilderdiv).dequeue();
+                    }
+                });
+                // 用户进行屏幕转动时的事件处理 
+                $(window).bind("orientationchange", function(event){
+                    if(event.orientation)
+                    {
+                        if(event.orientation === 'portrait')    // 竖屏
+                        {
+                            
+                            $("#accidentYear_portDiv").css({width:($("#accidentYear_View").width())*4});
+                            $("table[name='accidentYear_port_table']").css({width:$("#accidentYear_View").width(),float:"left"});
+                            $("[data-role='footer']").css("display","block");
+                            $("#accidentYear_port").css("display","block");
+                            $("#accidentYear_land").css("display","none");
+                        }
+                        else if(event.orientation === 'landscape') // 横屏
+                        {
+                            $("#accidentYear_landDiv").css({width:$("#accidentYear_View").width()});
+                            $("[data-role='footer']").css("display","none");
+                            $("#accidentYear_port").css("display","none");
+                            $("#accidentYear_land").css("display","block");
+                        }
+                    } 
+                });
+            </script>
+        </div>
+    </body>
+</html>

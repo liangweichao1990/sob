@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--各类伤亡事故统计分析表(一) Ronnie-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="accidentDifferent_View" data-theme="b" data-role="page" data-title="各类伤亡事故统计分析表">
+            <style>
+                .accidentDifferent_content{
+                    margin:0;
+                    padding:0;
+                }
+                table{
+                    border-collapse:collapse;
+                    font-size: .8em;
+                }
+                table,td,th{
+                    border: 1px solid gray;
+                    text-align: center;
+                }
+                #accidentDifferent_land_table td,th{
+                    line-height: 30px;
+                    vertical-align: middle;
+                    white-space:nowrap;
+                    word-break:nowrap;
+                    text-overflow:ellipsis;
+                    word-break:keep-all;
+                }
+                .accidentDifferent_scroll{
+                    overflow:scroll;
+                    overflow-x:auto;
+                    overflow-y:auto;
+                }
+                .silder_div{
+                    float:left;
+                }
+            </style>
+            <!--头部-->
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>各类伤亡事故统计分析表</h1>
+                <div data-role="navbar">
+                    <ul>
+                        <li>
+                            <select id="accidentDifferent_year" data-corners="false" onchange="changeAccidentDifferentYear()"></select>
+                        </li>
+                        <li>
+                            <select id="accidentDifferent_month" data-corners="false" onchange="changeAccidentDifferentMonth()"></select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--内容-->
+            <div data-role="content" class="accidentDifferent_content">
+                
+                <!--竖屏显示数据-->
+                <div id="accidentDifferent_port" style="display:block;">
+                <div style="text-align:center;">珠海市<font name="accidentDifferent_curr_year"></font>年<font name="accidentDifferent_curr_month"></font>月份各类伤亡事故统计表(一)</div>
+                <div style="text-align:center;">（事故统计分析表  当月）</div>
+                    <table style="display:none">
+                        <thead>
+                            <tr>
+            				    <td rowspan="2" style="width:30%;">类型</td>
+            				    <td colspan="4" style="width:70%;" dbField="different_title">2014年12月各类事故</td>
+            				</tr>
+                            <tr>
+            					<td style="width:15%;">起数</td>
+            					<td style="width:15%;">死亡人数</td>
+            					<td style="width:15%;">受伤人数</td>
+            					<td style="width:20%;">经济损失/万元</td>
+            				</tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="accidentDifferent_portDiv">
+                            
+                    </div>
+                </div>
+                
+                <!--横屏显示数据-->
+                <div id="accidentDifferent_land" style="display:none;">
+                    <div style="text-align:center;">珠海市<font name="accidentDifferent_curr_year"></font>年<font name="accidentDifferent_curr_month"></font>月份各类伤亡事故统计表(一)（事故统计分析表  当月）</div>
+                    <div id="accidentDifferent_landDiv" class="accidentDifferent_scroll">
+                    <table id="accidentDifferent_land_table">
+                        <thead>
+                            <tr>
+            				    <td rowspan="2" style="">类型</td>
+            				    <td colspan="4" style="background-color:#CCFFCC">2014年1月各类事故</td>
+            				    <td colspan="4" style="">2013年1月各类事故</td>
+            				    <td colspan="4" style="background-color:#CCFFCC">同比增长绝对数</td>
+            				    <td colspan="4" style="">同比增长百分数</td>
+            				</tr>
+                            <tr>
+            					<td style="background-color:#CCFFCC">起数</td>
+            					<td style="background-color:#CCFFCC">死亡人数</td>
+            					<td style="background-color:#CCFFCC">受伤人数</td>
+            					<td style="background-color:#CCFFCC">经济损失(万元)</td>
+            					<td>起数</td>
+            					<td>死亡人数</td>
+            					<td>受伤人数</td>
+            					<td>经济损失(万元)</td>
+            					<td style="background-color:#CCFFCC">起数</td>
+            					<td style="background-color:#CCFFCC">死亡人数</td>
+            					<td style="background-color:#CCFFCC">受伤人数</td>
+            					<td style="background-color:#CCFFCC">经济损失(万元)</td>
+            					<td >起数</td>
+            					<td >死亡人数</td>
+            					<td >受伤人数</td>
+            					<td >经济损失(万元)</td>
+            				</tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+            					<td >工矿企业</td>
+            					<td style="background-color:#CCFFCC">1</td>
+            					<td style="background-color:#CCFFCC">1</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">50</td>
+            					<td >1</td>
+            					<td >1</td>
+            					<td >0</td>
+            					<td >86</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">0</td>
+            					<td style="background-color:#CCFFCC">-36</td>
+            					<td >0%</td>
+            					<td >0%</td>
+            					<td >0%</td>
+            					<td >-41.86%</td>                                
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+            </div>
+            <style>
+                .circle {
+                    display: inline-block;
+                    margin-left: 4px;
+                    width: 10px;
+                    opacity: .05;
+                    height: 10px;
+                    /* border: 1px solid black; */
+                    background: black;
+                    border-radius: 5px;
+                }
+            </style> 
+            <div id="accidentDifferent_footer" data-role="footer" data-theme="false" style="background-color:transparent;border: 0;" data-position="fixed">
+                <div style="text-align:center">
+                    
+                </div>
+            </div>
+            <script>
+                // 把年份值添加到年份下拉框中
+                for(var i = currentYear; i >= currentYear-10; i--){
+                    if(i === currentYear){    // 如果是当前年份，则把它选中
+                        $("<option selected='selected' value='" + i + "'>" + i +"年"+ "</option>").appendTo($("#accidentDifferent_year"));
+                    }else{
+                        $("<option value='" + i + "'>" + i+"年" + "</option>").appendTo($("#accidentDifferent_year"));
+                    }
+                }
+                // 把月份值添加到月份下拉框中
+                for(var m=1;m<=12;m++){
+                    if(m === currentMonth){    // 如果是当前月份，则把它选中
+                        $("<option selected='selected' value='"+m+"'>"+m+"月"+"</option>").prependTo($("#accidentDifferent_month"));
+                    }else{
+                        $("<option value='"+m+"'>"+m+"月"+"</option>").prependTo($("#accidentDifferent_month"));
+                    }
+                }
+                        
+                for(var t=1;t<8;t++){
+                    $("#accidentDifferent_land_table > tbody").append('<tr>'+
+        					'<td >工矿企业'+t+'</td>'+
+        					'<td style="background-color:#CCFFCC">1</td>'+
+        					'<td style="background-color:#CCFFCC">1</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">50</td>'+
+        					'<td >1</td>'+
+        					'<td >1</td>'+
+        					'<td >0</td>'+
+        					'<td >86</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">0</td>'+
+        					'<td style="background-color:#CCFFCC">-36</td>'+
+        					'<td >0%</td>'+
+        					'<td >0%</td>'+
+        					'<td >0%</td>'+
+        					'<td >-41.86%</td></tr>');
+                }
+                var accidentDifferent_clonetitleArray=['2014年12月各类事故','2013年12月各类事故','同比增长绝对数','同比增长百分数']
+                for(var s=0;s<4;s++){
+                    $("#accidentDifferent_footer > div").append('<div class="circle"></div>');
+                    var accidentDifferent_cloneTable=$("#accidentDifferent_port > table").clone();
+                    $(accidentDifferent_cloneTable).attr("name","accidentDifferent_port_table").css("display","");
+                    if(s%2===0){$(accidentDifferent_cloneTable).css("backgroundColor","#CCFFCC");}
+                    $(accidentDifferent_cloneTable).find("[dbField='different_title']").html(accidentDifferent_clonetitleArray[s]);
+                    for(var p=1;p<8;p++){
+                        $(accidentDifferent_cloneTable).children("tbody").append('<tr>'+
+                                        '<td text-align="center" style="width:30%;height:50px;">生产经营性火灾'+p+'</td>'+
+                    					'<td>1</td>'+
+                    					'<td>1</td>'+
+                    					'<td>0</td>'+
+                    					'<td>50</td></tr>');
+                    }
+                    $("#accidentDifferent_portDiv").append(accidentDifferent_cloneTable);
+                }
+                //选择年事件
+                function changeAccidentDifferentYear(){
+                    $("[name='accidentDifferent_curr_year']").html($("#accidentDifferent_year").val());
+                };
+                //选择月份事件
+                function changeAccidentDifferentMonth(){
+                    $("[name='accidentDifferent_curr_month']").html($("#accidentDifferent_month").val());
+                };
+                changeAccidentDifferentYear();
+                changeAccidentDifferentMonth();
+                if(window.orientation === 0 || window.orientation === 180){    // 当前是竖屏
+                    $("#accidentDifferent_port").css("display","block");
+                    $("#accidentDifferent_land").css("display","none");
+                    $("[data-role='footer']").css("display","block");
+                    //改变横屏table宽度
+                    $("#accidentDifferent_portDiv").css({width:($("#accidentDifferent_View").width())*4});
+                    $("table[name='accidentDifferent_port_table']").css({width:$("#accidentDifferent_View").width(),float:"left"});
+                }else if(window.orientation === 90 || window.orientation === -90){   // 当前是横屏
+                    $("#accidentDifferent_port").css("display","none");
+                    $("#accidentDifferent_land").css("display","block");
+                    $("[data-role='footer']").css("display","none");
+                    $("#accidentDifferent_landDiv").css({width:($("#accidentDifferent_View").width()+"px")});
+                }
+                var AccidentDifferent_swipe_id=0;
+                $("#accidentDifferent_footer .circle:first").css("opacity","0.2");//点点
+                //横屏向左滑动
+                $("#accidentDifferent_portDiv").on("swipeleft", function(e){
+                    var tempsilderdiv;
+                    if(AccidentDifferent_swipe_id<$("table[name='accidentDifferent_port_table']").size()-1){
+                        $("#accidentDifferent_footer .circle").css("opacity","0.05");
+                        $("#accidentDifferent_footer .circle:eq("+(AccidentDifferent_swipe_id+1)+")").css("opacity","0.2");
+                        tempsilderdiv=$("table[name='accidentDifferent_port_table']:eq("+(AccidentDifferent_swipe_id)+")");
+                        AccidentDifferent_swipe_id++;
+                        $(tempsilderdiv).animate({marginLeft:"-"+($("#accidentDifferent_View").width())+"px"},800);
+                        $(tempsilderdiv).dequeue();
+                    }
+                });
+                //横屏向右滑动
+                $("#accidentDifferent_portDiv").on("swiperight", function(e){
+                    var tempsilderdiv;
+                    if(AccidentDifferent_swipe_id>0){
+                        $("#accidentDifferent_footer .circle").css("opacity","0.05");
+                        $("#accidentDifferent_footer .circle:eq("+(AccidentDifferent_swipe_id-1)+")").css("opacity","0.2");
+                        tempsilderdiv=$("table[name='accidentDifferent_port_table']:eq("+(AccidentDifferent_swipe_id-1)+")");
+                        AccidentDifferent_swipe_id--;
+                        $(tempsilderdiv).animate({marginLeft:"0px"},800);
+                        $(tempsilderdiv).dequeue();
+                    }
+                });
+                
+                // 用户进行屏幕转动时的事件处理 
+                $(window).bind("orientationchange", function(event){
+                    if(event.orientation)
+                    {                        
+                        if(event.orientation === 'portrait')    // 竖屏
+                        {
+                            $("#accidentDifferent_portDiv").css({width:($("#accidentDifferent_View").width())*4});
+                            $("table[name='accidentDifferent_port_table']").css({width:$("#accidentDifferent_View").width(),float:"left"});
+                            $("[data-role='footer']").css("display","block");
+                            $("#accidentDifferent_port").css("display","block");
+                            $("#accidentDifferent_land").css("display","none");
+                        }
+                        else if(event.orientation === 'landscape') // 横屏
+                        {    
+                            $("#accidentDifferent_landDiv").css({width:($("#accidentDifferent_View").width())});
+                            $("[data-role='footer']").css("display","none");
+                            $("#accidentDifferent_port").css("display","none");
+                            $("#accidentDifferent_land").css("display","block");
+                        }
+                    } 
+                });
+            </script>
+        </div>
+    </body>
+</html>

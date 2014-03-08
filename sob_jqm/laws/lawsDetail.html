@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div data-role="page" data-theme="b" id="laws_detail" data-title="法律法规正文">
+        <script>
+            //截取出url中的参数
+            function laws_getUrlParam(string) {
+                var obj =  new Array();
+                if (string.indexOf("?") !== -1) {
+                    var string = string.substr(string.indexOf("?") + 1);
+                    var strs = string.split("&");
+                    for(var i = 0; i < strs.length; i ++) {
+                        var tempArr = strs[i].split("=");
+                        obj[i] = tempArr[1];
+                    }
+                }
+                return obj;
+            };
+            //取出上个页面传过来的值，只绑定一次
+	        $(document).one("pagebeforechange", beforechange_lawsDetail);
+            function beforechange_lawsDetail(e, data) {
+                //测定是否生成页面
+        		if (typeof data.toPage !== "string") {
+        			var url = $.mobile.path.parseUrl(e.target.baseURI);
+        			var re = 'lawsDetail.html';            //测定是否是当前html
+        			if (url.href.search(re) !== -1) {
+        				var data = laws_getUrlParam(url.href);         
+                        alert(decodeURIComponent(data[0]));
+        			}
+        		}
+        	}
+            $("#laws_detail").on('pagebeforeshow',function (e) {
+                e.preventDefault();
+                /*$.ajax({
+                    type: "Post",
+                    data:{mobileRqs:'jqm',id:news_detailId},
+                    dataType:"json",
+                    url:"http://"+domain+"/news/News/queryNewsView.do"
+                }).done(function (data) {
+                    return false;
+                }).fail(function () {
+                    navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+                    return false;
+                });*/
+            });
+            $("#laws_detail_adjunct").on({
+                popupbeforeposition: function() {
+                    //防止弹出窗口点击其他位置自动消失
+                    $('.ui-popup-screen').off();
+                    var maxHeight = $( window ).height() - 30 + "px";
+                    $( "#laws_detail_adjunct" ).css( "max-height", maxHeight );
+                }
+            });
+        </script>
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>法律法规正文</h1>
+                <a href="#laws_detail_adjunct" data-rel="popup" class="ui-disabled" data-icon="grid">附件</a>
+            </div>
+
+            <div data-role="content">
+                <div>
+                    <strong id="news_detail_title">邹树春的标题为额范围分为Google Chrome</strong>
+                </div>                
+                <div>
+                    <span id="news_detail_digest">邹树春的标题为额范围分为Google Chrome<</span>
+                </div>
+                <div>
+                    <p id="news_detail_content">邹树春的标题为额范围分为Google Chrome</p>
+                </div>
+            </div>
+            
+            </div>
+            <!-- 附件下载窗口 -->
+        <div data-role="popup" id="laws_detail_adjunct" data-overlay-theme="a" data-position-to="window" data-tolerance="15,30">
+            <div data-role="header" class="ui-corner-top">
+                <h1>附件下载</h1>
+            </div>
+            <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <div data-role="listview" data-inset="true" data-shadow="false">
+                <li data-role="collapsible" data-iconpos="left" data-inset="false">
+                    <h2>点击展开附件列表</h2>
+                    <ul data-role="listview" data-theme="a">
+                    </ul>
+                </li>
+            </div>
+            <a href="#" data-role="button" data-corners="false" style="margin: 0;" data-rel="back">取消</a>
+        </div>
+    </body>
+</html>

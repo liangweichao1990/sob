@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!--最新资讯 Ronnie-->
 <html>
     <head>
         <title></title>
@@ -7,10 +7,10 @@
     </head>
     <body>
 
-        <div id="news_View" data-role="page" data-position="fixed" data-title="最新资讯">
+        <div id="news_View" data-theme="b" data-role="page" data-title="最新资讯">
             <script>
                 createNewsNavbar("#news_View", "../news/newsNavbar.html", 0);
-                createNewsContent("#news_View", "../news/newsPopup.html",0);
+                createNewsContent("#news_View", "../news/newsPopup.html");
                 createPagingFooterFooter("#news_View",{type:0},{page_cur:1,page_dis:10},tempFunciton);
                   $("#news_View").on("swipeleft",function(){
                     openNewsNavbarPage('../news/newsCase.html');
@@ -48,8 +48,7 @@
                         </a>
                     </li>
                 </ul>
-                <ul data-role="listview">
-                </ul>
+                <ul data-role="listview" data-theme="a"></ul>
                 
             </div>
 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+
+        <div id="queryLaws_View" data-theme="b" data-role="page" data-title="法律法规搜索结果">
+            <script>
+                
+                createNewsContent("#queryLaws_View", "../laws/lawsPopup.html");                
+                $("#queryLaws_View #laws_seekPopup").on({
+                    popupbeforeposition: function() {
+                        //防止弹出窗口点击其他位置自动消失
+                        $('.ui-popup-screen').off();
+                        var maxHeight = $( window ).height() - 30 + "px";
+                        $( "#queryLaws_View #laws_seekPopup" ).css( "max-height", maxHeight );
+                    }
+                });
+                //截取出url中的参数
+                function laws_getUrlParam(string) {
+                    var obj =  new Array();
+                    if (string.indexOf("?") !== -1) {
+                        var string = string.substr(string.indexOf("?") + 1);
+                        var strs = string.split("&");
+                        for(var i = 0; i < strs.length; i ++) {
+                            var tempArr = strs[i].split("=");
+                            obj[i] = tempArr[1];
+                        }
+                    }
+                    return obj;
+                };
+                //取出上个页面传过来的值，只绑定一次
+    	        $(document).one("pagebeforechange", beforechange_lawsQueryList);
+                function beforechange_lawsQueryList(e, data) {
+                    //测定是否生成页面
+            		if (typeof data.toPage !== "string") {
+            			var url = $.mobile.path.parseUrl(e.target.baseURI);
+            			var re = 'queryLawsList.html';            //测定是否是当前html
+            			if (url.href.search(re) !== -1) {
+            				var data = laws_getUrlParam(url.href);
+                            $("#queryLaws_View #laws_name").val(decodeURIComponent(data[0]));
+                            $("#queryLaws_View #laws_keys").val(decodeURIComponent(data[1]));
+            			}
+            		}
+            	}
+                function open_lawsDetail(index){
+                    $.mobile.changePage("../laws/lawsDetail.html",{data:{id:index},transition:"slide"});
+                }
+            </script>
+            <!--头部-->
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>法律法规搜索结果</h1>
+                <a href="#laws_seekPopup" data-rel="popup" data-icon="search">搜索</a>
+            </div>
+            <!-- 内容 -->
+            <div data-role="content" data-theme="a">
+                <ul style="display:none;">
+                    <li>
+                       <a href="#" dbField="news_li_a">
+                            <img dbField="news_images" src="../laws/images/wendang.png" class="laws_item_img ui-li-icon"/>
+                            <span dbField="news_title">为呃我呃我</span>
+                       </a>
+                    </li>
+                </ul>
+                
+                <ul data-role="listview" data-theme="a">
+                    <li data-role="list-divider" style="text-align: center;padding: 0;margin: 0;">
+                        <h6>共检索到<font color="red">21</font>条法律文档</h6>                        
+                    </li>
+                    <li>
+                       <a href="#" dbField="news_li_a" onclick="open_lawsDetail(1)">
+                            <img dbField="news_images" src="../laws/images/wendang.png" class="laws_item_img ui-li-icon"/>
+                            <span dbField="news_title">为呃我呃我</span>
+                       </a>
+                    </li>
+                </ul>
+                
+            </div>
+
+        </div>
+
+    </body>
+</html>

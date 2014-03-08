@@ -6,9 +6,9 @@
         <meta charset="utf-8" />
     </head>
     <body>
-        <div data-role="page" id="emergency_detail" data-title="应急处置详细信息">
+        <div data-role="page" id="emergency_detail" data-theme="b" data-title="应急管理详细信息">
         <script>
-            var getEmergencyType=["应急文件","应急预案","应急专家库","应急案例","应急演练情况"];
+            var getEmergencyType=["应急法规","应急预案","应急专家库","经典案例","演练情况"];
             function open_emergencyDetaildownloadPopup(docurl,pathFile){
                 downloadFile(docurl,pathFile);
             }
@@ -59,9 +59,9 @@
                 }
             });
         </script>
-            <div data-role="header"  data-theme="a" data-position="fixed">
+            <div data-role="header" data-position="fixed">
                 <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
-                <h1>最新资讯详细信息</h1>
+                <h1>应急管理详细信息</h1>
                 <a href="#emergency_Detail_adjunct" data-rel="popup" class="ui-disabled" data-icon="grid">附件</a>
             </div>
 

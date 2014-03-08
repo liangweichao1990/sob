@@ -28,6 +28,7 @@ var urlLoadEmergencyContent = function(url) {
 	return content;
 };
 var emergencyFunciton=function(datajson,page_cur,page_dis){
+    $(paging_id).find("[data-role='listview']").empty();
      $.ajax({
         type: "Post",
         data:{type:datajson.type,name:$(paging_id+" #emergency_seek").val()||"",mobileRqs:'jqm',queryCurPageNum:page_cur,queryRecNumPerPage:page_dis},
@@ -36,9 +37,9 @@ var emergencyFunciton=function(datajson,page_cur,page_dis){
     }).done(function (data) {
         var datapage=data[0];
         pagingFooterInit({page_cur:Number(datapage.queryCurPageNum),page_dis:Number(datapage.queryRecNumPerPage),page_count:Number(datapage.queryTotalPageNum)});
-        $(paging_id).find("[data-role='listview']").empty();
+        
         if(Number(data[1].length)===0){
-            $(paging_id).find("[data-role='listview']").append("<li data-icon='false'><a href='#'>暂无数据</a></li>");
+            $(paging_id).find("[data-role='listview']").append("<li data-icon='false'><a href='#' style='text-align:center;'>暂无数据</a></li>");
             $(paging_id).find("[data-role='listview']").listview("refresh");
             return false;
         }
@@ -53,7 +54,8 @@ var emergencyFunciton=function(datajson,page_cur,page_dis){
         $(paging_id).find("[data-role='listview']").listview("refresh");
         return false;
     }).fail(function () {
-        navigator.notification.alert("亲，第三方加载失败，请检查网络是否开启等故障！", function() {}, "提示", "确定");
+        $(paging_id).find("[data-role='listview']").append("<li data-icon='false'><a href='#' style='text-align:center;'>网络故障,加载失败!</a></li>");
+        $(paging_id).find("[data-role='listview']").listview("refresh");
         return false;
     });
 };

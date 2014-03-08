@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!--全市安全生产控制指标进度表(四)-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="accidentCity_View" data-theme="b" data-role="page" data-title="安全生产控制指标进度表">
+            <style>
+                .accidentCity_content{
+                    margin:0;
+                    padding:0;
+                }
+                table{
+                    border-collapse:collapse;
+                    font-size: .8em;
+                }
+                table,td,th{
+                    border: 1px solid gray;
+                    text-align: center;
+                }
+                #accidentCity_land_table td,th{
+                    line-height: 30px;
+                    vertical-align: middle;
+                    white-space:nowrap;
+                    word-break:nowrap;
+                    text-overflow:ellipsis;
+                    word-break:keep-all;
+                }
+                .accidentCity_scroll{
+                    overflow:scroll;
+                    overflow-x:auto;
+                    overflow-y:auto;
+                }
+                .silder_div{
+                    float:left;
+                }
+                .ui-select{
+                    margin:0px;
+                }
+                .accidentCity_navbar_li{
+                    text-align: center;
+                    vertical-align: middle;
+                    line-height: 35px;
+                }
+            </style>
+            <!--头部-->
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>安全生产控制指标进度表</h1>
+                <div data-role="navbar">
+                    <ul >
+                        <li style="width:30%;">
+                            <select style="margin: 0;" id="accidentCity_year" data-corners="false" onchange="changeAccidentCity_Year()"></select>
+                        </li>
+                        <li style="width:20%;"><div class="accidentCity_navbar_li">1月</div></li>
+                        <li style="width:20%;"><div class="accidentCity_navbar_li">至</div></li>
+                        <li style="width:30%;">
+                            <select id="accidentCity_month" data-corners="false" onchange="changeAccidentCity_Month()"></select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--内容-->
+            <div data-role="content" class="accidentCity_content">
+                
+                <!--竖屏显示数据-->
+                <div id="accidentCity_port" style="display:block;">
+                <div>珠海市<font name="accidentCity_curr_year"></font>年1-<font name="accidentCity_curr_month"></font>月份全市安全生产控制指标进度表（四）</div>
+                <div style="text-align:center;">（安全生产控制指标进度表）</div>
+                    <table style="display:none">
+                        <thead>
+                            <tr>
+            				    <td rowspan="2">类别</td>
+            				    <td colspan="3" dbField="City_title">工矿商贸</td>
+            				</tr>
+                            <tr>
+            					<td>全年指标</td>
+            					<td>实际数（人）</td>
+            					<td>进度 （%）</td>
+            				</tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="accidentCity_portDiv">
+                            
+                    </div>
+                </div>
+                
+                <!--横屏显示数据-->
+                <div id="accidentCity_land" style="display:none;">
+                <div style="text-align:center;">珠海市<font name="accidentCity_curr_year"></font>年1-<font name="accidentCity_curr_month"></font>月份全市安全生产控制指标进度表（四）（安全生产控制指标进度表）</div>
+                    <div id="accidentCity_landDiv" class="accidentCity_scroll">
+                    <table id="accidentCity_land_table">
+                        <thead>
+                            <tr>
+            				    <td rowspan="2" style="">类别</td>
+            				    <td colspan="3" style="background-color:#FFCC99">工矿商贸</td>
+            				    <td colspan="3" style="">其中：房屋建筑和市政工程建设</td>
+            				    <td colspan="3" style="background-color:#FFCC99">生产经营性道路交通</td>
+            				    <td colspan="3" style="">渔业船舶</td>
+            				    <td colspan="3" style="background-color:#FFCC99">各  类</td>
+            				    <td colspan="3" style="">较大以上事故</td>
+            				</tr>
+                            <tr>
+            					<td style="background-color:#FFCC99">全年指标</td>
+            					<td style="background-color:#FFCC99">实际数（人）</td>
+            					<td style="background-color:#FFCC99">进度 （%）</td>
+            					<td>全年指标</td>
+            					<td>实际数（人）</td>
+            					<td>进度 （%）</td>
+            					<td style="background-color:#FFCC99">全年指标</td>
+            					<td style="background-color:#FFCC99">实际数（人）</td>
+            					<td style="background-color:#FFCC99">进度 （%）</td>
+            					<td>全年指标</td>
+            					<td>实际数（人）</td>
+            					<td>进度 （%）</td>
+            					<td style="background-color:#FFCC99">全年指标</td>
+            					<td style="background-color:#FFCC99">实际数（人）</td>
+            					<td style="background-color:#FFCC99">进度 （%）</td>
+            					<td>全年指标</td>
+            					<td>实际数（人）</td>
+            					<td>进度 （%）</td>
+            				</tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+            					<td >工矿企业</td>
+            					<td style="background-color:#FFCC99">1</td>
+            					<td style="background-color:#FFCC99">1</td>
+            					<td style="background-color:#FFCC99">0</td>
+            					<td >1</td>
+            					<td >0</td>
+            					<td >86</td>
+            					<td style="background-color:#FFCC99">0</td>
+            					<td style="background-color:#FFCC99">0</td>
+            					<td style="background-color:#FFCC99">-36</td>
+            					<td >1</td>
+            					<td >0</td>
+            					<td >86</td>
+            					<td style="background-color:#FFCC99">0</td>
+            					<td style="background-color:#FFCC99">0</td>
+            					<td style="background-color:#FFCC99">-36</td>
+            					<td >1</td>
+            					<td >0</td>
+            					<td >86</td>
+                            </tr>
+                        </tbody>
+                    </table></div>
+                </div>
+            </div>
+            <style>
+                .circle {
+                    display: inline-block;
+                    margin-left: 4px;
+                    width: 10px;
+                    opacity: .05;
+                    height: 10px;
+                    /* border: 1px solid black; */
+                    background: black;
+                    border-radius: 5px;
+                }
+            </style> 
+            <div id="accidentCity_footer" data-role="footer" data-theme="false" style="background-color:transparent;border: 0;" data-position="fixed">
+                <div style="text-align:center">
+                    
+                </div>
+            </div>
+            <script>
+                // 把年份值添加到年份下拉框中
+                for(var i = currentYear; i >= currentYear-10; i--){
+                    if(i === currentYear){    // 如果是当前年份，则把它选中
+                        $("<option selected='selected' value='" + i + "'>" + i +"年"+ "</option>").appendTo($("#accidentCity_year"));
+                    }else{
+                        $("<option value='" + i + "'>" + i+"年" + "</option>").appendTo($("#accidentCity_year"));
+                    }
+                }
+                // 把月份值添加到月份下拉框中
+                for(var m=1;m<=12;m++){
+                    if(m === currentMonth){    // 如果是当前月份，则把它选中
+                        $("<option selected='selected' value='" + m + "'>" + m +"月"+ "</option>").prependTo($("#accidentCity_month"));
+                    }else{
+                        $("<option value='" + m + "'>" + m+"月" + "</option>").prependTo($("#accidentCity_month"));
+                    }
+                }
+                        
+                for(var t=1;t<8;t++){
+                    $("#accidentCity_land_table > tbody").append('<tr>'+
+        					'<td >工矿企业'+t+'</td>'+
+        					'<td style="background-color:#FFCC99">1</td>'+
+        					'<td style="background-color:#FFCC99">0</td>'+
+        					'<td style="background-color:#FFCC99">50</td>'+
+        					'<td >1</td>'+
+        					'<td >0</td>'+
+        					'<td >86</td>'+
+        					'<td style="background-color:#FFCC99">0</td>'+
+        					'<td style="background-color:#FFCC99">0</td>'+
+        					'<td style="background-color:#FFCC99">-36</td>'+
+        					'<td >1</td>'+
+        					'<td >0</td>'+
+        					'<td >86</td>'+
+        					'<td style="background-color:#FFCC99">0</td>'+
+        					'<td style="background-color:#FFCC99">0</td>'+
+        					'<td style="background-color:#FFCC99">-36</td>'+
+        					'<td >1</td>'+
+        					'<td >0</td>'+
+        					'<td >86</td></tr>');
+                }
+                var accidentCity_clonetitleArray=['工矿商贸','其中：房屋建筑和市政工程建设','生产经营性道路交通','渔业船舶','各  类','较大以上事故'];
+                for(var s=0;s<accidentCity_clonetitleArray.length;s++){
+                    $("#accidentCity_footer > div").append('<span class="circle"></span>');
+                    var accidentCity_cloneTable=$("#accidentCity_port > table").clone();
+                    $(accidentCity_cloneTable).attr("name","accidentCity_port_table").css("display","");
+                    if(s%2===0){$(accidentCity_cloneTable).css("backgroundColor","#FFCC99");}
+                    $(accidentCity_cloneTable).find("[dbField='City_title']").html(accidentCity_clonetitleArray[s]);
+                    for(var p=1;p<8;p++){
+                        $(accidentCity_cloneTable).children("tbody").append('<tr>'+
+                                        '<td>生产经营性火灾'+p+'</td>'+
+                    					'<td>1</td>'+
+                    					'<td>1</td>'+
+                    					'<td>0</td></tr>');
+                    }
+                    $("#accidentCity_portDiv").append(accidentCity_cloneTable);
+                }
+                //选择年事件
+                function changeAccidentCity_Year(){
+                    $("[name='accidentCity_curr_year']").html($("#accidentCity_year").val());
+                };
+                //选择月份事件
+                function changeAccidentCity_Month(){
+                    $("[name='accidentCity_curr_month']").html($("#accidentCity_month").val());
+                };
+                changeAccidentCity_Year();
+                changeAccidentCity_Month();
+                
+                if(window.orientation === 0 || window.orientation === 180){    // 当前是竖屏
+                    $("#accidentCity_port").css("display","block");
+                    $("#accidentCity_land").css("display","none");
+                    $("[data-role='footer']").css("display","block");
+                    //改变竖屏table宽度
+                    $("#accidentCity_portDiv").css({width:($("#accidentCity_View").width())*accidentCity_clonetitleArray.length});
+                    $("table[name='accidentCity_port_table']").css({width:$("#accidentCity_View").width(),float:"left"});
+                }else if(window.orientation === 90 || window.orientation === -90){   // 当前是横屏
+                    $("#accidentCity_port").css("display","none");
+                    $("#accidentCity_land").css("display","block");
+                    $("[data-role='footer']").css("display","none");
+                    //改变横屏显示宽度
+                    $("#accidentCity_landDiv").css({width:$("#accidentCity_View").width()});
+                }
+                var AccidentCity_swipe_id=0;
+                $("#accidentCity_footer .circle:first").css("opacity","0.2");//点点
+                //横屏向左滑动
+                $("#accidentCity_portDiv").on("swipeleft", function(e){
+                    var tempsilderdiv;
+                    if(AccidentCity_swipe_id<$("table[name='accidentCity_port_table']").size()-1){
+                        $("#accidentCity_footer .circle").css("opacity","0.05");
+                        $("#accidentCity_footer .circle:eq("+(AccidentCity_swipe_id+1)+")").css("opacity","0.2");
+                        tempsilderdiv=$("table[name='accidentCity_port_table']:eq("+(AccidentCity_swipe_id)+")");
+                        AccidentCity_swipe_id++;
+                        $(tempsilderdiv).animate({marginLeft:"-"+($("#accidentCity_View").width())+"px"},800);
+                        $(tempsilderdiv).dequeue();
+                    }
+                });
+                //横屏向右滑动
+                $("#accidentCity_portDiv").on("swiperight", function(e){
+                    var tempsilderdiv;
+                    if(AccidentCity_swipe_id>0){
+                        $("#accidentCity_footer .circle").css("opacity","0.05");
+                        $("#accidentCity_footer .circle:eq("+(AccidentCity_swipe_id-1)+")").css("opacity","0.2");
+                        tempsilderdiv=$("table[name='accidentCity_port_table']:eq("+(AccidentCity_swipe_id-1)+")");
+                        AccidentCity_swipe_id--;
+                        $(tempsilderdiv).animate({marginLeft:"0px"},800);
+                        $(tempsilderdiv).dequeue();
+                    }
+                });
+                // 用户进行屏幕转动时的事件处理 
+                $(window).bind("orientationchange", function(event){
+                    if(event.orientation)
+                    {
+                        if(event.orientation === 'portrait')    // 竖屏
+                        {
+                            
+                            $("#accidentCity_portDiv").css({width:($("#accidentCity_View").width())*accidentCity_clonetitleArray.length});
+                            $("table[name='accidentCity_port_table']").css({width:$("#accidentCity_View").width(),float:"left"});
+                            $("[data-role='footer']").css("display","block");
+                            $("#accidentCity_port").css("display","block");
+                            $("#accidentCity_land").css("display","none");
+                        }
+                        else if(event.orientation === 'landscape') // 横屏
+                        {
+                            $("#accidentCity_landDiv").css({width:$("#accidentCity_View").width()});
+                            $("[data-role='footer']").css("display","none");
+                            $("#accidentCity_port").css("display","none");
+                            $("#accidentCity_land").css("display","block");
+                        }
+                    } 
+                });
+            </script>
+        </div>
+    </body>
+</html>

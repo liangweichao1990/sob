@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--法律法规 Ronnie-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="laws_View" data-theme="b" data-role="page" data-position="fixed" data-title="法律法规列表">
+            <!--样式-->
+            <style>
+                .laws_content{
+                    padding-left: 1%;
+                    padding-right: 1%;
+                }
+                .laws_content_collapsibleset{
+                    margin-top:0;
+                    margin-bottom:0;
+                    width:100%;
+                }
+                .laws_item_img{
+                    width:15px;
+                    height:15px;
+                }
+            </style>
+            <script>
+                createNewsContent("#laws_View", "../laws/lawsPopup.html");
+                $("#laws_View #laws_seekPopup").on({
+                    popupbeforeposition: function() {
+                        //防止弹出窗口点击其他位置自动消失
+                        $('.ui-popup-screen').off();
+                        var maxHeight = $( window ).height() - 30 + "px";
+                        $( "#laws_View #laws_seekPopup" ).css( "max-height", maxHeight );
+                    }
+                });
+                //搜索
+                $("#laws_View #laws_popup_serarch").on("tap",function(e){
+                    var tempname=$("#laws_View #laws_name").val();
+                    var tempkeys=$("#laws_View #laws_keys").val();
+                    $.mobile.changePage("../laws/queryLawsList.html",{data:{name:tempname,keys:tempkeys},transition:"slide"});
+                });
+            </script>
+            <!--头部-->
+            <div data-role="header" data-position="fixed">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>法律法规列表</h1>
+                <a href="#laws_seekPopup" data-rel="popup" data-icon="search">搜索</a>
+            </div>
+            <!--内容-->
+            <div data-role="content" class="laws_content">
+                <div class="laws_content_collapsibleset" data-role="collapsibleset" data-corners="false" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+                    <div data-role="collapsible">
+                        <h4>一、法律【共<span>n</span>条】</h4>
+                        <ul data-role="listview" data-icon="false" data-theme="a">
+                            <li>
+                               <a href="#" dbField="news_li_a">
+                                    <img dbField="news_images" src="../laws/images/wendang.png" class="laws_item_img ui-li-icon"/>
+                                    <span dbField="news_title">为呃我呃我</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="#" dbField="news_li_a" >
+                                    <img dbField="news_images" src="../laws/images/wendang.png"  class="laws_item_img ui-li-icon"/>
+                                    <span dbField="news_title">为呃我呃我</span>
+                               </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>二、行政法规【共<span>n</span>条】</h4>
+                        <p>Content</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>三、部门规章【共<span>n</span>条】</h4>
+                        <p>Content</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>四、地方性法规【共<span>n</span>条】</h4>
+                        <p>Content</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>五、规范性文件【共<span>n</span>条】</h4>
+                        <p>Content</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>六、各级安委会文件【共<span>n</span>条】</h4>
+                        <div class="laws_content_collapsibleset" data-role="collapsibleset" data-corners="false">
+                            <div data-role="collapsible">
+                                <h4>(一)国务院【共<span>n</span>条】</h4>
+                                <ul data-role="listview" data-icon="false" data-theme="a">
+                                    <li>
+                                       <a href="#" dbField="news_li_a">
+                                            <img dbField="news_images" src="../laws/images/wendang.png" class="laws_item_img ui-li-icon"/>
+                                            <span dbField="news_title">为呃我呃我</span>
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a href="#" dbField="news_li_a" >
+                                            <img dbField="news_images" src="../laws/images/wendang.png"  class="laws_item_img ui-li-icon"/>
+                                            <span dbField="news_title">为呃我呃我</span>
+                                       </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div data-role="collapsible" data-mini="true">
+                                <h4>(二)广东省【共<span>n</span>条】</h4>
+                            </div>
+                            <div data-role="collapsible" data-mini="true">
+                                <h4>(三)珠海市【共<span>n</span>条】</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>七、各级安委办文件【共<span>n</span>条】</h4>
+                        <p>Content</p>
+                    </div>
+                    <div data-role="collapsible">
+                        <h4>八、标准及其他【共<span>n</span>条】</h4>
+                        <p>Content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

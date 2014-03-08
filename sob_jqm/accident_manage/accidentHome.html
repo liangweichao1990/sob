@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--事故管理 Ronnie-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div id="accident_View" data-theme="b" data-role="page" data-title="事故管理">
+            <style>
+                .accident_img{
+                    width:100%;
+                    height:121px;
+                }
+                .accident_navbar{
+                    max-height:121px;
+                }
+                .accident_header{
+                    border-bottom-style:none;
+                }
+            </style>
+            <script>
+                //加载导航所指页面
+                function openAccidentSearch(url){
+                    $.mobile.changePage(url,{transition:"slide"});
+                }
+            </script>
+            <!--头部-->
+            <div data-role="header" data-position="fixed" class="accident_header">
+                <a href="#" data-rel="back" data-icon="arrow-l">返回</a>
+                <h1>事故管理</h1>
+                <div data-role="navbar" class="accident_navbar">
+                    <ul>
+                        <li><img src="./images/accident_title.png" class="accident_img"></li>
+                    </ul>
+                </div>
+            </div>
+            <!--内容-->
+            <div data-role="content">
+                <ul data-role="listview" data-theme="a">
+                    <li><a href="#" onclick="openAccidentSearch('../accident_manage/accidentDifferent.html')">各类伤亡事故统计分析表(一)</a></li>
+                    <li><a href="#" onclick="openAccidentSearch('../accident_manage/accidentYear.html')">年度累计各类伤亡事故统计分析表(二)</a></li>
+                    <li><a href="#" onclick="openAccidentSearch('../accident_manage/accidentDistrict.html')">各区工矿事故明细表(三)</a></li>
+                    <li><a href="#" onclick="openAccidentSearch('../accident_manage/accidentCity.html')">全市安全生产控制指标进度表(四)</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
